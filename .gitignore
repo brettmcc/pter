@@ -1,0 +1,12 @@
+
+### Linux ###
+*~
+
+### Date files ###
+*.csv
+*.csv
+*.dta
+*.sas7bdat
+
+### Log Files ###
+*.log

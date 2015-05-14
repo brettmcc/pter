@@ -1,0 +1,33 @@
+DATA PSIDDATA.WGT1994;
+INFILE "C:\SurveyData\PsidData\raw\er94f_wt.dat" LRECL=26;
+INPUT
+   ID1994 1-5
+   WGT1994 6-12 .3;
+
+DATA PSIDDATA.WGT1995;
+INFILE "C:\SurveyData\PsidData\raw\er95f_wt.dat" LRECL=26;
+INPUT
+   ID1995 1-5
+   WGT1995 6-12 .3;
+
+DATA PSIDDATA.WGT1996;
+INFILE "C:\SurveyData\Psiddata\raw\er96f_wt.dat" LRECL=11;
+INPUT
+   ID1996 1-4
+   WGT1996 6-11 .3;
+
+DATA PSIDDATA.WGT1997;
+INFILE "C:\SurveyData\Psiddata\raw\er97f_wt.dat" LRECL=12;
+INPUT
+   ID1997 1-5
+   WGT1997 6-12 .3;
+
+
+DATA PSIDDATA.WGT1999;
+INFILE "C:\SurveyData\Psiddata\raw\er99f_wt.dat" LRECL=12;
+INPUT
+   ID1999 1-5
+   WGT1999 6-12 .3;
+
+run;
+

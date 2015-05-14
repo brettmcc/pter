@@ -1,0 +1,173 @@
+Do constraints on market work hours change home production efforts? 
+
+by Geng Li 
+
+Summary 
+
+The study empirically analyses whether workers that face market work constraints spend a 
+different amount of hours on housework than workers that do not feel constrained. For the 
+analysis, data for 1968-1986 from the PSID is used, as well as HRS data for 1992-2006. Survey 
+information determines whether workers are upward constrained (work less than they desire) or 
+downward constrained (work more than they desire). Information about yearly working hours 
+and yearly hours of housework is available. 
+The analysis starts with a small stylized model to gain theoretical insights. As outcomes it is 
+found that upward constrained workers do not spend the entire deficit of market work with home 
+production, but also increase leisure, and the downward constrained do allocate their lack of 
+nonmarket time not only to a reduction in housework but also to a reduction in leisure. 
+Regressions are run for three outcome variables: housework time, food-out ratios (ratio food 
+expenditures eating out versus total food expenditures, including home produced food), and 
+vacation time (=time off work). Dummy indicators for being upward constrained and downward 
+constrained are included among a range of other regressors, like race, education, income, wage 
+rates, age marital status, and children by age. Regressions (both linear and pooled) are run for 
+pooled data (basically identifying the dummies for constraints by comparing constrained workers 
+with unconstrained workers) and fixed and random effects specification (which also take into 
+account changes in constraint status within households over time). 
+The results show that the upward constrained workers spend more time on housework than the 
+unconstrained workers (the effects get smaller but remain once controlled for random or fixed 
+effects), their food-out ratio is lower, whereas effect on vacation time is ambiguous, depending 
+on marital status and the inclusion of fixed or random effects (it gets positive in the latter case). 
+For downward constrained workers we see no differences with the unconstrained (only the 
+married spouses seem to spend more time on housework, an effect that disappears once fixed 
+effects are controlled for), also no effects on food-out time and vacation. 
+
+Comments 
+
+The theoretical issue is based on comparing the same worker in the situation he is constrained 
+and in the situation he is not. If we consider the adding up constraint for time, and assume that 
+total time is the aggregate of work time, housework time, and leisure, then if someone who 
+works less than desired, the sum of housework time and leisure is larger than desired. Then the 
+question is: is it housework time that is larger than in the desired situation, is it leisure time, both, 
+or could it even be possible that one of them is smaller than in the desired situation? Someone 
+feeling upward constrained has a high valuation of consumption relative to the valuation of 
+leisure, in a situation where utility is derived from consumption and leisure only. 
+
+1 
+
+
+
+To increase consumption if income is not sufficient due to working hours constraints, he can 
+‘produce’ consumption at home, so it is likely that he will spend more time on housework 
+compared to the situation he could work his desired amount of market hours. Without further 
+assumptions, the amount of leisure could even be smaller for the upward constrained worker than 
+for the unconstrained worker, but the stylized theoretical model predicts that leisure will be 
+larger as well. What also matters for the quantitative outcome is how much weight the worker 
+attaches to consumption relative to leisure: what is the shape of the marginal utility functions? In 
+other words, are the upward constrained workers more income constrained or are they more like 
+workaholics? So far I have started my comments by writing down some intuitive economic 
+arguments about the problem, because that is what I am missing in the exposition of this paper. 
+Theoretical predictions are in this paper very much based on this stylized model, but without this 
+model we can come very far. I am missing the story behind the model, telling us what which 
+economic mechanisms play a role here. 
+Next, an explanation about the origin of constraints on market hours is missing. It seems as if the 
+constraints are exogenously imposed. But even for two workers facing the same labor market 
+environment, the one may feel constrained, while the other does not. Being constrained is a 
+mixture of restrictions stemming from the demand side of the labor market, someone’s abilities 
+(determining productivity and wages), and someone’s own mix of preferences for consumption 
+and leisure. That means that heterogeneity of workers and selectivity issues play a potentially 
+very important role. In that light it is questionable whether it makes much sense (from an 
+empirical point of view) to present a theoretical model analysis that compares the same worker in 
+the situation where he is constrained and where he is unconstrained. Also, it is questionable 
+whether we can address the issue empirically simply by including a dummy variable for being 
+constrained as a regressor in the analysis. 
+My detailed comments follow. 
+
+1. 
+In section 3 a simple and quite restrictive model is chosen to derive some theoretical 
+predictions. I am certainly not against using simple and restrictive models for this 
+purpose, as we usually can gain many insights from such analysis. But it is very 
+important to discuss how the model restricts behavior and in which direction outcomes 
+are affected if alternatives are chosen. Equation (1) assumes that market consumption 
+goods can always, in a more or less perfect way, be substituted by home produced goods. 
+It precludes, for instance, that home produced goods are inferior and market goods are 
+normal (as, for instance, could be the case for cleaning jobs) or the other way around (as, 
+for instance, in the case of childcare). Utility function (2) precludes complementarity of 
+consumption goods and leisure as the marginal utility of consumption does not depend on 
+leisure. It also precludes that some housework production time may generate utility by 
+itself (positively or negatively). Equation (1) precludes that some market goods can 
+simply not be produced at home, or workers lack the skills for home production. The 
+issues mentioned here are not just academic details, but will affect the behavioral 
+outcomes. 
+2 
+
+
+
+2. 
+Throughout it is ignored that someone who is downward restricted also have the choice to 
+quit. 
+3. 
+The whole analysis from the second half page 6 on through the end of section 3 is 
+unnecessarily complicated and therefore redundant. We can interpret the equation (1) as a 
+production function for the composite consumption good C, which, after substituting for 
+CM = N and CH = g(H ) shows how C can be generated with market time inputs N and 
+household time H (as shown in equation (4)). Since the function g is concave, N has a 
+linear marginal effect before it is raised to the power . 
+whereas the marginal effect of H 
+is always decreasing. In the unconstrained case, by (5) and (6) marginal effects on utility 
+are equal. If, from that point on, we decrease N (to show the effects of upward 
+constraints), increasing H by the same amount cannot recover the consumption level. The 
+lower productivity of H makes it less attractive to use it and the increase in H will be 
+smaller than the decrease in N. As a consequence, leisure will increase. Only if N and H 
+are perfect substitutes ( r = 1,a = 0.5 ) we get 1 on 1 replacement of market time by 
+
+housework time and leisure not change (this latter result is implicitly also addressed by 
+the author, just below equation (12), in a much less concise way. Two conclusions: 1). 
+The exposition can be simplified a lot; 2). The ‘qualitative’ theoretical conclusion by the 
+author very much depend on the functional form assumption (1). 
+
+4. 
+Nowadays the household production model is often considered an important framework 
+for the simultaneous analysis of time choices of spouses. Therefore it is somewhat 
+disappointing that the analysis in this paper is done on individual basis only. In the 
+empirical specifications, spouses’ variables are exogenously added, whereas the 
+theoretical exposition does not address the spouses’ impacts. I can understand that data 
+limitations play a role here, but nevertheless it limits the scope of the analysis. 
+5. 
+Page 11, half way: “The changes occurred … the same employer”. That needs not be 
+true. If the head becomes upside constrained, the wife may want to work more to increase 
+household income, and at that point she may discover herself constrained as well, even if 
+she works for a different employer. 
+6. 
+Section 5, the econometrics. For being upside and downside constrained, dummy 
+variables UC and DC are included at the right hand side. But doing this assumes that first 
+there is an exogenous constraint and next on the basis of that the number of housework 
+hours is chosen. In fact, the worker solves his time allocation problem, including the 
+determination of market hours, housework hours, and leisure, and comparing the outcome 
+with the available working hours determines whether he is constrained or not. Being 
+constrained or not largely depends on the same parameters as the choice of housework 
+hours. Therefore, equations (16) and (17) cannot be interpreted as structural economic 
+equations and the parameter estimates of UC and DC do not measure causal effects of 
+these variables. The mechanism explaining how UC and DC are determined is not 
+modeled here whereas in fact they are endogenous. See, for instance, Stewart and 
+3 
+
+
+
+Swaffield (1997, EJ) or Bloemen (2008, JOLE) for approaches that econometrically 
+incorporate the constraints. 
+
+7. 
+It is striking that the author, for the ‘more quantitative analysis’ uses different and 
+additional underlying regression approaches than before. Is this an implicit recognition 
+that the earlier approach is not sufficient? 
+8. 
+The variable income is included in the regressions. This probably also includes earnings, 
+which, for given wage rates, are higher the higher are working hours, so the variable is 
+potentially endogenous as well. 
+9. 
+In the theoretical model, the wage rate was normalized to one. In labor supply theory, the 
+wage rate plays an important role in determining the desired working hours, and therefore 
+in determining whether someone is constrained. Search theory suggests that workers have 
+higher reservation wages for jobs with hours further away from the desired level. 
+10. In table 2 we see that the summary statistics of the downside constrained are much more 
+similar to those of the not constrained than the upside constrained. We also find that 
+result back in the regressions: being downside constrained hardly matters for the outcome 
+variables, whereas being upside constrained does. This, together with the earlier doubts 
+about the causal interpretation of the regression equations, makes me wonder how far the 
+results are driven by heterogeneity between the upside constrained at the one hand and 
+the other groups at the other hand. Apparently there are observed characteristics that 
+determine selection into the state of being upside constrained. This selection process, 
+though, is not modeled here, as has already been mentioned before. 
+4 
+
+
+

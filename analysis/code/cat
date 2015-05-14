@@ -1,0 +1,11 @@
+cat ../output/charts/wgchg_*_ttp1.ps>../output/charts/wgchg_ttp1.ps
+ps2pdf ../output/charts/wgchg_ttp1.ps
+
+cat ../output/charts/wgchg_*_tm1t.ps>../output/charts/wgchg_tm1t.ps
+ps2pdf ../output/charts/wgchg_tm1t.ps
+
+cat ../output/charts/wgchg_*_tm2tm1.ps>../output/charts/wgchg_tm2tm1.ps
+ps2pdf ../output/charts/wgchg_tm2tm1.ps
+
+cat ../output/charts/wgchg_*_tm1tp1.ps>../output/charts/wgchg_tm1tp1.ps
+ps2pdf ../output/charts/wgchg_tm1tp1.ps

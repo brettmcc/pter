@@ -1,0 +1,110 @@
+Referee 
+Report 
+MS# 
+9207 
+Do 
+Constraints 
+on 
+Market 
+Work 
+Hours 
+Change 
+Home 
+Production 
+Efforts? 
+
+
+1 
+Overview 
+
+
+This paper examines the effects of market hours constraints on time spent in home 
+production and leisure. The paper examines both upside constraints (where workers
+ would like to work more hours, but can not) as well as downside constraints 
+(where workers would like to work fewer hours, but can not. The model shows that 
+home production hours with an upside market hours constraint is unambiguously 
+larger compared to the case where market hours constraints are non-binding. The 
+reverse is true for downside constraints. The effect on leisure hours is ambiguous, 
+depending on whether home work hours increase more or less than the reduction 
+in market hours due, say, to an upside constraint. The findings of the econometric 
+exercise indicate home production hours fall under upside market constraints but 
+are essentially unaffected for downside constraints. 
+
+2 
+Comments 
+
+
+1. While the model is fairly standard for a representative agent, it should specify
+ more clearly what an “agent” is. The model appears to be written for an 
+“individual,” however, much of the empirical framework considers single 
+and married households. If the paper were written where the agent is considered
+ to be a household, I would expect different modeling choices. For 
+example, how are husband and wife hours combined to produce the home 
+good? Are husband and wife hours of leisure complements or substitutes? 
+This should be more carefully explained and modeled. 
+2. The two numerical examples do not add much to the paper and should be 
+deleted. 
+3. It is difficult to believe–and worrisome–that 25% of the sample heads of 
+married households in the PSID have zero hours of home work. I think 
+it would be useful to go to a source of better time use data, such as the 
+American Time Use Survey to see the fraction of zero hours reported there. 
+1 
+
+
+
+As it stands, the data from the PSID seem to not be very reliable for this 
+exercise. 
+
+4. The vacation time analysis does not seem appropriate in the current context, 
+i.e., in terms of home hours of work. It is not at all clear to me that vacation 
+time is necessarily leisure. Taking vacation days from work could be used to 
+do home production. A similar point can be made concerning the food-out 
+ratio. Eating out less may not have much of an effect if households switch 
+to microwave meals. Or, they could be eating at better or worse restaurants, 
+changing expenditure but not changing home hours. 
+5. The econometric strategy should try to exploit more of the panel structure 
+in the PSID. There is a dummy variable reported in table 4 for being upside 
+constrained and one dummy variable for being downside constrained. Is 
+it equal to one if a household is constrained in any period? Is there any 
+dummy variable if the household changed constraint status? In theory, we 
+would like to see the effect of the constraint status of a household over time 
+then, we could hope to estimate “...how much the market hours constraints 
+would make workers change their housework hours” (page 15). 
+6. Page 9. The questions that classify a worker as upside constrained or downside 
+constrained (and the data in general) seem to ignore the difference between 
+salaried and hourly workers. What does it mean for a salaried worker 
+to be hours constrained? Not until the very end of the paper is this difference 
+acknowledged in one line. It is never clear if this difference is explicit 
+in the data. Are hourly wages computed for salaried workers and that hourly 
+wage used in this paper? 
+3 
+Minor 
+Comments 
+
+
+1. page 7: should be “casually” not “causally”. 
+2. page 11: The author says that PSID wife hours are generally much lower 
+than those in the HRS data, possibly due to the increase in womens labor 
+force participation over the last decade. Why wouldnt one expect the exact 
+opposite? It seems like older women in the HRS would be more likely to 
+have come from a generation that didnt work outside the home as much 
+and younger women in the PSID would be more likely to participate in the 
+market labor force. 
+2 
+
+
+
+3. In some places insignificant results are taken as evidence for the eect so long 
+as they have the expected sign, but when they do not, the author downplays 
+their importance because they are insignificant, see page 15, paragraph 1. 
+4. In section 4.2 on page 11, the author uses the positive correlation between 
+head and wifes UCs as evidence for changes in household preferences. It is 
+stated that this could not be from changes of the employer since that would 
+usually only aect one individual. However, during this time period 19701975 
+there was a recession in the economy which may have been limiting 
+the amount of hours and the wages of workers. This could be the true cause 
+of the UCs, not preferences. 
+3 
+
+
+
