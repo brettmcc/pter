@@ -1,7 +1,7 @@
 /*Program Li Geng wrote to read in RAND-processed Health and Retirement Survey data in for home production/hours constraints project*/
 /* Brett McCully, May 2015*/
 
-libname HRS "/href/scratch2/HRS/";
+libname HRS "/href/scratch2/HRS/Rawdata";
 libname HomeProd "../output";
 
 data HomeProd.RandVariable;                                                                    
@@ -89,7 +89,7 @@ run;
 
 ************************************Number of kids, food consumption and labor market frictions*************************;
 data food1992;
-INFILE '/href/scratch2/HRS/HOUSEHLD.DA'  LRECL=2749;     
+INFILE '/href/scratch2/HRS/Rawdata/HOUSEHLD.DA'  LRECL=2749;     
 input HHID 1-6 ASUBHH 7 foodstamp 1590 foodhm1 1595-1597 foodhmper1 1598 foodout1 1605 - 1608 foodoutper1 1609
                                        foodhm2 1610-1613 foodhmper2 1614 foodout2 1621 - 1624 foodoutper2 1625;
 if foodhm1 = 9996 then foodhm1 = .;
@@ -121,7 +121,7 @@ proc sort data = food1992;
 by HHID ASUBHH;
 
 data labor1992;
-INFILE '/href/scratch2/HRS/EMPLOYER.DA'  LRECL=3131;     
+INFILE '/href/scratch2/HRS/Rawdata/EMPLOYER.DA'  LRECL=3131;     
 input HHID 1-6 PN 7-9 ASUBHH 10 ableless 222 - 223 wantless 224 - 225 lessideal 226 - 228 propcut 232 - 233 
                                 ablemore 238 - 239 wantmore 240 - 241 moreideal 242 - 244; 
 if lessideal ge 96 then lessideal = .;
@@ -143,7 +143,7 @@ run;
 
 **************************;
 data food1994;
-INFILE '/href/scratch2/HRS/W2N.DA'  LRECL=1466;     
+INFILE '/href/scratch2/HRS/Rawdata/W2N.DA'  LRECL=1466;     
 input HHID 1-6  CSUBHH 7 foodstamp 974-975 foodhm1 1043-1048 foodhmper1 1049-1051 foodout1 1061- 1066 foodoutper1 1067-1069
                                            foodhm2 1070-1075 foodhmper2 1076-1078 foodout2 1090- 1095 foodoutper2 1096-1098;
 
@@ -176,7 +176,7 @@ proc sort data = food1994;
 by HHID CSUBHH;
 
 data labor1994;
-INFILE '/href/scratch2/HRS/W2FA.DA'  LRECL=3131;     
+INFILE '/href/scratch2/HRS/Rawdata/W2FA.DA'  LRECL=3131;     
 input HHID 1-6 PN 7-9 CSUBHH 10 ableless 501-502 wantless 503-504 lessideal 505-508 propcut 511-512 
                                 ablemore 517-518 wantmore 519-520 moreideal 521-524; 
 if lessideal ge 96 then lessideal = .;
@@ -197,7 +197,7 @@ run;
 
 **************************1996 is merged by HHID and PN;
 data food1996;
-INFILE '/href/scratch2/HRS/H96M_R.DA'  LRECL=965;              
+INFILE '/href/scratch2/HRS/Rawdata/H96M_R.DA'  LRECL=965;              
 input HHID 1-6 PN 7-9 ESUBHH 10 foodhm 24-32 foodout 43-51; *** per week;
 if foodhm > 999996 then foodhm = .;
 if foodout > 999996 then foodout = .;
@@ -208,7 +208,7 @@ proc sort data = food1996;
 by HHID PN;
 
 data labor1996;
-INFILE '/href/scratch2/HRS/H96G_R.DA'  LRECL=2668;     
+INFILE '/href/scratch2/HRS/Rawdata/H96G_R.DA'  LRECL=2668;     
 input HHID 1-6 PN 7-9 ESUBHH 10 ableless 503 wantless 504 lessideal 505-507 propcut 509 
                                 ablemore 512 wantmore 513 moreideal 514-516; 
 if lessideal ge 96 then lessideal = .;
@@ -228,7 +228,7 @@ run;
 *********We do not use the 1998 data because it does not have the composition of food home and food out*********;
 **************************;
 data food2000;
-INFILE '/href/scratch2/HRS/H00J_H.DA'  LRECL=1297;              
+INFILE '/href/scratch2/HRS/Rawdata/H00J_H.DA'  LRECL=1297;              
 input HHID 1-6 GSUBHH 7 foodhm 1115-1120 foodout 1128-1133; *** per week;
 if foodhm > 999996 then foodhm = .;
 if foodout > 999996 then foodout = .;
@@ -239,7 +239,7 @@ proc sort data = food2000;
 by HHID GSUBHH;
 
 data labor2000;
-INFILE '/href/scratch2/HRS/H00G_R.DA'  LRECL=5074;     
+INFILE '/href/scratch2/HRS/Rawdata/H00G_R.DA'  LRECL=5074;     
 input HHID 1-6 PN 7-9 GSUBHH 10 ableless 956 wantless 957 lessideal 958-960 propcut 961 
                                 ablemore 965 wantmore 966 moreideal 967-969; 
 if lessideal ge 96 then lessideal = .;
@@ -259,7 +259,7 @@ run;
 
 **************************;
 data food2002;
-INFILE '/href/scratch2/HRS/H02Q_H.DA'  LRECL=2244;              
+INFILE '/href/scratch2/HRS/Rawdata/H02Q_H.da'  LRECL=2244;
 input HHID 1-6 HSUBHH 7 foodhm 1604-1608 foodout 1629-1632; *** per week;
 if foodhm > 99997 then foodhm = .;
 if foodout > 9997 then foodout = .;
@@ -270,7 +270,7 @@ proc sort data = food2002;
 by HHID HSUBHH;
 
 data labor2002;
-INFILE '/href/scratch2/HRS/H02J_R.DA'  LRECL=3539;     
+INFILE '/href/scratch2/HRS/Rawdata/H02J_R.da'  LRECL=3539;
 input HHID 1-6 PN 7-9 HSUBHH 10 ableless 1133 wantless 1134 lessideal 1135-1137 propcut 1138 
                                 ablemore 1142 wantmore 1143 moreideal 1144-1146; 
 if lessideal ge 96 then lessideal = .;
@@ -290,7 +290,8 @@ run;
 
 **************************;
 data food2004;
-INFILE '/href/scratch2/HRS/H04Q_H.DA'  LRECL=2335;              
+*INFILE '/href/scratch2/HRS/Rawdata/H04Q_H.DA'  LRECL=2335;
+INFILE '/href/scratch2/HRS/Rawdata/H04Q_H.da'  LRECL=2335;              
 input HHID 1-6 JSUBHH 7 foodhm 1746-1750 foodout 1781-1784; *** per week;
 if foodhm > 99997 then foodhm = .;
 if foodout > 9997 then foodout = .;
@@ -301,7 +302,7 @@ proc sort data = food2004;
 by HHID JSUBHH;
 
 data labor2004;
-INFILE '/href/scratch2/HRS/H04J_R.DA'  LRECL=3843;     
+INFILE '/href/scratch2/HRS/Rawdata/H04J_R.da'  LRECL=3843;
 input HHID 1-6 PN 7-9 JSUBHH 10 ableless 1281 wantless 1282 lessideal 1283-1285 propcut 1286
                              ablemore 1289 wantmore 1292 moreideal 1293-1295; 
 if lessideal ge 96 then lessideal = .;
@@ -321,7 +322,7 @@ run;
 
 **************************; 
 data food2006;
-INFILE '/href/scratch2/HRS/H06Q_H.DA'  LRECL=3108;              
+INFILE '/href/scratch2/HRS/Rawdata/H06Q_H.da'  LRECL=3108;
 input HHID 1-6 KSUBHH 7 foodhm 2289-2294 foodout 2338-2343; *** per week;
 if foodhm > 99997 then foodhm = .;
 if foodout > 9997 then foodout = .;
@@ -332,7 +333,7 @@ proc sort data = food2006;
 by HHID KSUBHH;
 
 data labor2006;
-INFILE '/href/scratch2/HRS/H06J_R.DA'  LRECL=8719;     
+INFILE '/href/scratch2/HRS/Rawdata/H06J_R.da'  LRECL=8719;
 input HHID 1-6 PN 7-9 KSUBHH 10 ableless 1922 wantless 1923 lessideal 1924-1926 propcut 509 
                                 ablemore 1931 wantmore 1934 moreideal 1935-1937; 
 if lessideal ge 96 then lessideal = .;
