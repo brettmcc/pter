@@ -2,11 +2,14 @@
 ### Linux ###
 *~
 
-### Date files ###
+### Data files ###
 *.csv
 *.csv
 *.dta
 *.sas7bdat
 
-### Log Files ###
+### Output Files ###
 *.log
+*.lst
+*.pdf
+*.ps

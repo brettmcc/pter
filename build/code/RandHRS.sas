@@ -3,10 +3,17 @@
 
 libname HRS "/href/scratch2/HRS/Rawdata";
 libname HomeProd "../output";
+libname randhrs "../input/randhrs";
+
+proc format library=randhrs cntlin=randhrs.sasfmts;
+run;
+
+options FMTSEARCH=(randhrs);
 
 data HomeProd.RandVariable;                                                                    
-set HRS.rndhrs_h;                                                                             
-keep HHIDPN     RAGENDER   RARACEM    RAHISPAN   RAEDYRS                                      
+set HRS.rndhrs_n
+(                                                                             
+keep=HHIDPN     RAGENDER   RARACEM    RAHISPAN   RAEDYRS                                      
      H1HHID     H2HHID     H3HHID     H4HHID     H5HHID     H6HHID     H7HHID     H8HHID      
      INW1       INW2       INW3       INW4       INW5       INW6       INW7       INW8        
      S1HHIDPN   S2HHIDPN   S3HHIDPN   S4HHIDPN   S5HHIDPN   S6HHIDPN   S7HHIDPN   S8HHIDPN    
@@ -36,8 +43,10 @@ keep HHIDPN     RAGENDER   RARACEM    RAHISPAN   RAEDYRS
      R1JWEEKS   R2JWEEKS   R3JWEEKS   R4JWEEKS   R5JWEEKS   R6JWEEKS   R7JWEEKS   R8JWEEKS    
      S1JWEEKS   S2JWEEKS   S3JWEEKS   S4JWEEKS   S5JWEEKS   S6JWEEKS   S7JWEEKS   S8JWEEKS    
      R1WGIHR    R2WGIHR    R3WGIHR    R4WGIHR    R5WGIHR    R6WGIHR    R7WGIHR    R8WGIHR     
-     S1WGIHR    S2WGIHR    S3WGIHR    S4WGIHR    S5WGIHR    S6WGIHR    S7WGIHR    S8WGIHR;    
+     S1WGIHR    S2WGIHR    S3WGIHR    S4WGIHR    S5WGIHR    S6WGIHR    S7WGIHR    S8WGIHR);    
 run;
+
+*endsas;
 
 %macro rand(wave);
 data RandHead&wave.;
