@@ -2,8 +2,9 @@
 *********In constraints and housework data the variable indices point to the reference year, while in other    *********
 *********data, some indices point to survey year. We make all variable indexes point to the reference year     *********;
 
-*before running this program, also run wantable, food, and housework. Also, should run empbus.sas rather than
- labor.sas;
+*before running this program, also run wantable, food, and housework. Also, should run empbus.sas rather than labor.sas;
+libname psiddata '/href/scratch/PSID/RawData/';
+
 options nomprint;
 
 %macro var(year);

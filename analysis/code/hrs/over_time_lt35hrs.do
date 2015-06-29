@@ -1,4 +1,5 @@
-/*This program looks at changes in hours constraints over the business cycle in the HRS
+/*This program looks at changes in hours constraints over the business cycle in the HRS, 
+using the BLS condition of <35 hours per week
 Brett McCully, June 2015*/
 cd "/href/research3/m1bam03/homeProdHourConstraints/analysis/code/hrs"
 
@@ -7,6 +8,8 @@ cd "/href/research3/m1bam03/homeProdHourConstraints/analysis/code/hrs"
 clear all
 
 use ../../input/hrsdata.dta,clear
+
+keep if headhourweekly<35 
 
 //wave is year variable
 
@@ -43,7 +46,7 @@ gen prop_pter = construp/headstatus
 twoway line (prop_pter wave), title("Percent underemployed") ytitle("Percent") name(pct_construp,replace) note(Denominator is all employed persons)
 restore
 
-graph combine moregap_nozero moregap_withzeros num_construp pct_construp, name(moregap,replace) ///
-	title("Underemployed Workers (HRS)") note(Source: HRS. All figures weighted.)
-graph export ../../output/moregap.ps, name(moregap) replace orientation(landscape) mag(200) tmargin(.1) lmargin(.1)
-!ps2pdf ../../output/moregap.ps ../../output/moregap.pdf
+graph combine moregap_nozero moregap_withzeros num_construp pct_construp, name(moregap_lt35,replace) ///
+	title("Underemployed Workers - Working <35 hours/week (HRS)") note(Source: HRS. All figures weighted.)
+graph export ../../output/moregap_lt35.ps, name(moregap_lt35) replace orientation(landscape) mag(200) tmargin(.1) lmargin(.1)
+!ps2pdf ../../output/moregap_lt35.ps ../../output/moregap_lt35.pdf

@@ -1,6 +1,8 @@
 /*Program Li Geng wrote to read in RAND-processed Health and Retirement Survey data in for home production/hours constraints project*/
 /* Brett McCully, May 2015*/
 
+/*Can get waged/salaried position variable at J031*/
+
 libname HRS "/href/scratch2/HRS/Rawdata";
 libname HomeProd "../output";
 libname randhrs "../input/randhrs";
