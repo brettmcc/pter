@@ -1,7 +1,10 @@
 *********Input market work hours constraints, marginal wages, and vacation variables. Information about housework *********
 *********income, market labor hours, and demographics are processed in other programs                             ********* 
 *********WantAble1971-1975, 1979-1984 and 1986-1987 are process by additional macros                              *********;
-data WantAble1968;
+libname psiddata '/href/scratch3/m1bam03/PSID/data/';
+libname temp     '../../temp/';
+
+data temp.WantAble1968;
 set psiddata.fam68;
 id1968             =    V3    ;  
 wantmore1967       =    V231  ;  
@@ -16,7 +19,7 @@ if wantless1967 = 1 and ableless1967 = 5 then constrdown1967 = 1; else constrdow
 keep id1968 construp1967 constrdown1967 vacationwks1967;
 run;
 
-data WantAble1969;
+data temp.WantAble1969;
 set psiddata.fam69;
 id1969             =    V442  ;  
 wantmore1968       =    V668  ;  
@@ -34,7 +37,7 @@ if wantless1968 = 1 and ableless1968 = 5 then constrdown1968 = 1; else constrdow
 keep id1969 construp1968 constrdown1968 marwage1968 vacation1968 vacationwks1968;
 run;
 
-data WantAble1970;
+data temp.WantAble1970;
 set psiddata.fam70;
 id1970             =    V1102 ; 
 wantmore1969       =    V1305 ; 
@@ -49,7 +52,7 @@ if wantless1969 = 1 and ableless1969 = 5 then constrdown1969 = 1; else constrdow
 keep id1970 construp1969 constrdown1969 vacation1969 vacationwks1969;
 run;
 
-data WantAble1971;
+data temp.WantAble1971;
 set psiddata.fam71;
 id1971             =    V1802 ;
 wantmore1970       =    V2011 ;
@@ -63,7 +66,7 @@ vacationwks1970    =    V1993 ;
 keep id1971 wantmore1970 wantless1970 ablemore1970 ableless1970 vacation1970 vacationwks1970 wifeablemore1970 wifewantmore1970;
 run;
 
-data WantAble1972;
+data temp.WantAble1972;
 set psiddata.fam72;
 id1972             =    V2402 ; 
 wantmore1971       =    V2609 ; 
@@ -77,7 +80,7 @@ vacationwks1971    =    V2591 ;
 keep id1972 wantmore1971 wantless1971 ablemore1971 ableless1971 vacation1971 vacationwks1971 wifeablemore1971 wifewantmore1971;
 run;
 
-data WantAble1973;
+data temp.WantAble1973;
 set psiddata.fam73;
 id1973             =    V3002 ; 
 wantmore1972       =    V3142 ; 
@@ -91,7 +94,7 @@ vacationwks1972    =    V3124 ;
 keep id1973 wantmore1972 wantless1972 ablemore1972 ableless1972 vacation1972 vacationwks1972 wifeablemore1972 wifewantmore1972;
 run;
 
-data WantAble1974;
+data temp.WantAble1974;
 set psiddata.fam74;
 id1974             =    V3402 ;  
 wantmore1973       =    V3557 ;  
@@ -105,7 +108,7 @@ vacationwks1973    =    V3539 ;
 keep id1974 wantmore1973 wantless1973 ablemore1973 ableless1973 vacation1973 vacationwks1973 wifeablemore1973 wifewantmore1973;
 run;
 
-data WantAble1975;
+data temp.WantAble1975;
 set psiddata.fam75;
 id1975             =    V3802 ; 
 wantmore1974       =    V4012 ; 
@@ -119,7 +122,7 @@ vacationwks1974    =    V3992 ;
 keep id1975 wantmore1974 wantless1974 ablemore1974 ableless1974 vacation1974 vacationwks1974 wifeablemore1974 wifewantmore1974;
 run;
 
-data WantAble1976;
+data temp.WantAble1976;
 set psiddata.fam76;
 id1976             =    V4302 ;
 wantmore1975       =    V4527 ;
@@ -141,7 +144,7 @@ if wifewantmore1975 = 1 and wifeablemore1975 = 5 then wifeconstrup1975 = 1; else
 keep id1976 construp1975 constrdown1975 wifeconstrup1975 vacation1975 vacationwks1975 marwage1975 wifevacation1975 wifevacationwks1975;
 run;
 
-data WantAble1977;
+data temp.WantAble1977;
 set psiddata.fam77;
 id1977             =    V5202 ; 
 wantmore1976       =    V5436 ; 
@@ -160,7 +163,7 @@ if wantless1976 = 1 and ableless1976 = 5 then constrdown1976 = 1; else constrdow
 keep id1977 construp1976 constrdown1976 vacation1976 vacationwks1976 marwage1976 wifevacation1976 wifevacationwks1976;
 run;
 
-data WantAble1978;
+data temp.WantAble1978;
 set psiddata.fam78;
 id1978             =    V5702 ;                            
 wantmore1977       =    V5923 ;                            
@@ -179,7 +182,7 @@ if wantless1977 = 1 and ableless1977 = 5 then constrdown1977 = 1; else constrdow
 keep id1978 construp1977 constrdown1977 vacation1977 vacationwks1977 marwage1977 wifevacation1977 wifevacationwks1977;
 run;
 
-data WantAble1979;
+data temp.WantAble1979;
 set psiddata.fam79;
 id1979             =    V6302 ;                            
 wantmore1978       =    V6536 ;                            
@@ -197,7 +200,7 @@ wifevacationwks1978    =    V6606 ;
 keep id1979 wantmore1978 wantless1978 ablemore1978 ableless1978 marwage1978 vacation1978 vacationwks1978 wantless21978 ableless21978 wifevacation1978 wifevacationwks1978;
 run;
 
-data WantAble1980;
+data temp.WantAble1980;
 set psiddata.fam80;
 id1980             =    V6902 ;                            
 wantmore1979       =    V7139 ;                            
@@ -215,7 +218,7 @@ wifevacationwks1979    =    V7208 ;
 keep id1980 wantmore1979 wantless1979 ablemore1979 ableless1979 marwage1979 vacation1979 vacationwks1979 wantless21979 ableless21979 wifevacation1979 wifevacationwks1979;
 run;
 
-data WantAble1981;
+data temp.WantAble1981;
 set psiddata.fam81;
 id1981             =    V7502 ;                            
 wantmore1980       =    V7786 ;                            
@@ -233,7 +236,7 @@ wifevacationwks1980    =    V7899 ;
 keep id1981 wantmore1980 wantless1980 ablemore1980 ableless1980 marwage1980 vacation1980 vacationwks1980 wantless21980 ableless21980 wifevacation1980 wifevacationwks1980;
 run;
 
-data WantAble1982;
+data temp.WantAble1982;
 set psiddata.fam82;
 id1982             =    V8202 ;                            
 wantmore1981       =    V8451 ;                            
@@ -251,7 +254,7 @@ wifevacationwks1981    =    V8557 ;
 keep id1982 wantmore1981 wantless1981 ablemore1981 ableless1981 marwage1981 vacation1981 vacationwks1981 wantless21981 ableless21981 wifevacation1981 wifevacationwks1981;
 run;
 
-data WantAble1983;
+data temp.WantAble1983;
 set psiddata.fam83;
 id1983             =    V8802 ;                            
 wantmore1982       =    V9082 ;                            
@@ -269,7 +272,7 @@ wifevacationwks1982    =    V9207 ;
 keep id1983 wantmore1982 wantless1982 ablemore1982 ableless1982 marwage1982 vacation1982 vacationwks1982 wantless21982 ableless21982 wifevacation1982 wifevacationwks1982;
 run;
 
-data WantAble1984;
+data temp.WantAble1984;
 set psiddata.fam84;
 id1984             =    V10002;                            
 wantmore1983       =    V10582;                            
@@ -287,7 +290,7 @@ wifevacationwks1983    =    V10768;
 keep id1984 wantmore1983 wantless1983 ablemore1983 ableless1983 marwage1983 vacation1983 vacationwks1983 wantless21983 ableless21983 wifevacation1983 wifevacationwks1983;
 run;
 
-data WantAble1985;
+data temp.WantAble1985;
 set psiddata.fam85;
 id1985             =    V11102;                            
 wantmore1984       =    V11736;                            
@@ -311,7 +314,7 @@ if wifewantmore1984 = 1  and wifeablemore1984 = 5 then wifeconstrup1984 = 1; els
 keep id1985 construp1984 wifeconstrup1984 constrdown1984 marwage1984 vacation1984 vacationwks1984 wifevacation1984 wifevacationwks1984;
 run;
 
-data WantAble1986;
+data temp.WantAble1986;
 set psiddata.fam86;
 id1986             =    V12502;                            
 wantmore1985       =    V13136;                            
@@ -329,7 +332,7 @@ wifevacationwks1985    =    V13275;
 keep id1986 wantmore1985 wantless1985 ablemore1985 ableless1985 marwage1985 vacation1985 vacationwks1985 wantless21985 ableless21985 wifevacation1985 wifevacationwks1985;
 run;
 
-data WantAble1987;
+data temp.WantAble1987;
 set psiddata.fam87;
 id1987             =    V13702;                            
 wantmore1986       =    V14234;                            
@@ -348,8 +351,8 @@ keep id1987 wantmore1986 wantless1986 ablemore1986 ableless1986 marwage1986 vaca
 run;
 
 %macro wa1(year1, year2);
-data WantAble&year1.;
-set WantAble&year1.;
+data temp.WantAble&year1.;
+set temp.WantAble&year1.;
 if wantmore&year2. = 1 and ablemore&year2. = 5 then construp&year2. = 1; else construp&year2. = 0;
 if wantless&year2. = 1 and ableless&year2. = 5 then constrdown&year2. = 1; else constrdown&year2. = 0;
 if wifewantmore&year2. = 1 and wifeablemore&year2. = 5 then wifeconstrup&year2. = 1; else wifeconstrup&year2. = 0;
@@ -359,8 +362,8 @@ run;
 %wa1(1971, 1970) %wa1(1972, 1971) %wa1(1973, 1972) %wa1(1974, 1973) %wa1(1975, 1974);
 
 %macro wa2(year1, year2);
-data WantAble&year1.;
-set WantAble&year1.;
+data temp.WantAble&year1.;
+set temp.WantAble&year1.;
 if wantmore&year2. = 1 and ablemore&year2. = 5 then construp&year2. = 1; else construp&year2. = 0;
 if (wantless&year2. = 1 and ableless&year2. = 5) or (wantless2&year2. = 1 and ableless2&year2. = 5) then constrdown&year2. = 1; else constrdown&year2. = 0;
 keep id&year1. construp&year2. marwage&year2. constrdown&year2. vacation&year2. vacationwks&year2. wifevacation&year2. wifevacationwks&year2.;

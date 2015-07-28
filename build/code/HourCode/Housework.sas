@@ -5,8 +5,10 @@
 *********hours and imputed annual hours.  If weekly number multiplied by 52 is different from annual hours by   *********
 *********more than 26 then we treat the data as blank.                                                          *********
 *********From 1968 to 1972, miscellaneous questions were asked about home production and car repairment         *********; 
+libname psiddata '/href/scratch3/m1bam03/PSID/data/';
+libname temp '../../temp/';
 
-data housework1968;
+data temp.housework1968;
 set psiddata.fam68;
 id1968 = V3;
 HWHW1967 = V59; 
@@ -16,7 +18,7 @@ HomeProd1967 = V61;
 Repair1967 = V26;
 keep id1968 HWHW1967 HWHead1967 HWWife1967 HomeProd1967 Repair1967;
 
-data housework1969;
+data temp.housework1969;
 set psiddata.fam69;
 id1969 = V442;
 HWWife1968 = V481;
@@ -26,7 +28,7 @@ HomeProd1968 = V464;
 Repair1968 = V447;
 keep id1969 HWWife1968 HWHusband1968 HWHW1968 HomeProd1968 Repair1968;
 
-data housework1970;
+data temp.housework1970;
 set psiddata.fam70;
 id1970 = V1102;
 HWWife1969 = V1154;
@@ -36,7 +38,7 @@ HomeProd1969 = V1507;
 Repair1969 = V1120;
 keep id1970 HWWife1969 HWHusband1969 HWHW1969 HomeProd1969 Repair1969;
 
-data housework1971;
+data temp.housework1971;
 set psiddata.fam71;
 id1971 = V1802;
 HWWife1970 = V1855;
@@ -46,7 +48,7 @@ HomeProd1970 = V2219;
 Repair1970 = V1821;
 keep id1971 HWWife1970 HWHusband1970 HWHW1970 HomeProd1970 Repair1970;
 
-data housework1972;
+data temp.housework1972;
 set psiddata.fam72;
 id1972 = V2402;
 HWWife1971 = V2455;
@@ -56,7 +58,7 @@ HomeProd1971 = V2936;
 Repair1971 = V2421;
 keep id1972 HWWife1971 HWHusband1971 HWHW1971 HomeProd1971 Repair1971;
 
-data housework1973;
+data temp.housework1973;
 set psiddata.fam73;
 id1973 = V3002;
 HWWife1972 = V3037;
@@ -64,7 +66,7 @@ HWHusband1972 = V3039;
 HWHW1972 = V3296;
 keep id1973 HWWife1972 HWHusband1972 HWHW1972;
 
-data housework1974;
+data temp.housework1974;
 set psiddata.fam74;
 id1974 = V3402;
 HWWife1973 = V3449;
@@ -81,8 +83,8 @@ keep id&year1. headmarital&year1.;
 proc sort data = marital&year1.;
 by id&year1.;
 
-data housework&year1.;
-merge housework&year1.(in = in1) marital&year1.(in = in2);
+data temp.housework&year1.;
+merge temp.housework&year1.(in = in1) marital&year1.(in = in2);
 by id&year1.;
 if in1 and in2;
 if headmarital&year1 = 1 then HWHead&year2. = HWHusband&year2.;
@@ -102,14 +104,14 @@ HWWife1974 = .;
 HWHead1974 = .;
 keep id1974 HWHead1974 HWWife1974;
 
-data housework1975;
+data temp.housework1975;
 set psiddata.fam75;
 id1975 = V3802;
 HWWife1975 = .;
 HWHead1975 = .;
 keep id1975 HWHead1975 HWWife1975;
 
-data housework1976;
+data temp.housework1976;
 set psiddata.fam76;
 id1976 = V4302;
 HWWife1976 = V4711;
@@ -118,7 +120,7 @@ HWWifeWeekly1976 = V4768;
 HWHeadWeekly1976 = V4609;
 keep id1976 HWWife1976 HWHead1976 HWWifeWeekly1976 HWHeadWeekly1976;
 
-data housework1977;
+data temp.housework1977;
 set psiddata.fam77;
 id1977 = V5202;
 HWWife1977 = V5260;
@@ -127,7 +129,7 @@ HWWifeWeekly1977 = V5534;
 HWHeadWeekly1977 = V5535;
 keep id1977 HWWife1977 HWHead1977 HWWifeWeekly1977 HWHeadWeekly1977;
 
-data housework1978;
+data temp.housework1978;
 set psiddata.fam78;
 id1978 = V5702;
 HWWife1978 = V5759;
@@ -137,7 +139,7 @@ HWHeadWeekly1978 = V6073;
 Repair1978 = V6317;
 keep id1978 HWWife1978 HWHead1978 HWWifeWeekly1978 HWHeadWeekly1978;
 
-data housework1979;
+data temp.housework1979;
 set psiddata.fam79;
 id1979 = V6302;
 HWWife1979 = V6365;
@@ -146,7 +148,7 @@ HWWifeWeekly1979 = V6663;
 HWHeadWeekly1979 = V6664;
 keep id1979 HWWife1979 HWHead1979 HWWifeWeekly1979 HWHeadWeekly1979;
 
-data housework1980;
+data temp.housework1980;
 set psiddata.fam80;
 id1980 = V6902;
 HWWife1980 = V6963;
@@ -155,7 +157,7 @@ HWWifeWeekly1980 = V7265;
 HWHeadWeekly1980 = V7266;
 keep id1980 HWWife1980 HWHead1980 HWWifeWeekly1980 HWHeadWeekly1980;
 
-data housework1981;
+data temp.housework1981;
 set psiddata.fam81;
 id1981 = V7502;
 HWWife1981 = V7555;
@@ -164,14 +166,14 @@ HWWifeWeekly1981 = V7956;
 HWHeadWeekly1981 = V7957;
 keep id1981 HWWife1981 HWHead1981 HWWifeWeekly1981 HWHeadWeekly1981;
 
-data housework1982;
+data temp.housework1982;
 set psiddata.fam82;
 id1982 = V8202;
 HWWife1982 = .;
 HWHead1982 = .;
 keep id1982 HWWife1982 HWHead1982;
 
-data housework1983;
+data temp.housework1983;
 set psiddata.fam83;
 id1983 = V8802;
 HWWife1983 = V8855;
@@ -180,7 +182,7 @@ HWWifeWeekly1983 = V9280;
 HWHeadWeekly1983 = V9281;
 keep id1983 HWWife1983 HWHead1983 HWWifeWeekly1983 HWHeadWeekly1983;
 
-data housework1984;
+data temp.housework1984;
 set psiddata.fam84;
 id1984 = V10002;
 HWWife1984 = V10226;
@@ -189,7 +191,7 @@ HWWifeWeekly1984 = V10866;
 HWHeadWeekly1984 = V10867;
 keep id1984 HWWife1984 HWHead1984 HWWifeWeekly1984 HWHeadWeekly1984;
 
-data housework1985;
+data temp.housework1985;
 set psiddata.fam85;
 id1985 = V11102;
 HWWife1985 = V11366;
@@ -198,7 +200,7 @@ HWWifeWeekly1985 = V12337;
 HWHeadWeekly1985 = V11982;
 keep id1985 HWWife1985 HWHead1985 HWWifeWeekly1985 HWHeadWeekly1985;
 
-data housework1986;
+data temp.housework1986;
 set psiddata.fam86;
 id1986 = V12502;
 HWWife1986 = V12765;
@@ -211,8 +213,8 @@ run;
 %macro adjustmts;
 	%do y=1976 %to 1986;
 		%if &y. NE 1981 %then %do;
-			data housework&y.;
-				set housework&y.;
+			data temp.housework&y.;
+				set temp.housework&y.;
 				if HWWifeWeekly&y. in (0,99) then HWWifeWeekly&y.=.;
 				if HWHeadWeekly&y. in (0,99) then HWHeadWeekly&y.=.;
 			run;

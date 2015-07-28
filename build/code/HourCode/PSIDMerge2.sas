@@ -3,7 +3,10 @@
 *********data, some indices point to survey year. We make all variable indexes point to the reference year     *********;
 
 *before running this program, also run wantable, food, and housework. Also, should run empbus.sas rather than labor.sas;
-libname psiddata '/href/scratch/PSID/RawData/';
+libname psiddata '/href/scratch3/m1bam03/PSID/data/';
+libname HomeProd '/href/scratch3/m1bam03/PSID/data/homeprod/';
+libname temp '../../temp/';
+libname out '../../output/';
 
 options nomprint;
 
@@ -140,7 +143,7 @@ proc sort data = pid;
 by id1968;
 
 data homeprod1967;  ******1967 data will not be used for change-over-change analysis;
-merge head1968 marital1968 wife1968 gender1968 wantable1968 dis1968 housework1968 income1968 hour1968 children1968 pid;
+merge head1968 marital1968 wife1968 gender1968 temp.wantable1968 dis1968 temp.housework1968 income1968 hour1968 children1968 pid;
 by id1968; run;
 
 %macro m(year1, year2, year3);
@@ -156,7 +159,7 @@ by id&year1.;
 proc sort data = children&year1.;
 by id&year1.;
 
-proc sort data = food&year1.;
+proc sort data = temp.food&year1.;
 by id&year1.;
 
 proc sort data = dis&year1.;
@@ -165,7 +168,7 @@ by id&year1.;
 proc sort data = gender&year1.;
 by id&year1.;
 
-proc sort data = housework&year1.;
+proc sort data = temp.housework&year1.;
 by id&year1.;
 
 proc sort data = hour&year1.;
@@ -183,14 +186,14 @@ by id&year2.;
 %end;
 
 %if &year1. < 1986 %then %do;
-proc sort data = housework&year2.;
+proc sort data = temp.housework&year2.;
 by id&year2.;
 %end;
 
 proc sort data = hour&year2.;
 by id&year2.;
 
-proc sort data = wantable&year2.;
+proc sort data = temp.wantable&year2.;
 by id&year2.;
 
 proc sort data = income&year2.;
@@ -207,7 +210,7 @@ by id&year1.;
 
 %if &year1. le 1973 %then %do;
     data hp&year1.;
-    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. food&year1. children&year1. 
+    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. temp.food&year1. children&year1. 
           hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
     by id&year1.;
     if in1 and in2;
@@ -216,15 +219,15 @@ by id&year1.;
     by id&year2;
 
     data homeprod&year1.;
-    merge hp&year1.(in = in1) marital&year2. wantable&year2. housework&year2.(in = in2) hour&year2. income&year2.(in = in3);
+    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. temp.housework&year2.(in = in2) hour&year2. income&year2.(in = in3);
     by id&year2.;
     if in1 and in2 and in3;
 	%end;
 
 %else %if &year1. = 1974 %then %do;
     data hp&year1.;
-    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. food&year1. children&year1. 
-          houseworka&year1. hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
+    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. temp.food&year1. children&year1. 
+          temp.housework&year1. hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
     by id&year1.;
     if in1 and in2;
 
@@ -232,15 +235,15 @@ by id&year1.;
     by id&year2;
 
     data homeprod&year1.;
-    merge hp&year1.(in = in1) marital&year2. wantable&year2. hour&year2. income&year2.(in = in2);
+    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. hour&year2. income&year2.(in = in2);
     by id&year2.;
     if in1 and in2;
 	%end;
 
 %else %do;
     data hp&year1.;
-    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. food&year1. children&year1. 
-          housework&year1. hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
+    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. temp.food&year1. children&year1. 
+          temp.housework&year1. hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
     by id&year1.;
     if in1 and in2;
 
@@ -248,7 +251,7 @@ by id&year1.;
     by id&year2;
 
     data homeprod&year1.;
-    merge hp&year1.(in = in1) marital&year2. wantable&year2. hour&year2. income&year2.(in = in2);
+    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. hour&year2. income&year2.(in = in2);
     by id&year2.;
     if in1 and in2;
 	%end;
@@ -415,7 +418,7 @@ set HomeProd.HomeProd1967 HomeProd.HomeProd1968 HomeProd.HomeProd1969 HomeProd.H
     HomeProd.HomeProd1982 HomeProd.HomeProd1983 HomeProd.HomeProd1984 HomeProd.HomeProd1985 HomeProd.HomeProd1986;
 run; 
 
-proc import datafile="R:\m1bam03\homeProdHourConstraints\build\input\cpi.csv"
+proc import datafile="/href/research3/m1bam03/homeProdHourConstraints/build/input/cpi.csv"
 			out=cpi
 			dbms=csv
 			replace;
@@ -424,7 +427,7 @@ run;
 proc sort data=cpi; by year; run;
 proc sort data=HomeProd.pooled; by year; run;
 /*recode some variables*/
-data HomeProd.pooled;
+data out.pooled;
 	merge HomeProd.pooled cpi;
 	by year;
 	*set Head and Wife take vacation variable to a dummy;
@@ -452,10 +455,10 @@ data HomeProd.pooled;
 	leadmarried = 0;
 	if leadmarital in (1,5) then leadmarried = 1;
 	*recode whether one is salaried or hourly. Coding irregularities before and after 1976;
-	if year<1976 AND headextra^=0 then headsalary = (headsalaried=5 & headextra=5);
-	if year<1976 AND headextra^=0 then headhourly = ((headsalaried=1 & headextra=5) OR (headsalaried=0 & headextra=1));
-	if year>=1976 AND headsalaried^=0 then headsalary = (headsalaried=1);
-	if year>=1976 AND headsalaried^=0 then headhourly = (headsalaried=3);
+	if year<1975 AND headextra^=0 then headsalary = (headsalaried=5 & headextra=5);
+	if year<1975 AND headextra^=0 then headhourly = ((headsalaried=1 & headextra=5) OR (headsalaried=0 & headextra=1));
+	if year>=1975 AND headsalaried^=0 then headsalary = (headsalaried=1);
+	if year>=1975 AND headsalaried^=0 then headhourly = (headsalaried=3);
 	if headmarried=1 & wifesalaried^=0 then wifesalary = (wifesalaried=1);
 	if headmarried=1 & wifesalaried^=0 then wifehourly = (wifesalaried=3);
 	*recode whether one receives extra income from working more hours than usual in a week;

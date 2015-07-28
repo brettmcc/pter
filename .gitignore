@@ -2,6 +2,7 @@
 ### Linux ###
 *~
 *.bak
+*#*
 
 ### Data files ###
 *.csv
@@ -18,3 +19,9 @@
 *.pdf
 *.ps
 *.html
+
+##Windows files##
+*.docx
+*.doc
+*.xls
+*.xlsx

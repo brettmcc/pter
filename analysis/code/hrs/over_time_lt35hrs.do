@@ -9,13 +9,12 @@ clear all
 
 use ../../input/hrsdata.dta,clear
 
-keep if headhourweekly<35 
-
 //wave is year variable
 
 /*Numbers*/
 *moregap, no zeros
 preserve 
+keep if headhourweekly<35 
 collapse (mean) mean_moregap=moregap (semean) se_moregap=moregap [fweight=wgt] if moregap!=0, by(wave)
 gen lw = mean_moregap - se_moregap
 gen hi = mean_moregap + se_moregap
@@ -25,6 +24,7 @@ restore
 
 *moregap, with zeros
 preserve 
+keep if headhourweekly<35 
 collapse (mean) mean_moregap=moregap (semean) se_moregap=moregap [fweight=wgt], by(wave)
 gen lw = mean_moregap - se_moregap
 gen hi = mean_moregap + se_moregap
@@ -34,15 +34,15 @@ restore
 
 *Number underemployed
 preserve
-collapse (sum) construp [iweight=wgt], by(wave)
-replace construp = construp / 1000000
-twoway line (construp wave), title("Number underemployed") ytitle("Millions of persons") name(num_construp,replace)
+collapse (sum) construp35 [iweight=wgt], by(wave)
+replace construp35 = construp35 / 1000000
+twoway line (construp35 wave), title("Number underemployed") ytitle("Millions of persons") name(num_construp,replace)
 restore
 
 /*Proportion*/
 preserve
-collapse (sum) construp (count) headstatus [iweight=wgt], by(wave)
-gen prop_pter = construp/headstatus
+collapse (sum) construp35 (count) headstatus [iweight=wgt], by(wave)
+gen prop_pter = construp35/headstatus
 twoway line (prop_pter wave), title("Percent underemployed") ytitle("Percent") name(pct_construp,replace) note(Denominator is all employed persons)
 restore
 
