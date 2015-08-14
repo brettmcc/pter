@@ -601,4 +601,4 @@ run;
 data HomeProd.HRSData;
 set HRSData1 HRSData2 HRSData3 HRSData5 HRSData6 HRSData7 HRSData8 HRSData9 HRSData10 HRSData11;
 
-X 'st ../output/hrsdata.sas7bdat ../../analysis/input/hrsdata.dta -y';
+X 'st ../output/hrsdata.sas7bdat ../output/hrsdata.dta -y';

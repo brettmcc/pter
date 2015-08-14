@@ -16,3 +16,29 @@ gen lt35hrs = (headhourweekly<35)
 gen construp35 = (lt35hrs == 1 & construp==1)
 
 save "../output/pooled.dta",replace
+
+
+/*output time series datasets*/
+*underemployed and part time
+preserve
+collapse (sum) construp35 headstatus if headstatus==1 [iweight=wgt], by(year)
+gen prop_underemp_lt35_psid = construp35/headstatus
+label var prop_underemp_lt35_psid "PSID, all"
+save ../output/psid_construp35_yrly.dta,replace
+restore
+
+*underemployed, part time, age 50-70 
+preserve
+collapse (sum) construp35 headstatus if headstatus==1 & headage>=50 & headage<=70 [iweight=wgt], by(year)
+gen prop_underemp_50to70_psid = construp35/headstatus 
+label var prop_underemp_50to70_psid "PSID, ages 50-70"
+save ../output/psid_construp35_age50to70_yrly.dta,replace
+restore
+
+*underemployed, full and part time
+preserve
+collapse (sum) construp headstatus if headstatus==1 [iweight=wgt], by(year)
+gen prop_underemp_psid = construp/headstatus
+label var prop_underemp_psid "PSID, all"
+save ../output/psid_construp_yrly.dta,replace
+restore

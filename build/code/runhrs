@@ -1,2 +1,2 @@
 sas RandHRS.sas
-do RandHRS.do
+stata-mp -b do RandHRS.do

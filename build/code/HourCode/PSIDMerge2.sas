@@ -456,11 +456,13 @@ data out.pooled;
 	if leadmarital in (1,5) then leadmarried = 1;
 	*recode whether one is salaried or hourly. Coding irregularities before and after 1976;
 	if year<1975 AND headextra^=0 then headsalary = (headsalaried=5 & headextra=5);
-	if year<1975 AND headextra^=0 then headhourly = ((headsalaried=1 & headextra=5) OR (headsalaried=0 & headextra=1));
-	if year>=1975 AND headsalaried^=0 then headsalary = (headsalaried=1);
-	if year>=1975 AND headsalaried^=0 then headhourly = (headsalaried=3);
+	if year<1975 AND headextra^=0 then headhourly = ((headsalaried=1 & headextra=5) OR
+	   	     	 	      	   	         (headsalaried=0 & headextra=1));
+	if year>=1975 AND headsalaried^=0 then headsalary = (headsalaried=1 AND headextra!=1);
+	if year>=1975 AND headsalaried^=0 then headhourly = (headsalaried=3 OR 
+	   	      	  		       		    (headsalaried=1 & headextra=1));
 	if headmarried=1 & wifesalaried^=0 then wifesalary = (wifesalaried=1);
-	if headmarried=1 & wifesalaried^=0 then wifehourly = (wifesalaried=3);
+	if headmarried=1 & wifesalaried^=0 then wifehourly = (wifesalaried=3 & wifeextra=1);
 	*recode whether one receives extra income from working more hours than usual in a week;
 	if headsalary=1 then headext = (headextra=1);
 	if headmarried=1 & wifesalary=1 then wifeext = (wifeextra=1);

@@ -1,0 +1,10 @@
+cd HourCode
+rm ../../temp/*
+
+sas WantAble.sas
+sas Food.sas
+sas Housework.sas
+sas PSIDMerge2.sas
+
+cd ../
+stata -b do format_pooled_psid.do

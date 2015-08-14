@@ -1,0 +1,3 @@
+./runpsid
+./runhrs
+stata-mp -b do merge_yrly_series.do
