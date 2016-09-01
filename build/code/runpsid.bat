@@ -1,0 +1,5 @@
+"C:\Program Files\SASHome\SASFoundation\9.4\Sas.exe" -SYSIN "W:\pter-master\pter-master\build\code\HourCode\WantAble.sas" -CONFIG "C:\Program Files\SASHome\SASFoundation\9.4\nls\u8\sasv9.cfg"
+"C:\Program Files\SASHome\SASFoundation\9.4\Sas.exe" -SYSIN "W:\pter-master\pter-master\build\code\HourCode\Food.sas" -CONFIG "C:\Program Files\SASHome\SASFoundation\9.4\nls\u8\sasv9.cfg"
+"C:\Program Files\SASHome\SASFoundation\9.4\Sas.exe" -SYSIN "W:\pter-master\pter-master\build\code\HourCode\Housework.sas" -CONFIG "C:\Program Files\SASHome\SASFoundation\9.4\nls\u8\sasv9.cfg"
+"C:\Program Files\SASHome\SASFoundation\9.4\Sas.exe" -SYSIN "W:\pter-master\pter-master\build\code\HourCode\PSIDMerge.sas" -CONFIG "C:\Program Files\SASHome\SASFoundation\9.4\nls\u8\sasv9.cfg"
+"C:\Program Files (x86)\Stata14\Stata-64.exe" /b do W:\pter-master\pter-master\build\code\format_pooled_psid.do
