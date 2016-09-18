@@ -1,5 +1,4 @@
-libname psiddata '/href/scratch3/m1bam03/PSID/data/';
-libname temp '../../temp/';
+%include '..\setlibraries_psid.sas';
 
 data temp.food1968;
 set psiddata.fam68;
@@ -134,3 +133,4 @@ Foodin1986 = V12774;
 Foodout1986 = V12776;
 keep id1986 Foodin1986 Foodout1986;
 run;
+

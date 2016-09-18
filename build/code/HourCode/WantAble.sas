@@ -1,8 +1,7 @@
 *********Input market work hours constraints, marginal wages, and vacation variables. Information about housework *********
 *********income, market labor hours, and demographics are processed in other programs                             ********* 
 *********WantAble1971-1975, 1979-1984 and 1986-1987 are process by additional macros                              *********;
-libname psiddata '/href/scratch3/m1bam03/PSID/data/';
-libname temp     '../../temp/';
+%include '..\setlibraries_psid.sas';
 
 data temp.WantAble1968;
 set psiddata.fam68;
@@ -370,4 +369,3 @@ keep id&year1. construp&year2. marwage&year2. constrdown&year2. vacation&year2. 
 run;
 %mend;
 %wa2(1979, 1978) %wa2(1980, 1979) %wa2(1981, 1980) %wa2(1982, 1981) %wa2(1983, 1982) %wa2(1984, 1983) %wa2(1986, 1985) %wa2(1987, 1986);
- 

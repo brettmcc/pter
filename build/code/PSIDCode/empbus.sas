@@ -1,4 +1,5 @@
 *********Employment history and business data                                                     *********;
+%include '..\setlibraries_psid.sas';
 
 data labor1968;
 set psiddata.fam68; 
@@ -291,156 +292,6 @@ headhour1993                      =                  V21634             ;
 wifehour1993                      =                  V21670             ;
 keep id1993 headstatus1993 headhour1993 wifehour1993 headextra1993 wifeextra1993 headsalaried1993 wifesalaried1993;
 
-data labor1994;
-set psiddata.HourWage9401;
-id1994                            =                  ER2002             ;
-if id1994 ne .                                                          ;  
-headhour1994                      =                  HDTOT94            ;
-wifehour1994                      =                  WFTOT94            ;
-keep id1994 headhour1994 wifehour1994;
-proc sort;
-by id1994;
-data status1994;
-set psiddata.fam94;
-id1994                            =                  ER2002             ;
-headstatus1994                    =                  ER2069             ;
-headextra1994                     =                  ER2084              ;
-wifeextra1994                     =                  ER2578              ;
-headsalaried1994                  =                  ER2081             ;
-wifesalaried1994                  =                  ER2575             ;
-if headstatus1994 > 10 then headstatus1994 = .;
-keep id1994 headstatus1994 headextra1994 wifeextra1994 headsalaried1994 wifesalaried1994;
-proc sort;
-by id1994;
-data labor1994;
-merge labor1994 status1994;
-by id1994;
-
-data labor1995;
-set psiddata.HourWage9401;
-id1995                            =                  ER5002             ;                      ;  
-if id1995 ne .                                                          ;  
-headhour1995                      =                  HDTOT95            ;
-wifehour1995                      =                  WFTOT95            ;
-keep id1995 headhour1995 wifehour1995;
-proc sort;
-by id1995;
-data status1995;
-set psiddata.fam95;
-id1995                            =                  ER5002             ;
-headstatus1995                    =                  ER5068             ;
-headextra1995                     =                  ER5083             ;
-wifeextra1995                     =                  ER5577             ;
-headsalaried1995                  =                  ER5080             ;
-wifesalaried1995                  =                  ER5574             ;
-if headstatus1995 > 10 then headstatus1995 = .;
-keep id1995 headstatus1995 headextra1995 wifeextra1995 headsalaried1995 wifesalaried1995;
-proc sort;
-by id1995;
-data labor1995;
-merge labor1995 status1995;
-by id1995;
-
-data labor1996;
-set psiddata.HourWage9401;
-id1996                            =                  ER7002             ;                      ;  
-if id1996 ne .                                                          ;  
-headhour1996                      =                  HDTOT96            ;
-wifehour1996                      =                  WFTOT96            ;
-keep id1996 headhour1996 wifehour1996;
-proc sort;
-by id1996;
-data status1996;
-set psiddata.fam96;
-id1996                            =                  ER7002             ;
-headstatus1996                    =                  ER7164             ;
-headextra1996                     =                  ER7179             ;
-wifeextra1996                     =                  ER7673             ;
-headsalaried1996                  =                  ER7176             ;
-wifesalaried1996                  =                  ER7670             ;
-if headstatus1996> 10 then headstatus1996 = .;
-keep id1996 headstatus1996 headextra1996 wifeextra1996 headsalaried1996 wifesalaried1996;
-proc sort;
-by id1996;
-data labor1996;
-merge labor1996 status1996;
-by id1996;
-
-data labor1997;
-set psiddata.HourWage9401;
-id1997                            =                  ER10002            ;                       ; 
-if id1997 ne .                                                          ;  
-headhour1997                      =                  HDTOT97            ;
-wifehour1997                      =                  WFTOT97            ;
-keep id1997 headhour1997 wifehour1997;
-proc sort;
-by id1997;
-data status1997;
-set psiddata.fam97;
-id1997                            =                  ER10002            ;
-headstatus1997                    =                  ER10081            ;
-headextra1997                     =                  ER10094            ;
-wifeextra1997                     =                  ER10576            ;
-headsalaried1997                  =                  ER10091            ;
-wifesalaried1997                  =                  ER10573            ;
-if headstatus1997 > 10 then headstatus1997 = .;
-keep id1997 headstatus1997 headextra1997 wifeextra1997 headsalaried1997 wifesalaried1997;
-proc sort;
-by id1997;
-data labor1997;
-merge labor1997 status1997;
-by id1997;
-
-data labor1999;
-set psiddata.HourWage9401;
-id1999                            =                  ER13002            ;                       ; 
-if id1999 ne .                                                          ;  
-headhour1999                      =                  HDTOT99            ;
-wifehour1999                      =                  WFTOT99            ;
-keep id1999 headhour1999 wifehour1999;
-proc sort;
-by id1999;
-data status1999;
-set psiddata.fam99;
-id1999                            =                  ER13002            ;
-headstatus1999                    =                  ER13205            ;
-headextra1999                     =                  ER13220            ;
-wifeextra1999                     =                  ER13732            ;
-headsalaried1999                  =                  ER13217            ;
-wifesalaried1999                  =                  ER13729            ;
-if headstatus1999 > 10 then headstatus1999 = .;
-keep id1999 headstatus1999 headextra1999 wifeextra1999 headsalaried1999 wifesalaried1999;
-proc sort;
-by id1999;
-data labor1999;
-merge labor1999 status1999;
-by id1999;
-
-data labor2001;
-set psiddata.HourWage9401;
-id2001                            =                  ER17002            ;                       ; 
-if id2001 ne .                                                          ;  
-headhour2001                      =                  HDTOT01            ;
-wifehour2001                      =                  WFTOT01            ;
-keep id2001 headhour2001 wifehour2001;
-proc sort;
-by id2001;
-data status2001;
-set psiddata.fam01;
-id2001                            =                  ER17002             ;
-headstatus2001                    =                  ER17216             ;
-headextra2001                     =                  ER17231             ;
-wifeextra2001                     =                  ER17801             ;
-headsalaried2001                  =                  ER17228             ;
-wifesalaried2001                  =                  ER17798             ;
-if headstatus2001 > 10 then headstatus2001 = .;
-keep id2001 headstatus2001 headextra2001 wifeextra2001 headsalaried2001 wifesalaried2001;
-proc sort;
-by id2001;
-data labor2001;
-merge labor2001 status2001;
-by id2001;
-
 data labor2003;
 set psiddata.fam03;
 id2003                            =                  ER21002            ;                       ; 
@@ -468,40 +319,9 @@ if headstatus2005 > 10 then headstatus2005 = .;
 keep id2005 headstatus2005 headhour2005 wifehour2005 headextra2005 wifeextra2005 headsalaried2005 wifesalaried2005;
 run;
 
-data PSIDDATA.labor;
+data temp.labor;
 merge labor1968 labor1969 labor1970 labor1971 labor1972 labor1973 labor1974 labor1975 
       labor1976 labor1977 labor1978 labor1979 labor1980 labor1981 labor1982 labor1983 
       labor1984 labor1985 labor1986 labor1987 labor1988 labor1989 labor1990 labor1991 
-      labor1992 labor1993 labor1994 labor1995 labor1996 labor1997 labor1999 labor2001 
-      labor2003 labor2005 ; 
+      labor1992 labor1993 labor2003 labor2005 ; 
 run;
-%macro hour(year);
-proc freq data = labor&year;
-tables headstatus&year;
-run;
-%mend;
-%hour(1968)  %hour(1969)  %hour(1970)  %hour(1971)  %hour(1972)  %hour(1973)  %hour(1974)  %hour(1975) 
-%hour(1976)  %hour(1977)  %hour(1978)  %hour(1979)  %hour(1980)  %hour(1981)  %hour(1982)  %hour(1983) 
-%hour(1984)  %hour(1985)  %hour(1986)  %hour(1987)  %hour(1988)  %hour(1989)  %hour(1990)  %hour(1991) 
-%hour(1992)  %hour(1993)  %hour(1994)  %hour(1995)  %hour(1996)  %hour(1997)  %hour(1999)  %hour(2001)
-%hour(2003)  %hour(2005)
-
-%macro hour(year);
-proc freq data = labor&year;
-tables headextra&year headsalaried&year;
-run;
-%mend;
-%hour(1970)  %hour(1971)  %hour(1972)  %hour(1973)  %hour(1974)  %hour(1975) 
-%hour(1976)  %hour(1977)  %hour(1978)  %hour(1979)  %hour(1980)  %hour(1981)  %hour(1982)  %hour(1983) 
-%hour(1984)  %hour(1985)  %hour(1986)  %hour(1987)  %hour(1988)  %hour(1989)  %hour(1990)  %hour(1991) 
-%hour(1992)  %hour(1993)  %hour(1994)  %hour(1995)  %hour(1996)  %hour(1997)  %hour(1999)  %hour(2001)
-%hour(2003)  %hour(2005)
-
-%macro hour(year);
-proc freq data = labor&year;
-tables wifeextra&year. wifesalaried&year;
-run;
-%mend;
-%hour(1976)  %hour(1985)  %hour(1986)  %hour(1987)  %hour(1988)  %hour(1989)  %hour(1990)  %hour(1991) 
-%hour(1992)  %hour(1993)  %hour(1994)  %hour(1995)  %hour(1996)  %hour(1997)  %hour(1999)  %hour(2001)
-%hour(2003)  %hour(2005)

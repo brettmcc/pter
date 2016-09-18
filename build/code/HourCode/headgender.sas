@@ -1,4 +1,5 @@
 *headgender;
+%include 'E:\pter-master\build\code\setlibraries_psid.sas';
 
 %macro headgender(year, varnum,idvar);
 	%let yy = %substr(&year,3);
@@ -17,7 +18,7 @@
 %headgender(1983,v8962,8802) %headgender(1984,v10420,10002) %headgender(1985,v11607,11102)
 %headgender(1986,v13012,12502) %headgender(1987,v14115,13702);
 
-data psiddata.headgender;
+data temp.headgender;
 	set headgender1968 headgender1969 headgender1970 headgender1971 headgender1972 headgender1973 headgender1974 headgender1975 headgender1976 headgender1977 headgender1978
 		headgender1979 headgender1980 headgender1981 headgender1982 headgender1983 headgender1984 headgender1985 headgender1986 headgender1987;
 	run;

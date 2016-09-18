@@ -1,3 +1,5 @@
+%include '..\setlibraries_psid.sas';
+
 data children1968;
 set psiddata.fam68; 
 id1968                        =                  V3                 ; 
@@ -214,7 +216,7 @@ id2009                        =                  ER42002            ;
 number2009                    =                  ER42020            ;      
 keep id2009 number2009;
  
-data PSIDDATA.children;
+data temp.children;
 merge children1968 children1969 children1970 children1971 children1972 children1973 children1974 children1975 
       children1976 children1977 children1978 children1979 children1980 children1981 children1982 children1983 
       children1984 children1985 children1986 children1987 children1988 children1989 children1990 children1991 

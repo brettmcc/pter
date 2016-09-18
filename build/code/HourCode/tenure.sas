@@ -1,7 +1,6 @@
 **** Get job tenure variables
-**** Brett McCully, December 2014
-
-;
+**** Brett McCully, December 2014;
+%include 'E:\pter-master\build\code\setlibraries_psid.sas';
 
 option mprint;
 
@@ -66,7 +65,7 @@ option mprint;
 %mend;
 %allyrs;
 
-data HomeProd.tenure;
+data temp.tenure;
 	merge tenure69 tenure70 tenure71 tenure71 tenure72 tenure73 tenure74 tenure75 tenure76 
 	tenure77 tenure78 tenure79 tenure80 tenure81 tenure82 tenure83 tenure84 tenure85 tenure86;
 run;

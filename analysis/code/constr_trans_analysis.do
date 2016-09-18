@@ -2,27 +2,16 @@
   Brett McCully, November 2014
   */
   
+  clear all
   set more off
   
-  !st ../../build/output/pooled.sas7bdat ../../build/output/pooled.dta -y
-  
-  use "../../build/output/pooled.dta",clear
+  use "..\..\build\output\pooled.dta",clear
 
 sort pid year
 order pid year *
 
 
-//label vars
-label define empstatus 1 "Working/Temp. laid off" 2 "looking for work, unemployed" 3 "retired/permanently disabled" 4 "housewife" 5 "student" 6 "other"
-label values headstatus empstatus
-label define educ 1 "Dropped out before completing high school" 2 "High school grad" 3 "Some post-secondary education" 4 "College or higher degree"
-label values headedu educ
-label define occ 0 "Inap.: unemployed, retired, permanently disabled, housewife, or student" 1 "Professional, technical or kindred workers" 2 "Managers and Administrators, except Farm" 3 "Sales Workers" 4 "Clerical and kindred workers" 5 "craftsman and kindred workers" 6 "operatives, except transport" 7 "Transport equipment operatives" 8 "laborers, except farm" 9 "farmers and farm managers" 10 "farm laborers and farm foremen" 11 "services workers, except private household" 12 "private household workers"
-label values headocc occ
-label define ind 0 "Inap.: unemployed, retired, permanently disabled, housewife, or student" 1 "Agriculture, forestry, and fisheries" 2"mining" 3 "construction" 4 "manufacturing" 5 "transportation communication and other public utilities" 6 "wholesale and retail trade" 7 "finance, insurance, and real estate" 8 "business and repair services" 9 "personal services" 10 "entertainment and recreation services" 11 "Professional and related services" 12 "public administration" 
-label values headind ind
-
-  
+ 
   //make a timeseries
   tsset pid year
   tsfill, full
@@ -43,7 +32,7 @@ label values headind ind
   
   //generate income growth variables
   gen famincchg_1yr = (faminc - l1.faminc)/l1.faminc if faminc!=. & l1.faminc!=.
-  
+  gen lnfaminc_chg = lnfaminc - l1.lnfaminc if lnfaminc!=. & l1.lnfaminc!=.
   //generate change vars
   g dislmtHw_chg = (disLimitHswrk!=l1.disLimitHswrk) if l1.disLimitHswrk!=. & disLimitHswrk!=.
   g selfEmp_chg = (selfEmployed!=l1.selfEmployed) if l1.selfEmployed!=. & selfEmployed!=.
@@ -86,45 +75,42 @@ replace constr_trans = 2 if nc_to_uc==1
 label define ct 0 "NCtoDC" 1 "NCtoNC" 2 "NCtoUC"
 label values constr_trans ct
 
-  
-*sum `ivars' if headhourly==1 & l1.headhourly==1 & gender==1 & constr_trans!=.
- *sum `ivars' if headhourly==1 & l1.headhourly==1 & constr_trans!=.
- *sum `ivars' if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1 & gender==1 & constr_trans!=.
- *sum `ivars' if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1 & constr_trans!=.
- 
-!rm ../output/constraint_analysis/trans_to_DC.*
-!rm ../output/constraint_analysis/trans_to_UC.*
-program drop ologit_trans
+!del E:\pter\analysis\output\constraint_analysis\NC_to_DC.*
+!del E:\pter\analysis\output\constraint_analysis\NC_to_UC.*
  program ologit_trans
  args cond title
-	 local demographics1 = "gender headwhite headblack headage headmarried"
-	 local other = "selfEmployed famsize homeowner employed headlabor headhour lnwage"
-	 local demographics = "headwhite headblack headage headage2"
-	 local indepvars_chg = "famincchg_1yr dislmtHw_chg selfEmp_chg famsize_chg headedu_chg headocc_chg headind_chg homeown_chg headmarried_chg hstatus_chg lnwage_chg i.year"
+	 local demographics = "gender headblack headage headage2 i.headedu"
+	 local indepvars_chg = "lnfaminc_chg dislmtHw_chg selfEmp_chg famsize_chg headocc_chg headind_chg homeown_chg headmarried_chg hstatus_chg lnwage_chg i.year"
 	 local indvars = "`demographics' `indepvars_chg'"
-	 local noyears = "`demographics' famincchg_1yr dislmtHw_chg selfEmp_chg famsize_chg headedu_chg headocc_chg headind_chg homeown_chg headmarried_chg hstatus_chg lnwage_chg"
-	 local ivars = "`demographics1' `other' famincchg_1yr dislmtHw_chg selfEmp_chg famsize_chg headedu_chg headocc_chg headind_chg homeown_chg headmarried_chg hstatus_chg lnwage_chg"
+	 local noyears = "`demographics' lnfaminc_chg dislmtHw_chg selfEmp_chg famsize_chg headocc_chg headind_chg homeown_chg headmarried_chg hstatus_chg lnwage_chg"
 	*`title'
-	quietly ologit constr_trans `indvars' `cond', nolog
+	quietly ologit constr_trans `indvars' `cond' [aweight=wgt], nolog
 	margins, dydx(`noyears') atmeans predict(pr outcome(0)) post
-	outreg2 using ../output/constraint_analysis/trans_to_DC.doc, excel append ctitle(`title' NCtoDC) addnote(Marginal effects at means) 
-	quietly ologit constr_trans `indvars' `cond', nolog
+	outreg2 using ..\output\constraint_analysis\NC_to_DC.doc, excel append ctitle(`title' NCtoDC) addnote(Marginal effects at means; includes year fixed effects.)
+	quietly ologit constr_trans `indvars' `cond' [aweight=wgt], nolog
 	margins, dydx(`noyears') atmeans predict(pr outcome(2)) post
-	outreg2 using ../output/constraint_analysis/trans_to_UC.doc, excel append ctitle(`title' NCtoUC) addnote(Marginal effects at means) 
+	outreg2 using ..\output\constraint_analysis\NC_to_UC.doc, excel append ctitle(`title' NCtoUC) addnote(Marginal effects at means; includes year fixed effects.)
  end
  
- ologit_trans "if headhourly==1 & l1.headhourly==1 & gender==1" "Male hourly workers"
-ologit_trans "if headhourly==1 & l1.headhourly==1" "all hourly workers"
-ologit_trans "if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1 & gender==1" "male hourly + extra OT wage workers"
-ologit_trans "if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1" "all hourly + extra OT wage workers"
-ologit_trans "" "all workers"
+ ologit_trans "if headhourly==1 & l1.headhourly==1 & gender==1 & (headstatus==1 | headstatus==2)" "Male hourly workers"
+ologit_trans "if headhourly==1 & l1.headhourly==1 & (headstatus==1 | headstatus==2)" "all hourly workers"
+ologit_trans "if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1 & gender==1 & (headstatus==1 | headstatus==2)" "male hourly + extra OT wage workers"
+ologit_trans "if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1 & (headstatus==1 | headstatus==2)" "all hourly + extra OT wage workers"
+ologit_trans "if headstatus==1 | headstatus==2" "all workers"
 
-
+!del E:\pter\analysis\output\constraint_analysis\trans_to_UC.*
+gen transToUC = (nc_to_uc==1 | dc_to_uc==1)
+local demographics = "gender headblack headage headage2 i.headedu sameemp_mths"
+local indepvars_chg = "lnfaminc_chg dislmtHw_chg selfEmp_chg famsize_chg homeown_chg headmarried_chg hstatus_chg lnwage_chg i.year"
+local noyears = "`demographics' lnfaminc_chg dislmtHw_chg selfEmp_chg famsize_chg homeown_chg headmarried_chg hstatus_chg lnwage_chg"
+local indvars = "`demographics' `indepvars_chg'"
+quietly logit transToUC `demographics' `indepvars_chg' if (headhourly+headext)>=1 & (headstatus==1 | headstatus==2) [iweight=wgt], nolog vce(cluster pid)
+margins, dydx(`noyears') atmeans post
+ outreg2 using ..\output\constraint_analysis\trans_to_UC.xml, excel replace ctitle(Transition to UC) addnote(Marginal effects at means; includes year fixed effects. )
+ 
  
  //now just regress on probability of having constraint, rather than transitioning into one
-  
-
-set lstretch off
+ set lstretch off
 
 gen constr = 0 if constrdown==1
 replace constr = 1 if constr==. & headstatus==1
@@ -147,12 +133,11 @@ replace finance = 1 if headind==7
 gen govt = 0 
 replace govt = 1 if headind==12
 
-!rm ../output/constraint_analysis/constrdown.*
-!rm ../output/constraint_analysis/construp.*
-program drop ologit_constr
+!del E:\pter\analysis\output\constraint_analysis\constrdown.*
+!del E:\pter\analysis\output\constraint_analysis\construp.*
 program ologit_constr
 args cond title
-	local demographics = "headwhite headblack headage headage2"
+	local demographics = "gender headblack headage headage2"
 	local indvars = "`demographics' faminc selfEmployed headmarried famsize i.headedu pros_and_managers farm_or_service services bluecol finance govt homeowner lnwage i.year"		
 	local indvars = "`demographics' faminc selfEmployed headmarried famsize i.headedu pros_and_managers farm_or_service services bluecol finance govt homeowner lnwage i.year"
 	local noyears = "`demographics' faminc selfEmployed headmarried famsize i.headedu pros_and_managers farm_or_service services bluecol finance govt homeowner lnwage"
@@ -160,17 +145,17 @@ args cond title
 	*DC
 	quietly ologit constr `indvars' `cond', nolog
 	margins, dydx(`noyears') atmeans predict(pr outcome(0)) post
-	outreg2 using ../output/constraint_analysis/constrdown.doc, excel append ctitle(`title') addnote(Marginal effects at means) 
+	outreg2 using ..\output\constraint_analysis\constrdown.doc [aweight=wgt], excel append ctitle(`title') addnote(Marginal effects at means)
 	*UC
 	quietly ologit constr `indvars' `cond', nolog
 	margins, dydx(`noyears') atmeans predict(pr outcome(2)) post
-	outreg2 using ../output/constraint_analysis/construp.doc, excel append ctitle(`title') addnote(Marginal effects at means) 
+	outreg2 using ..\output\constraint_analysis\construp.doc [aweight=wgt], excel append ctitle(`title') addnote(Marginal effects at means)
  end
 ologit_constr "if headhourly==1 & l1.headhourly==1 & gender==1" "Male hourly workers"
 ologit_constr "if headhourly==1 & l1.headhourly==1" "all hourly workers"
 ologit_constr "if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1 & gender==1" "male hourly + extra OT wage workers"
 ologit_constr "if (headhourly+headext)>=1 & (l1.headhourly+l1.headext)>=1" "all hourly + extra OT wage workers"
-ologit_constr "" "all workers"
+ologit_constr "if headstatus==1 | headstatus==2" "all workers"
 
  
 

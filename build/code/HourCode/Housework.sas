@@ -5,8 +5,7 @@
 *********hours and imputed annual hours.  If weekly number multiplied by 52 is different from annual hours by   *********
 *********more than 26 then we treat the data as blank.                                                          *********
 *********From 1968 to 1972, miscellaneous questions were asked about home production and car repairment         *********; 
-libname psiddata '/href/scratch3/m1bam03/PSID/data/';
-libname temp '../../temp/';
+%include '..\setlibraries_psid.sas';
 
 data temp.housework1968;
 set psiddata.fam68;
@@ -76,7 +75,7 @@ keep id1974 HWWife1973 HWHusband1973 HWHW1973;
 
 %macro hw(year1, year2);
 data marital&year1.;
-set psiddata.head;
+set temp.head;
 if id&year1. ne .;
 keep id&year1. headmarital&year1.;
 
@@ -223,3 +222,4 @@ run;
 %mend;
 
 %adjustmts;
+

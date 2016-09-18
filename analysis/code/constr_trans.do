@@ -1,12 +1,10 @@
 /*Fill in statistics of tables Li Geng made.
 December 2014*/
 
-!st ../../build/output/pooled.sas7bdat ../../build/output/pooled.dta -y
-
 clear all
 set more off
 
-use "../../build/output/pooled.dta",clear
+use "..\..\build\output\pooled.dta",clear
 label define cstr 0 "unconstrained" 1 "up constr." 2 "down constr"
 gen constr = 0
 replace constr = 1 if construp==1
@@ -87,19 +85,19 @@ gen jobchg_t1_t = jobchglastyr
 logit norm_to_under headage agesq agecub headwhite i.headedu became_marr* became_div* chg_faminc* chg_wage* chg_numkids* wfstartwrk* wfstopwrk* dislmthw* jobchg_*, vce(cluster pid)
 *logit norm_to_under headage agesq agecub headwhite i.headedu became_marr* became_div* chg_nlinc* chg_numkids* wfstartwrk* wfstopwrk* dislmthw* jobchg_*, vce(cluster pid)
 margins, dydx(*) atmeans post
-outreg2 using ../output/table4.xml, excel replace ctitle(Normal to Underemployed) addnote(Marginal effects at means; standard errors clustered at the person level.) 
+outreg2 using ..\output\table4.xml, excel replace ctitle(Normal to Underemployed) addnote(Marginal effects at means; standard errors clustered at the person level.) 
 
 *normal to overemployed
 logit norm_to_over headage agesq agecub headwhite i.headedu became_marr* became_div* chg_faminc* chg_wage* chg_numkids* wfstartwrk* wfstopwrk* dislmthw* jobchg_*, vce(cluster pid)
 *logit norm_to_over headage agesq agecub headwhite i.headedu became_marr* became_div* chg_nlinc* chg_numkids* wfstartwrk* wfstopwrk* dislmthw* jobchg_*, vce(cluster pid)
 margins, dydx(*) atmeans post
-outreg2 using ../output/table4.xml, excel append ctitle(Normal to Overemployed) addnote(Marginal effects at means; standard errors clustered at the person level.)
+outreg2 using ..\output\table4.xml, excel append ctitle(Normal to Overemployed) addnote(Marginal effects at means; standard errors clustered at the person level.)
 
 *normal to normal
 logit norm_to_norm headage agesq agecub headwhite i.headedu became_marr* became_div* chg_faminc* chg_wage* chg_numkids* wfstartwrk* wfstopwrk* dislmthw* jobchg_*, vce(cluster pid)
 *logit norm_to_over headage agesq agecub headwhite i.headedu became_marr* became_div* chg_nlinc* chg_numkids* wfstartwrk* wfstopwrk* dislmthw* jobchg_*, vce(cluster pid)
 margins, dydx(*) atmeans post
-outreg2 using ../output/table4.xml, excel append ctitle(Normal to Normal) addnote(Marginal effects at means; standard errors clustered at the person level.)
+outreg2 using ..\output\table4.xml, excel append ctitle(Normal to Normal) addnote(Marginal effects at means; standard errors clustered at the person level.)
 
  
 
@@ -300,13 +298,13 @@ foreach var of varlist wgchg* {
   preserve
 keep if f1.hearhourly==1
 histogram wgchg_t_tp1, title("Distribution of nominal wage changes t,t+1") name(allt_tp1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_all_ttp1.ps, replace
+graph export ..\output\charts\wgchg_all_ttp1.ps, replace
 histogram wgchg_tm1_t, title("Distribution of nominal wage changes t-1,t") name(alltm1_t) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_all_tm1t.ps, replace
+graph export ..\output\charts\wgchg_all_tm1t.ps, replace
 histogram wgchg_tm2_tm1, title("Distribution of nominal wage changes t-2,t-1") name(alltm2_tm1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_all_tm2tm1.ps, replace
+graph export ..\output\charts\wgchg_all_tm2tm1.ps, replace
 histogram wgchg_tm1_tp1, title("Distribution of nominal wage changes t-1,t+1") name(alltm1_tp1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_all_tm1tp1.ps, replace
+graph export ..\output\charts\wgchg_all_tm1tp1.ps, replace
 restore
 
 foreach var of varlist wgchg* {
@@ -320,13 +318,13 @@ foreach var of varlist wgchg* {
 preserve
 keep if f1.constr==0 & f1.headhourly==1
 histogram wgchg_t_tp1, title("Distribution of nominal wage changes t,t+1 (normal workers)") name(normt_tp1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_norm_ttp1.ps, replace
+graph export ..\output\charts\wgchg_norm_ttp1.ps, replace
 histogram wgchg_tm1_t, title("Distribution of nominal wage changes t-1,t (normal workers)") name(normtm1_t) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_norm_tm1t.ps, replace
+graph export ..\output\charts\wgchg_norm_tm1t.ps, replace
 histogram wgchg_tm2_tm1, title("Distribution of nominal wage changes t-2,t-1 (normal workers)") name(normtm2_tm1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_norm_tm2tm1.ps, replace
+graph export ..\output\charts\wgchg_norm_tm2tm1.ps, replace
 histogram wgchg_tm1_tp1, title("Distribution of nominal wage changes t-1,t+1 (normal workers)") name(normtm1_tp1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_norm_tm1tp1.ps, replace
+graph export ..\output\charts\wgchg_norm_tm1tp1.ps, replace
 restore
 
 foreach var of varlist wgchg* {
@@ -340,12 +338,12 @@ foreach var of varlist wgchg* {
 preserve
 keep if f1.constr==1 & f1.headhourly==1
 histogram wgchg_t_tp1, title("Distribution of nominal wage changes t,t+1 (underemployed workers)") name(undert_tp1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_under_ttp1.ps, replace
+graph export ..\output\charts\wgchg_under_ttp1.ps, replace
 histogram wgchg_tm1_t, title("Distribution of nominal wage changes t-1,t (underemployed workers)") name(undertm1_t) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_under_tm1t.ps, replace
+graph export ..\output\charts\wgchg_under_tm1t.ps, replace
 histogram wgchg_tm2_tm1, title("Distribution of nominal wage changes t-2,t-1 (underemployed workers)") name(undertm2_tm1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_under_tm2tm1.ps, replace
+graph export ..\output\charts\wgchg_under_tm2tm1.ps, replace
 histogram wgchg_tm1_tp1, title("Distribution of nominal wage changes t-1,t+1 (underemployed workers)") name(undertm1_tp1) xtitle(Percent wage change)
-graph export ../output/charts/wgchg_under_tm1tp1.ps, replace
+graph export ..\output\charts\wgchg_under_tm1tp1.ps, replace
 restore
 

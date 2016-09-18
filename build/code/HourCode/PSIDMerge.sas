@@ -3,54 +3,50 @@
 *********data, some indices point to survey year. We make all variable indexes point to the reference year     *********;
 
 *before running this program, also run wantable, food, and housework. Also, should run empbus.sas rather than labor.sas;
-libname psiddata '/href/scratch3/m1bam03/PSID/data/';
-libname HomeProd '/href/scratch3/m1bam03/PSID/data/homeprod/';
-libname temp '../../temp/';
-libname out '../../output/';
-
-options nomprint;
+%include '..\setlibraries_psid.sas';
+options mprint;
 
 %macro var(year);
 data income&year.;
-set psiddata.income;
+set temp.income;
 if id&year. ne .;
 keep id&year. faminc&year. headlabor&year. wifelabor&year.;
 
 data hour&year.;
-set psiddata.labor;
+set temp.labor;
 if id&year. ne .;
 keep id&year. headhour&year. wifehour&year. headextra&year. wifeextra&year. headsalaried&year. wifesalaried&year.;
 
 data head&year.;
-set psiddata.head;
+set temp.head;
 if id&year. ne .;
 keep id&year. headage&year. WGT&year. headedu&year. headrace&year. headstatus&year. selfemploy&year. 
      famsize&year. headocc&year.  headind&year.;
 
 data marital&year.;
-set psiddata.head;
+set temp.head;
 if id&year. ne .;
 keep id&year. headmarital&year.;
 
 data wife&year.;
-set psiddata.wife;
+set temp.wife;
 if id&year. ne .;
 keep id&year. wifeage&year. wifeedu&year. wifeocc&year.  wifeind&year.;
 
 data gender&year.;
-set psiddata.headgender;
+set temp.headgender;
 if id&year. ne .;
 keep id&year. gender&year.;
 run;
 
 data housing&year.;
-	set HomeProd.housing;
+	set temp.housing;
 	if id&year. ne .;
 	keep id&year. homeown&year.;
 run;
 
 data tenure&year.;
-	set HomeProd.tenure;
+	set temp.tenure;
 	if id&year ne .;
 	%if &year.=1968 %then tenure1968=.;
 	;
@@ -66,7 +62,7 @@ run;
 *********Data that are created not from regular datasets in PSIDDATA library;
 %macro children(year);
 data children&year.;
-set HomeProd.ChildAge;
+set temp.ChildAge;
 if Rel&year. in(3, 30, 33, 35, 37, 38);
 if seqno&year. le 20;
 if age&year. ge 1 and age&year. le 18;
@@ -92,9 +88,9 @@ proc sort data = agegroup&year;
 by id&year;
 
 data num&year.;
-set HomeProd.num;
+set temp.Children;
 if id&year. ne .;
-keep id&year. num&year.;
+keep id&year. number&year.;
 
 proc sort data = num&year.;
 by id&year.;
@@ -102,7 +98,7 @@ by id&year.;
 data children&year.;
 merge agegroup&year.(in = in1) num&year.(in = in2);
 by id&year.;
-if num&year. = 0 then do; age2&year. = 0; age6&year. = 0; age12&year. = 0; age18&year. = 0; end;
+if number&year. = 0 then do; age2&year. = 0; age6&year. = 0; age12&year. = 0; age18&year. = 0; end;
 run;
 %mend;
 %children(1968)  %children(1969)  %children(1970)  %children(1971)  %children(1972)  %children(1973)  %children(1974)  
@@ -111,7 +107,7 @@ run;
 
 %macro dis(year);
 data dis&year.;
-set HomeProd.disable;
+set temp.disable;
 if id&year. ne .;
 keep id&year. dis&year.;
 
@@ -135,7 +131,7 @@ run;
 
 *********1967 is not merged using the macro;
 data pid;
-set psiddata.person;
+set temp.person;
 if id1968 ne . and rel1968 = 1; 
 keep id1968 pid;
 
@@ -200,7 +196,7 @@ proc sort data = income&year2.;
 by id&year2.;
 
 data pid;
-set PSIDDATA.person;
+set temp.person;
 %if &year1 = 1968 %then %do; if seqno&year2. = 1 and (rel&year1. = 1 or rel&year1. = 10) and (rel&year2. = 1 or rel&year2. = 10); %end;
 %else %do; if seqno&year1. = 1 and seqno&year2. = 1 and (rel&year1. = 1 or rel&year1. = 10) and (rel&year2. = 1 or rel&year2. = 10); %end;
 keep pid id&year1. id&year2.;
@@ -263,7 +259,7 @@ run;
 %m(1986, 1987);
 
 %macro variable(year1, year2);
-data HomeProd.homeprod&year1.;
+data temp.homeprod&year1.;
 set homeprod&year1.;
 
 construp      = construp&year1.;
@@ -281,7 +277,7 @@ headstatus    = headstatus&year1.;
 dis           = dis&year1.;
 selfemploy    = selfemploy&year1.; 
 famsize       = famsize&year1.;
-children      = num&year1.;
+children      = number&year1.;
 age2          = age2&year1.;
 age6          = age6&year1.;
 age12         = age12&year1.;
@@ -309,7 +305,7 @@ headstatus    = headstatus&year2.;
 dis           = dis&year2.;
 selfemploy    = selfemploy&year2.; 
 famsize       = famsize&year2.;
-children      = num&year2.;
+children      = number&year2.;
 age2          = age2&year2.;
 age6          = age6&year2.;
 age12         = age12&year2.;
@@ -371,28 +367,28 @@ wifeconstrup_lag1  = wifeconstrup&year0.;
 faminc_lag1 = faminc&*/
 
 
-if headage ge 25 and headage < 66;   ******Head age restriction;
-if wifeage ge 66 then delete;
-if headstatus in (1, 2, 3);          *****Head is working, unemployed or temporarily laid off;
+if headage ge 22 and headage < 68;   ******Head age restriction;
+*if wifeage ge 66 then delete;
+*if headstatus in (1, 2, 3);          *****Head is working, unemployed or temporarily laid off;
 if year = 1967 or year = 1968 or year = 1973 or (foodin + foodout > 100 and foodin + foodout < 10000);  ******Food expenditure restriction;
-if faminc > 1200 and faminc < 100000;   ******Family income restriction;
-if (headlabor + wifelabor > 1200) and (headlabor + wifelabor) < 100000;   ******labor income restriction;
-if headmarital = 1 and gender = 2 then delete;
-if headmarital ne 1 and (HWWife > 0 or Wifehour > 0 or wifelabor > 0) then delete;
+if faminc > 1200 and faminc < 1000000;   ******Family income restriction;
+if (headlabor + wifelabor > 1200) and (headlabor + wifelabor) < 1000000;   ******labor income restriction;
+*if headmarital = 1 and gender = 2 then delete;
+*if headmarital ne 1 and (HWWife > 0 or Wifehour > 0 or wifelabor > 0) then delete;
 if year ge 1968 and headtakevacation ne 1 and headvacationweek > 0 then delete; 
 if year ge 1975 and wifetakevacation ne 1 and wifevacationweek > 0 then delete; 
 if headvacationweek > 27 then delete;                       ******Vacation time restriction;
 if wifevacationweek > 27 then delete;                       ******Vacation time restriction;
-if headhour > 3000 then delete;                             ******Market work hours restriction;
-if wifehour > 3000 then delete; 
-if headhour > 1000;
-if HWHead > 3000 then delete;                               ******Housework hours restriction;
-if HWWife > 3000 then delete;  
+if headhour > 4160 then delete;                             ******Market work hours restriction;
+if wifehour > 4160 then delete; 
+if headhour > 500;
+if HWHead > 4160 then delete;                               ******Housework hours restriction;
+if HWWife > 4160 then delete;  
 if abs(HWHeadWeekly * 52 - HWHead) > 26 then delete;
 if abs(HWWifeWeekly * 52 - HWWife) > 26 then delete;
 if year ne 1967 and abs(HWHW - HWHead - HWWife) > 0 then delete;
 if year = 1967 and headmarital ne 1 then do; 
-   if HWHW > 3000 then delete; 
+   if HWHW > 8320 then delete; 
    HWHead = HWHW;
    end;
 
@@ -411,24 +407,29 @@ run;
 
 *********Pooling home production data from 1967 to 1986, variable availabilities vary across years            *********;
 
-data HomeProd.pooled;
-set HomeProd.HomeProd1967 HomeProd.HomeProd1968 HomeProd.HomeProd1969 HomeProd.HomeProd1970 HomeProd.HomeProd1971           
-    HomeProd.HomeProd1972 HomeProd.HomeProd1973 HomeProd.HomeProd1974 HomeProd.HomeProd1975 HomeProd.HomeProd1976 
-    HomeProd.HomeProd1977 HomeProd.HomeProd1978 HomeProd.HomeProd1979 HomeProd.HomeProd1980 HomeProd.HomeProd1981 
-    HomeProd.HomeProd1982 HomeProd.HomeProd1983 HomeProd.HomeProd1984 HomeProd.HomeProd1985 HomeProd.HomeProd1986;
+data temp.pooled;
+set temp.HomeProd1967 temp.HomeProd1968 temp.HomeProd1969 temp.HomeProd1970 temp.HomeProd1971           
+    temp.HomeProd1972 temp.HomeProd1973 temp.HomeProd1974 temp.HomeProd1975 temp.HomeProd1976 
+    temp.HomeProd1977 temp.HomeProd1978 temp.HomeProd1979 temp.HomeProd1980 temp.HomeProd1981 
+    temp.HomeProd1982 temp.HomeProd1983 temp.HomeProd1984 temp.HomeProd1985 temp.HomeProd1986;
 run; 
 
-proc import datafile="/href/research3/m1bam03/homeProdHourConstraints/build/input/cpi.csv"
+*Series Id:    CUUR0000SA0
+Not Seasonally Adjusted
+Area:         U.S. city average
+Item:         All items
+Base Period:  1982-84=100;
+proc import datafile="..\..\input\cpi.csv"
 			out=cpi
 			dbms=csv
 			replace;
 	GETNAMES=YES;
 run;
 proc sort data=cpi; by year; run;
-proc sort data=HomeProd.pooled; by year; run;
+proc sort data=temp.pooled; by year; run;
 /*recode some variables*/
 data out.pooled;
-	merge HomeProd.pooled cpi;
+	merge temp.pooled cpi;
 	by year;
 	*set Head and Wife take vacation variable to a dummy;
 	if HeadTakeVacation in (0,9) then HeadTakeVacation=.;
@@ -458,7 +459,7 @@ data out.pooled;
 	if year<1975 AND headextra^=0 then headsalary = (headsalaried=5 & headextra=5);
 	if year<1975 AND headextra^=0 then headhourly = ((headsalaried=1 & headextra=5) OR
 	   	     	 	      	   	         (headsalaried=0 & headextra=1));
-	if year>=1975 AND headsalaried^=0 then headsalary = (headsalaried=1 AND headextra!=1);
+	if year>=1975 AND headsalaried^=0 then headsalary = (headsalaried=1 AND headextra^=1);
 	if year>=1975 AND headsalaried^=0 then headhourly = (headsalaried=3 OR 
 	   	      	  		       		    (headsalaried=1 & headextra=1));
 	if headmarried=1 & wifesalaried^=0 then wifesalary = (wifesalaried=1);

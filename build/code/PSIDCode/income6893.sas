@@ -17,8 +17,9 @@
 *********Data from 1968 - 1993 are retrieved and processed in the code below.                  *********
 *********Data after 1993 are processed in income9405.sas                                       *********                                                                                                                                                                                                                                             
 *******************************Geng Li and Michael Mulhall 2008*****************************************;                                                                                                                                    
-                                                                                                                                                                                                                                             
-data psiddata.income1968;                                                                                                                                                                                                                             
+%include '..\setlibraries_psid.sas';
+ 
+data temp.income1968;                                                                                                                                                                                                                             
 set psiddata.fam68;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1968 = v3;                                                                                                                                                                                                                                 
@@ -70,11 +71,11 @@ keep id1968 Faminc1968 HWTaxable1968 HeadLabor1968 WifeLabor1968 OthTaxable1968 
      HeadProf1968 HeadSalary1968 HeadFarmRBMGInc1968                                                                                                                                                                                         
      HeadRDI1968                                                                                                                                                                                                                             
      HeadADC1968 HeadOthWel1968 HeadSSI1968 HeadRetInc1968 HeadUnemp1968 HeadRelHelp1968 HeadAlimony1968 Tax1968;         
-proc means data = psiddata.income1968; 
+proc means data = temp.income1968; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************************************;                                                                                                                                                           
-data psiddata.income1969;                                                                                                                                                                                                                             
+data temp.income1969;                                                                                                                                                                                                                             
 set psiddata.fam69;                                                                                                                                                                                                                          
 
 id1969 = V442                                      ;                                                                                                                                                                                         
@@ -132,11 +133,11 @@ keep id1969 Faminc1969 HWTaxable1969 HeadLabor1969 WifeLabor1969 OthTaxable1969 
      HeadProf1969 HeadSalary1969 HeadFarmRBMGInc1969                                                                                                                                                                                         
      HeadRDI1969                                                                                                                                                                                                                             
      HWADC1969 HWElse1969 HeadADC1969 HeadOthWel1969 HeadSSI1969 HeadRetInc1969 HeadUnemp1969 HeadRelHelp1969 HeadAlimony1969 HeadOthIncome1969 HeadOthHelp1969 Tax1969;                                                                             
-proc means data = psiddata.income1969; 
+proc means data = temp.income1969; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *************************************************************************************;                                                                                                                                                       
-data psiddata.income1970;                                                                                                                                                                                                                             
+data temp.income1970;                                                                                                                                                                                                                             
 set psiddata.fam70;                                                                                                                                                                                                                          
 id1970 = v1102;                                                                                                                                                                                                                              
                                                                                                                                                                                                                                              
@@ -182,10 +183,10 @@ keep id1970 Faminc1970 HWTaxable1970 HeadLabor1970 WifeLabor1970 HWTrans1970 Oth
      HeadProf1970 HeadSalary1970 HeadOBC1970 HeadFarmLabor1970 HeadBusLabor1970 HeadRBMGLabor1970                                                                                                                                            
      HeadBusAsset1970 HeadRBMGAsset1970 HeadRDI1970 HeadFarmAsset1970 WifeAsset1970                                                                                                                                                          
      HeadADC1970 HeadElseTrans1970 HeadOthWel1970 HeadSSI1970 HeadRetInc1970 HeadUnemp1970 HeadRelHelp1970 HeadAlimony1970 WifeElseTrans1970 Tax1970;                                                                                                          
-proc means data = psiddata.income1970; 
+proc means data = temp.income1970; 
 run;                                                                                                                                                                                                                                         
 ***********************************************************************************;                                                                                                                                                         
-data psiddata.income1971;                                                                                                                                                                                                                             
+data temp.income1971;                                                                                                                                                                                                                             
 set psiddata.fam71;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1971 = v1802;                                                                                                                                                                                                                              
@@ -235,12 +236,12 @@ keep id1971 Faminc1971 HWTaxable1971 HeadLabor1971 WifeLabor1971 HWTrans1971 Oth
      HeadProf1971 HeadSalary1971 HeadOBC1971 HeadFarmLabor1971 HeadBusLabor1971 HeadRBMGLabor1971                                                                                                                                            
      HeadBusAsset1971 HeadRBMGAsset1971 HeadRDI1971 HeadFarmAsset1971 WifeAsset1971                                                                                                                                                          
      HeadADC1971 HeadElseTrans1971 HeadOthWel1971 HeadSSI1971 HeadRetInc1971 HeadUnemp1971 HeadRelHelp1971 HeadAlimony1971 WifeElseTrans1971 Tax1971;                                                                                                          
-proc means data = psiddata.income1971; 
+proc means data = temp.income1971; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
                                                                                                                                                                                                                                              
 **********************************************************************************************;                                                                                                                                              
-data psiddata.income1972;                                                                                                                                                                                                                             
+data temp.income1972;                                                                                                                                                                                                                             
 set psiddata.fam72;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1972 = v2402;                                                                                                                                                                                                                              
@@ -290,11 +291,11 @@ keep id1972 Faminc1972 HWTaxable1972 HeadLabor1972 WifeLabor1972 HWTrans1972 Oth
      HeadProf1972 HeadSalary1972 HeadOBC1972 HeadFarmLabor1972 HeadBusLabor1972 HeadRBMGLabor1972                                                                                                                                            
      HeadBusAsset1972 HeadRBMGAsset1972 HeadRDI1972 HeadFarmAsset1972 WifeAsset1972                                                                                                                                                          
      HeadADC1972 HeadElseTrans1972 HeadOthWel1972 HeadSSI1972 HeadRetInc1972 HeadUnemp1972 HeadRelHelp1972 HeadAlimony1972 WifeElseTrans1972 Tax1972;                                                                                                          
-proc means data = psiddata.income1972; 
+proc means data = temp.income1972; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 ************************************************************************************************************;                                                                                                                                
-data psiddata.income1973;                                                                                                                                                                                                                             
+data temp.income1973;                                                                                                                                                                                                                             
 set psiddata.fam73;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1973 = V3002;                                                                                                                                                                                                                              
@@ -345,11 +346,11 @@ keep id1973 Faminc1973 HWTaxable1973 HeadLabor1973 WifeLabor1973 HWTrans1973 Oth
      HeadProf1973 HeadSalary1973 HeadOBC1973 HeadFarmLabor1973 HeadBusLabor1973 HeadRBMGLabor1973                                                                                                                                            
      HeadBusAsset1973 HeadRBMGAsset1973 HeadRDI1973 HeadFarmAsset1973 WifeAsset1973                                                                                                                                                          
      HeadADC1973 HeadElseTrans1973 HeadOthWel1973 HeadSSI1973 HeadRetInc1973 HeadUnemp1973 HeadRelHelp1973 HeadAlimony1973 WifeElseTrans1973 Tax1973;                                                                                                          
-proc means data = psiddata.income1973; 
+proc means data = temp.income1973; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************************************************;                                                                                                                                               
-data psiddata.income1974;                                                                                                                                                                                                                             
+data temp.income1974;                                                                                                                                                                                                                             
 set psiddata.fam74;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1974 = V3402;                                                                                                                                                                                                                              
@@ -400,11 +401,11 @@ keep id1974 Faminc1974 HWTaxable1974 HeadLabor1974 WifeLabor1974 HWTrans1974 Oth
      HeadProf1974 HeadSalary1974 HeadOBC1974 HeadFarmLabor1974 HeadBusLabor1974 HeadRBMGLabor1974                                                                                                                                            
      HeadBusAsset1974 HeadRBMGAsset1974 HeadRDI1974 HeadFarmAsset1974 WifeAsset1974                                                                                                                                                          
      HeadADC1974 HeadElseTrans1974 HeadOthWel1974 HeadSSI1974 HeadRetInc1974 HeadUnemp1974 HeadRelHelp1974 HeadAlimony1974 WifeElseTrans1974 Tax1974;                                                                                                          
-proc means data = psiddata.income1974; 
+proc means data = temp.income1974; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************************************;                                                                                                                                                           
-data psiddata.income1975;                                                                                                                                                                                                                             
+data temp.income1975;                                                                                                                                                                                                                             
 set psiddata.fam75;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1975 = V3802;                                                                                                                                                                                                                              
@@ -457,11 +458,11 @@ keep id1975 Faminc1975 HWTaxable1975 HeadLabor1975 WifeLabor1975 HWTrans1975 Oth
      HeadProf1975 HeadSalary1975 HeadOBC1975 HeadFarmLabor1975 HeadBusLabor1975 HeadRBMGLabor1975                                                                                                                                            
      HeadBusAsset1975 HeadRBMGAsset1975 HeadRDI1975 HeadFarmAsset1975 WifeAsset1975                                                                                                                                                          
      HeadADC1975 HeadElseTrans1975 HeadOthWel1975 HeadSSI1975 HeadRetInc1975 HeadUnemp1975 HeadRelHelp1975 Headsuppsec1975 HeadAlimony1975 WifeElseTrans1975 Tax1975;                                                                                          
-proc means data = psiddata.income1975; 
+proc means data = temp.income1975; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 ******************************************************************************************;                                                                                                                                                  
-data psiddata.income1976;                                                                                                                                                                                                                             
+data temp.income1976;                                                                                                                                                                                                                             
 set psiddata.fam76;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1976 = V4302;                                                                                                                                                                                                                              
@@ -519,11 +520,11 @@ keep id1976 Faminc1976 HWTaxable1976 HeadLabor1976 WifeLabor1976 HWTrans1976 Oth
      HeadProf1976 HeadSalary1976 HeadOBC1976 HeadFarmLabor1976 HeadBusLabor1976 HeadRBMGLabor1976                                                                                                                                            
      HeadBusAsset1976 HeadRBMGAsset1976 HeadRDI1976 HeadFarmAsset1976 WifeAsset1976                                                                                                                                                          
      HeadADC1976 HeadElseTrans1976 HeadOthWel1976 HeadSSI1976 HeadRetInc1976 HeadUnemp1976 HeadRelHelp1976 Headsuppsec1976 HeadAlimony1976 WifeElseTrans1976 Tax1976;                                                                                          
-proc means data = psiddata.income1976; 
+proc means data = temp.income1976; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 ******************************************************************;                                                                                                                                                                          
-data psiddata.income1977;                                                                                                                                                                                                                             
+data temp.income1977;                                                                                                                                                                                                                             
 set psiddata.fam77;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1977 = V5202;                                                                                                                                                                                                                              
@@ -582,11 +583,11 @@ keep id1977 Faminc1977 HWTaxable1977 HeadLabor1977 WifeLabor1977 HWTrans1977 Oth
      HeadProf1977 HeadSalary1977 HeadOBC1977 HeadFarmLabor1977 HeadBusLabor1977 HeadRBMGLabor1977                                                                                                                                            
      HeadBusAsset1977 HeadRBMGAsset1977 HeadRDI1977 HeadFarmAsset1977 WifeAsset1977                                                                                                                                                          
      HeadADC1977 HeadElseTrans1977 HeadOthWel1977 HeadSSI1977 HeadRetInc1977 HeadUnemp1977 HeadWorkman1977 HeadRelHelp1977 Headsuppsec1977 HeadAlimony1977 HeadChldSppt1977 WifeElseTrans1977 Tax1977;                                                         
-proc means data = psiddata.income1977; 
+proc means data = temp.income1977; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *************************************************************************;                                                                                                                                                                   
-data psiddata.income1978;                                                                                                                                                                                                                             
+data temp.income1978;                                                                                                                                                                                                                             
 set psiddata.fam78;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1978 = V5702;                                                                                                                                                                                                                              
@@ -649,11 +650,11 @@ keep id1978 Faminc1978 HWTaxable1978 HeadLabor1978 WifeLabor1978 HWTrans1978 Oth
      HeadProf1978 HeadSalary1978 HeadOBC1978 HeadFarmLabor1978 HeadBusLabor1978 HeadRBMGLabor1978                                                                                                                                            
      HeadBusAsset1978 HeadRBMGAsset1978 HeadRDI1978 HeadFarmAsset1978 WifeAsset1978                                                                                                                                                          
      HeadADC1978 HeadElseTrans1978 HeadOthWel1978 HeadSSI1978 HeadRetInc1978 HeadUnemp1978 HeadWorkman1978 HeadRelHelp1978 Headsuppsec1978 HeadAlimony1978 HeadChldSppt1978 WifeElseTrans1978 Tax1978;                                                         
-proc means data = psiddata.income1978; 
+proc means data = temp.income1978; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************************;                                                                                                                                                                       
-data psiddata.income1979;                                                                                                                                                                                                                             
+data temp.income1979;                                                                                                                                                                                                                             
 set psiddata.fam79;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1979 = V6302 ;                                                                                                                                                                                                                             
@@ -718,11 +719,11 @@ keep id1979 Faminc1979 HWTaxable1979 HeadLabor1979 WifeLabor1979 HWTrans1979 Oth
      HeadProf1979 HeadSalary1979 HeadOBC1979 HeadFarmLabor1979 HeadBusLabor1979 HeadRmmrLabor1979 HeadMktGrdnLabor1979                                                                                                                       
      HeadBusAsset1979 HeadRmmrAsset1979 HeadMktGrdnAsset1979 HeadRDI1979 HeadFarmAsset1979 WifeAsset1979                                                                                                                                     
      HeadADC1979 HeadElseTrans1979 HeadOthWel1979 HeadSSI1979 HeadRetInc1979 HeadUnemp1979 HeadWorkman1979 HeadRelHelp1979 Headsuppsec1979 HeadAlimony1979 HeadChldSppt1979 WifeElseTrans1979 Tax1979;                                                         
-proc means data = psiddata.income1979; 
+proc means data = temp.income1979; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *****************************************************************;                                                                                                                                                                           
-data psiddata.income1980;                                                                                                                                                                                                                             
+data temp.income1980;                                                                                                                                                                                                                             
 set psiddata.fam80;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1980 = V6902 ;                                                                                                                                                                                                                             
@@ -788,11 +789,11 @@ keep id1980 Faminc1980 HWTaxable1980 HeadLabor1980 WifeLabor1980 HWTrans1980 Oth
      HeadProf1980 HeadSalary1980 HeadOBC1980 HeadFarmLabor1980 HeadBusLabor1980 HeadRmmrLabor1980 HeadMktGrdnLabor1980                                                                                                                       
      HeadBusAsset1980 HeadRmmrAsset1980 HeadMktGrdnAsset1980 HeadRDI1980 HeadFarmAsset1980 WifeAsset1980                                                                                                                                     
      HeadADC1980 HeadElseTrans1980 HeadOthWel1980 HeadSSI1980 HeadRetInc1980 HeadUnemp1980 HeadWorkman1980 HeadRelHelp1980 Headsuppsec1980 HeadAlimony1980 HeadChldSppt1980 WifeElseTrans1980 Tax1980;                                                       
-proc means data = psiddata.income1980; 
+proc means data = temp.income1980; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 ********************************************************;                                                                                                                                                                                    
-data psiddata.income1981;                                                                                                                                                                                                                             
+data temp.income1981;                                                                                                                                                                                                                             
 set psiddata.fam81;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1981 = v7502;                                                                                                                                                                                                                              
@@ -854,10 +855,10 @@ keep id1981 Faminc1981 HWTaxable1981 HeadLabor1981 WifeLabor1981 HWTrans1981 Oth
      HeadProf1981 HeadSalary1981 HeadOBC1981 HeadFarmLabor1981 HeadBusLabor1981 HeadRmmrLabor1981 HeadMktGrdnLabor1981                                                                                                                       
      HeadBusAsset1981 HeadRmmrAsset1981 HeadMktGrdnAsset1981 HeadRDI1981 HeadFarmAsset1981 WifeAsset1981                                                                                                                                     
      HeadADC1981 HeadElseTrans1981 HeadOthWel1981 HeadSSI1981 HeadRetInc1981 HeadUnemp1981 HeadWorkman1981 HeadRelHelp1981 Headsuppsec1981 HeadAlimony1981 HeadChldSppt1981 WifeElseTrans1981 Tax1981;                                                         
-proc means data = psiddata.income1981; 
+proc means data = temp.income1981; 
 run;                                                                                                                                                                                                                                         
 **************************************************;                                                                                                                                                                                          
-data psiddata.income1982;                                                                                                                                                                                                                             
+data temp.income1982;                                                                                                                                                                                                                             
 set psiddata.fam82;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1982 = v8202;                                                                                                                                                                                                                              
@@ -920,11 +921,11 @@ keep id1982 Faminc1982 HWTaxable1982 HeadLabor1982 WifeLabor1982 HWTrans1982 Oth
      HeadProf1982 HeadSalary1982 HeadOBC1982 HeadFarmLabor1982 HeadBusLabor1982 HeadRmmrLabor1982 HeadMktGrdnLabor1982                                                                                                                      
      HeadBusAsset1982 HeadRmmrAsset1982 HeadMktGrdnAsset1982 HeadRDI1982 HeadFarmAsset1982 WifeAsset1982                                                                                                                                     
      HeadADC1982 HeadElseTrans1982 HeadOthWel1982 HeadSSI1982 HeadRetInc1982 HeadUnemp1982 HeadWorkman1982 HeadRelHelp1982 Headsuppsec1982 HeadAlimony1982 HeadChldSppt1982 WifeElseTrans1982 Tax1982;                                                         
-proc means data = psiddata.income1982; 
+proc means data = temp.income1982; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *************************************************;                                                                                                                                                                                           
-data psiddata.income1983;                                                                                                                                                                                                                             
+data temp.income1983;                                                                                                                                                                                                                             
 set psiddata.fam83;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1983 = v8802;                                                                                                                                                                                                                              
@@ -983,10 +984,10 @@ keep id1983 Faminc1983 HWTaxable1983 HeadLabor1983 WifeLabor1983 HWTrans1983 Oth
      HeadProf1983 HeadSalary1983 HeadOBC1983 HeadFarmLabor1983 HeadBusLabor1983 HeadRmmrLabor1983 HeadMktGrdnLabor1983                                                                                                                       
      HeadBusAsset1983 HeadRmmrAsset1983 HeadMktGrdnAsset1983 HeadRDI1983 HeadFarmAsset1983 WifeAsset1983                                                                                                                                     
      HeadADC1983 HeadElseTrans1983 HeadOthWel1983 HeadSSI1983 HeadRetInc1983 HeadUnemp1983 HeadWorkman1983 HeadRelHelp1983 Headsuppsec1983 HeadAlimony1983 HeadChldSppt1983 WifeElseTrans1983 Tax1983;                                                         
-proc means data = psiddata.income1983; 
+proc means data = temp.income1983; 
 run;                                                                                                                                                                                                                                         
 *************************************************************************;                                                                                                                                                                   
-data psiddata.income1984;                                                                                                                                                                                                                             
+data temp.income1984;                                                                                                                                                                                                                             
 set psiddata.fam84;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1984 = v10002;                                                                                                                                                                                                                             
@@ -1044,11 +1045,11 @@ keep id1984 Faminc1984 HWTaxable1984 HeadLabor1984 WifeLabor1984 HWTrans1984 Oth
      HeadProf1984 HeadSalary1984 HeadOBC1984 HeadFarmLabor1984 HeadBusLabor1984 HeadRmmrLabor1984 HeadMktGrdnLabor1984                                                                                                                       
      HeadBusAsset1984 HeadRmmrAsset1984 HeadMktGrdnAsset1984 HeadRent1984 HeadDivInt1984 HeadFarmAsset1984 WifeAsset1984                                                                                                                         
      HeadADC1984 HeadElseTrans1984 HeadOthWel1984 HeadSSI1984 HeadRetIncVet1984 HeadRetIncNV1984 HeadUnemp1984 HeadWorkman1984 HeadRelHelp1984 Headsuppsec1984 HeadAlimony1984 HeadChldSppt1984 WifeElseTrans1984 Tax1984;                                     
-proc means data = psiddata.income1984; 
+proc means data = temp.income1984; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 ************************************************************;                                                                                                                                                                                
-data psiddata.income1985;                                                                                                                                                                                                                             
+data temp.income1985;                                                                                                                                                                                                                             
 set psiddata.fam85;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1985 = v11102;                                                                                                                                                                                                                             
@@ -1114,11 +1115,11 @@ keep id1985 Faminc1985 HWTaxable1985 HeadLabor1985 WifeLabor1985 HWTrans1985 Oth
      HeadBusAsset1985 HeadRmmrAsset1985 HeadMktGrdnAsset1985 HeadRent1985 HeadDivInt1985 HeadFarmAsset1985 WifeAsset1985                                                                                                                     
      HeadADC1985 HeadElseTrans1985 HeadOthWel1985 HeadSSI1985 HeadRetIncVet1985 HeadRetIncNV1985 HeadUnemp1985 HeadWorkman1985 HeadRelHelp1985 Headsuppsec1985 HeadAlimony1985 HeadChldSppt1985                                                   
                  WifeElseTrans1985                            WifeRetIncVet1985 WifeRetIncNV1985 WifeUnemp1985 WifeWorkman1985 WifeRelHelp1985                                    WifeChldSppt1985 Tax1985;                                               
-proc means data = psiddata.income1985; 
+proc means data = temp.income1985; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *************************************************;                                                                                                                                                                                           
-data psiddata.income1986;                                                                                                                                                                                                                             
+data temp.income1986;                                                                                                                                                                                                                             
 set psiddata.fam86;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1986 = v12502;                                                                                                                                                                                                                             
@@ -1186,11 +1187,11 @@ keep id1986 Faminc1986 HWTaxable1986 HeadLabor1986 WifeLabor1986 HWTrans1986 Oth
      HeadBusAsset1986 HeadRmmrAsset1986 HeadMktGrdnAsset1986 HeadRent1986 HeadDivInt1986 HeadFarmAsset1986 WifeAsset1986                                                                                                                     
      HeadADC1986 HeadElseTrans1986 HeadOthWel1986 HeadSSI1986 HeadRetIncVet1986 HeadRetIncNV1986 HeadUnemp1986 HeadWorkman1986 HeadRelHelp1986 Headsuppsec1986 HeadAlimony1986 HeadChldSppt1986                                                   
      WifeADC1986 WifeElseTrans1986 WifeOthWel1986 WifeSSI1986 WifeRetIncVet1986 WifeRetIncNV1986 WifeUnemp1986 WifeWorkman1986 WifeRelHelp1986 WifeSuppSec1986    WifeChldSppt1986 Tax1986;                                                               
-proc means data = psiddata.income1986; 
+proc means data = temp.income1986; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************;                                                                                                                                                                                   
-data psiddata.income1987;                                                                                                                                                                                                                             
+data temp.income1987;                                                                                                                                                                                                                             
 set psiddata.fam87;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1987 = v13702;                                                                                                                                                                                                                             
@@ -1259,10 +1260,10 @@ keep id1987 Faminc1987 HWTaxable1987 HeadLabor1987 WifeLabor1987 HWTrans1987 Oth
      HeadBusAsset1987 HeadRmmrAsset1987 HeadMktGrdnAsset1987 HeadRent1987 HeadDivInt1987 HeadFarmAsset1987 WifeAsset1987                                                                                                                     
      HeadADC1987 HeadElseTrans1987 HeadOthWel1987 HeadSSI1987 HeadRetIncVet1987 HeadRetIncNV1987 HeadUnemp1987 HeadWorkman1987 HeadRelHelp1987 Headsuppsec1987 HeadAlimony1987 HeadChldSppt1987                                                   
      WifeADC1987 WifeElseTrans1987 WifeOthWel1987 WifeSSI1987 WifeRetIncVet1987 WifeRetIncNV1987 WifeUnemp1987 WifeWorkman1987 WifeRelHelp1987 WifeSuppSec1987    WifeChldSppt1987 Tax1987;                                                               
-proc means data = psiddata.income1987; 
+proc means data = temp.income1987; 
 run;                                                                                                                                                                                                                                         
 *********************************************************;                                                                                                                                                                                   
-data psiddata.income1988;                                                                                                                                                                                                                             
+data temp.income1988;                                                                                                                                                                                                                             
 set psiddata.fam88;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1988 = v14802;                                                                                                                                                                                                                             
@@ -1334,11 +1335,11 @@ keep id1988 Faminc1988 HWTaxable1988 HeadLabor1988 WifeLabor1988 HWTrans1988 Oth
      HeadBusAsset1988 HeadRmmrAsset1988 HeadMktGrdnAsset1988 HeadRent1988 HeadDivInt1988 HeadFarmAsset1988 WifeAsset1988                                                                                                                     
      HeadADC1988 HeadElseTrans1988 HeadOthWel1988 HeadSSI1988 HeadRetIncVet1988 HeadRetIncNV1988 HeadUnemp1988 HeadWorkman1988 HeadRelHelp1988 Headsuppsec1988 HeadAlimony1988 HeadChldSppt1988                                                   
      WifeADC1988 WifeElseTrans1988 WifeOthWel1988 WifeSSI1988 WifeRetIncVet1988 WifeRetIncNV1988 WifeUnemp1988 WifeWorkman1988 WifeRelHelp1988 WifeSuppSec1988    WifeChldSppt1988 Tax1988;                                                               
-proc means data = psiddata.income1988; 
+proc means data = temp.income1988; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************;                                                                                                                                                                                   
-data psiddata.income1989;                                                                                                                                                                                                                             
+data temp.income1989;                                                                                                                                                                                                                             
 set psiddata.fam89;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1989 = v16302;                                                                                                                                                                                                                             
@@ -1412,11 +1413,11 @@ keep id1989 Faminc1989 HWTaxable1989 HeadLabor1989 WifeLabor1989 HWTrans1989 Oth
      HeadBusAsset1989 HeadRmmrAsset1989 HeadMktGrdnAsset1989 HeadRent1989 HeadDivInt1989 HeadFarmAsset1989 WifeAsset1989                                                                                                                     
      HeadADC1989 HeadElseTrans1989 HeadOthWel1989 HeadSSI1989 HeadRetIncVet1989 HeadRetIncNV1989 HeadUnemp1989 HeadWorkman1989 HeadRelHelp1989 Headsuppsec1989 HeadAlimony1989 HeadChldSppt1989                                                   
      WifeADC1989 WifeElseTrans1989 WifeOthWel1989 WifeSSI1989 WifeRetIncVet1989 WifeRetIncNV1989 WifeUnemp1989 WifeWorkman1989 WifeRelHelp1989 WifeSuppSec1989    WifeChldSppt1989 Tax1989;                                                               
-proc means data = psiddata.income1989; 
+proc means data = temp.income1989; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************;                                                                                                                                                                                   
-data psiddata.income1990;                                                                                                                                                                                                                             
+data temp.income1990;                                                                                                                                                                                                                             
 set psiddata.fam90;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1990 = v17702;                                                                                                                                                                                                                             
@@ -1485,10 +1486,10 @@ keep id1990 Faminc1990 HWTaxable1990 HeadLabor1990 WifeLabor1990 HWTrans1990 Oth
      HeadBusAsset1990 HeadRmmrAsset1990 HeadMktGrdnAsset1990 HeadRent1990 HeadDivInt1990 HeadFarmAsset1990 WifeAsset1990                                                                                                                     
      HeadADC1990 HeadElseTrans1990 HeadOthWel1990 HeadSSI1990 HeadRetIncVet1990 HeadRetIncNV1990 HeadUnemp1990 HeadWorkman1990 HeadRelHelp1990 Headsuppsec1990 HeadAlimony1990 HeadChldSppt1990                                                   
      WifeADC1990 WifeElseTrans1990 WifeOthWel1990 WifeSSI1990 WifeRetIncVet1990 WifeRetIncNV1990 WifeUnemp1990 WifeWorkman1990 WifeRelHelp1990 WifeSuppSec1990    WifeChldSppt1990 Tax1990;                                                               
-proc means data = psiddata.income1990; 
+proc means data = temp.income1990; 
 run;                                                                                                                                                                                                                                         
 *********************************************************;                                                                                                                                                                                   
-data psiddata.income1991;                                                                                                                                                                                                                             
+data temp.income1991;                                                                                                                                                                                                                             
 set psiddata.fam91;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1991 = v19002;                                                                                                                                                                                                                             
@@ -1560,11 +1561,11 @@ keep id1991 Faminc1991 HWTaxable1991 HeadLabor1991 WifeLabor1991 HWTrans1991 Oth
      HeadBusAsset1991 HeadRmmrAsset1991 HeadMktGrdnAsset1991 HeadRent1991 HeadDivInt1991 HeadFarmAsset1991 WifeAsset1991                                                                                                                     
      HeadADC1991 HeadElseTrans1991 HeadOthWel1991 HeadSSI1991 HeadRetIncVet1991 HeadRetIncNV1991 HeadUnemp1991 HeadWorkman1991 HeadRelHelp1991 Headsuppsec1991 HeadAlimony1991 HeadChldSppt1991                                                   
      WifeADC1991 WifeElseTrans1991 WifeOthWel1991 WifeSSI1991 WifeRetIncVet1991 WifeRetIncNV1991 WifeUnemp1991 WifeWorkman1991 WifeRelHelp1991 WifeSuppSec1991    WifeChldSppt1991 Tax1991;                                                               
-proc means data = psiddata.income1991; 
+proc means data = temp.income1991; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************;                                                                                                                                                                                   
-data psiddata.income1992;                                                                                                                                                                                                                             
+data temp.income1992;                                                                                                                                                                                                                             
 set psiddata.fam92;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1992 = v20302;                                                                                                                                                                                                                             
@@ -1630,11 +1631,11 @@ keep id1992 Faminc1992 HWTaxable1992 HeadLabor1992 WifeLabor1992 HWTrans1992 Oth
      HeadBusAsset1992 HeadRmmrAsset1992 HeadMktGrdnAsset1992 HeadRent1992 HeadDivInt1992 HeadFarmAsset1992 WifeAsset1992                                                                                                                     
      HeadADC1992 HeadElseTrans1992 HeadOthWel1992 HeadSSI1992 HeadRetIncVet1992 HeadRetIncNV1992 HeadUnemp1992 HeadWorkman1992 HeadRelHelp1992 Headsuppsec1992 HeadAlimony1992 HeadChldSppt1992                                                   
      WifeADC1992 WifeElseTrans1992 WifeOthWel1992 WifeSSI1992 WifeRetIncVet1992 WifeRetIncNV1992 WifeUnemp1992 WifeWorkman1992 WifeRelHelp1992 WifeSuppSec1992    WifeChldSppt1992;                                                               
-proc means data = psiddata.income1992; 
+proc means data = temp.income1992; 
 run;                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                              
 *********************************************************;                                                                                                                                                                                   
-data psiddata.income1993;                                                                                                                                                                                                                             
+data temp.income1993;                                                                                                                                                                                                                             
 set psiddata.fam93;                                                                                                                                                                                                                          
                                                                                                                                                                                                                                              
 id1993 = V21602;                                                                                                                                                                                                                             
@@ -1717,6 +1718,6 @@ keep id1993 Faminc1993 HWTaxable1993 HeadLabor1993 WifeLabor1993 HWTrans1993 Oth
      WifeBusAsset1993                                                     WifeDividend1993 WifeInterest1993 WifeTrustFund1993 WifeFarmAsset1993 WifeOthAsset1993                                                                                
      HeadADC1993 HeadElseTrans1993 HeadOthWel1993 HeadSSI1993 HeadAnnuity1993 HeadRetIncVet1993 HeadRetIncNV1993 HeadUnemp1993 HeadWorkman1993 HeadRelHelp1993 HeadNonRelHelp1993 Headsuppsec1993 HeadAlimony1993 HeadChldSppt1993  HeadOthRet1993
      WifeADC1993 WifeElseTrans1993 WifeOthWel1993 WifeSSI1993 WifeAnnuity1993                                    WifeUnemp1993 WifeWorkman1993 WifeRelHelp1993 WifeNonRelHelp1993 WifeSuppSec1993                 WifeChldSppt1993;               
-proc means data = psiddata.income1993; 
+proc means data = temp.income1993; 
 run;                                                                                                                                                                                                                                         
 
