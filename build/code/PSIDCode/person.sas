@@ -1,4 +1,4 @@
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 data temp.person;
 set psiddata.inperson;

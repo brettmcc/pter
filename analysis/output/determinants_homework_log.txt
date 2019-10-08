@@ -1,0 +1,17 @@
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	Ln Head HW	Ln Head HW	Ln Head HW	Ln Head HW
+					
+construp	Upside constrained	0.0674	0.166***	0.0639	0.0823**
+		(0.0508)	(0.0447)	(0.0419)	(0.0358)
+constrdown	Downside constrained	-0.0675	-0.0903	-0.134**	-0.0991*
+		(0.0830)	(0.0713)	(0.0650)	(0.0552)
+Constant	Constant	4.305***	4.667***	4.947***	3.414***
+		(0.0333)	(0.297)	(0.275)	(1.041)
+					
+Observations		54,159	53,503	53,503	53,503
+R-squared		0.000	0.162	0.270	0.611
+Controls		No	Yes	Yes	Yes
+Year FE		No	No	Yes	Yes
+Person FE		No	No	No	Yes
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					

@@ -1,5 +1,5 @@
 *********Employment history and business data                                                     *********;
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 data labor1968;
 set psiddata.fam68; 

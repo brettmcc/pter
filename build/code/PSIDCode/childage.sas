@@ -2,9 +2,10 @@
 	Brett McCully, August 2014
 **/
 
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 %let idvars =    V3 V442 V1102 V1802 V2402 V3002 V3402 V3802 V4302 V5202 V5702 V6302 V6902 V7502 V8202 V8802 V10002 V11102 V12502 V13702;
+*age of youngest child under 18 in family unit;
 %let chagevars = v120 v1013 v1243 v1946 v2546 v3099 v3512 v3925 V4440 v5354 v5854 v6466 v7071 v7662 v8536 v8965 v10423 v11610 v13015 v14118;
 
 
@@ -21,16 +22,25 @@
 			else if age&yr=7 then age&yr = 11;
 			else if age&yr=6 then age&yr = 7;
 		%end;
+		;
 		if age&yr in (0,99) then age&yr=.;
 		keep id&yr. age&yr;
 	run;
 	proc sort data=temp.person;
 		by id&yr.;
 	run;
-	data chage&endyr;
-		%if %eval(&yr>1968) %then merge chage&endyr. temp.person(keep=id&yr. rel&yr. seqno&yr.);
+	data chage&endyr.;
+		%if %eval(&yr>1968) 
+			%then merge chage&endyr. 
+				temp.person(keep=id&yr. rel&yr. seqno&yr.);
 		%else merge chage&endyr. temp.person(keep=id&yr. rel&yr.);
 		;
+		if rel&yr. in(3, 30, 33, 35, 37, 38);
+		*want to keep only children in dataset;
+		/*************************************;
+		if rel&yr.^=3 & rel&yr.^=30 & rel&yr.^=33 & rel&yr.^=35 & rel&yr.^=37 
+			& rel&yr.^= 38 then age&yr.=.;
+		****************************/;
 		by id&yr.;
 	run;
 %mend;

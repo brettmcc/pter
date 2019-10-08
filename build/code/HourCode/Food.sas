@@ -1,4 +1,4 @@
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 data temp.food1968;
 set psiddata.fam68;
@@ -134,3 +134,10 @@ Foodout1986 = V12776;
 keep id1986 Foodin1986 Foodout1986;
 run;
 
+data temp.food1987;
+set psiddata.fam87;
+id1987 = V13702;
+Foodin1987 = V13876;
+Foodout1987 = V13878;
+keep id1987 Foodin1987 Foodout1987;
+run;

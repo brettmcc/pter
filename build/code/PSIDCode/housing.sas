@@ -6,7 +6,7 @@
 5 renter
 8 other
 ;
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 * data for 1968 through 1986;
 
 %let idvars  = V3 V442 V1102 V1802 V2402 V3002 V3402 V3802 V4302 V5202 V5702 V6302 V6902 V7502 V8202 V8802 V10002 V11102 V12502 V13702;

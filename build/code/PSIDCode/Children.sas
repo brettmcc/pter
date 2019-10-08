@@ -1,4 +1,4 @@
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 data children1968;
 set psiddata.fam68; 

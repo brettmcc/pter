@@ -1,19 +1,50 @@
-cd /href/research3/m1bam03/homeProdHourConstraints/analysis/code/
+global buildout "C:\Users\bmccully\Documents\pter-master\build\output"
+global charts "C:\Users\bmccully\Documents\pter-master\analysis\output\charts\"
 
 /*Create charts for FEDS note and paper*/
 set more off
-set graphics off
+//set graphics off
 clear all
 
+*compare PSID to CPS PTER measure
+use "$buildout/psid_construp35_yrly.dta",clear
+merge 1:1 year using $buildout\bls_pter_yearly
+keep if _merge==3
+drop _merge
+label var propPter_cps "BLS PTER"
+label var prop_underemp_lt35_psid "PSID"
+twoway line (propPter_cps prop_underemp_lt35_psid year), /*
+	*/title("Part Time for Economic Reasons by Data Source") /*
+	*/ note("Source: PSID and BLS. PSID using sample weights restricted to those working 1 to 34 hours/week."/*
+		*/ "Correlation coeffiction equals 0.77.")
+graph export $charts\psid_pter.png,replace
+	
+*compare part-time vs full-time measure from PSID
+use "$buildout/psid_construp35_yrly.dta",clear
+merge 1:1 year using $buildout\psid_construp_ft_yrly
+drop _merge
+label var prop_underemp_lt35_psid "Part time"
+label var prop_underemp_ft_psid "Full time"
+corr prop_underemp_lt35_psid prop_underemp_ft_psid
+twoway line (prop_underemp_lt35_psid prop_underemp_ft_psid year), /*
+	*/title("Underemployment by Part-time Status, PSID") /*
+	*/ note("Source: PSID, weighted. Correlation coefficient equals 0.73.") 
+graph export $charts\psid_pt_vs_ft.png,replace
+
+*compare PSID to CPS, using expansive underemployment measure
+
+
+
+
 *plot underemployed proportion for all ages & ages 50-70 those working <=35 hours/week, in the PSID. Calculate the correlation.
-use "../../build/output/psid_construp35_yrly.dta",clear
+use "$buildout/psid_construp35_yrly.dta",clear
 merge 1:1 year using ../../build/output/psid_construp35_age50to70_yrly.dta,nogen
 twoway line (prop_underemp_lt35_psid prop_underemp_50to70_psid year), name(psid_construp35_oldvsall,replace) title(PSID) note(<35 hours/week)
 corr prop_underemp_lt35_psid prop_underemp_50to70_psid
 
 *plot underemployed proportion for all ages part-time (<35 hours per week) vs. everyone, in the PSID. Calculate the correlation.
-use ../../build/output/psid_construp35_yrly.dta,clear
-merge 1:1 year using ../../build/output/psid_construp_yrly.dta,nogen
+use "$buildout/psid_construp35_yrly.dta",clear
+merge 1:1 year using $buildout/psid_construp_yrly.dta,nogen
 label var prop_underemp_lt35 "Part-time"
 label var prop_underemp_psid "Full-time"
 twoway line (prop_underemp_lt35 prop_underemp_psid year), name(psid_construp35vsall,replace) title(PSID - Part vs Full Time)

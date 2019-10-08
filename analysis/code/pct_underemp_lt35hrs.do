@@ -1,21 +1,19 @@
 /*Calculate fraction of underemployed who work less than 35 hours in a week
 Brett McCully, June 2015*/
-cd "/href/research3/m1bam03/homeProdHourConstraints/analysis/code/"
+global analyisin "C:\Users\bmccully\Documents\pter-master\analysis\input"
 
   set more off
-  set graphics off
 clear all
 
 *PSID
-use "../../build/output/pooled.dta",clear
+use "$analyisin\pooled.dta",clear
 
 keep if construp==1
 
 collapse (sum) construp lt35hrs [iweight=wgt], by(year)
 gen pct_underemp_lt35hrs = lt35hrs/construp
 
-twoway line (pct_underemp year), title(PSID) name(psid_pctlt35,replace)
-
+line pct_underemp_lt35hrs year
 
 *HRS
 use ../input/hrsdata.dta,clear

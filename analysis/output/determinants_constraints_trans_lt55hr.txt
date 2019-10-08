@@ -1,0 +1,42 @@
+Determinants of Constraint Transitions, Working $<$55 hours/week					
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	Became UC	Became UC	Escaped UC	Escaped UC
+					
+became_married	Became married	-0.00342	-0.0220	-0.0677	-0.154*
+		(0.0168)	(0.0214)	(0.0426)	(0.0803)
+stay_married	Stay married	0.0112**	6.77e-05	-0.0432***	-0.0623
+		(0.00569)	(0.0152)	(0.0158)	(0.0560)
+became_div_sep	Became divorced/separated	0.0412*	-0.00602	-0.0244	-0.0404
+		(0.0212)	(0.0246)	(0.0500)	(0.0755)
+chg_num_children	Chg. in num. of children	0.00968*	0.00192	0.000413	0.0158
+		(0.00519)	(0.00565)	(0.0113)	(0.0154)
+chg_nonlabor_inc	Chg. family's non-labor income	-4.66e-07***	-3.48e-07*	1.02e-06	2.80e-07
+		(1.78e-07)	(1.87e-07)	(1.32e-06)	(1.83e-06)
+chg_log_headwage	Chg. ln head wage	-0.00679*	-0.00854**	0.00712	-0.00734
+		(0.00381)	(0.00432)	(0.00871)	(0.0136)
+chglog_headhour	Chg. ln head annual hours	-0.0190***	-0.0196***	0.0294***	-0.00418
+		(0.00552)	(0.00722)	(0.00842)	(0.0140)
+chgd_jobs	Chg'd job	0.0272***	0.0134*	0.0611***	-0.00159
+		(0.00618)	(0.00717)	(0.0144)	(0.0234)
+headage	Head age	-0.00134		-0.0181***	
+		(0.00149)		(0.00459)	
+headage_squared	$ Head age^2$	-1.77e-05		0.000252***	
+		(1.68e-05)		(5.57e-05)	
+headblack	Head black	0.0649***		-0.0342**	
+		(0.00968)		(0.0174)	
+2.headedu		-0.0363***		0.0125	
+		(0.00808)		(0.0184)	
+3.headedu		-0.0662***		0.0655***	
+		(0.00699)		(0.0178)	
+4.headedu		-0.120***		0.131***	
+		(0.00708)		(0.0275)	
+Constant	Constant	0.248***	0.125***	0.776***	0.419***
+		(0.0313)	(0.0154)	(0.0898)	(0.0611)
+					
+Observations		36,559	36,640	13,976	14,015
+R-squared		0.034	0.363	0.025	0.439
+Year FE		Yes	Yes	Yes	Yes
+Person FE		No	Yes	No	Yes
+Dep. var. mean		0.115	0.115	0.505	0.505
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					

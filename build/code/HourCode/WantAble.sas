@@ -1,7 +1,7 @@
 *********Input market work hours constraints, marginal wages, and vacation variables. Information about housework *********
 *********income, market labor hours, and demographics are processed in other programs                             ********* 
 *********WantAble1971-1975, 1979-1984 and 1986-1987 are process by additional macros                              *********;
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 data temp.WantAble1968;
 set psiddata.fam68;

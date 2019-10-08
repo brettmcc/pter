@@ -1,10 +1,13 @@
 /*Fill in statistics of tables Li Geng made.
 December 2014*/
 
+global build "C:\Users\bmccully\Documents\pter-master\build\output"
+global outp "C:\Users\bmccully\Documents\pter-master\analysis\output"
+
 clear all
 set more off
 
-use "..\..\build\output\pooled.dta",clear
+use "$build\pooled.dta",clear
 label define cstr 0 "unconstrained" 1 "up constr." 2 "down constr"
 gen constr = 0
 replace constr = 1 if construp==1

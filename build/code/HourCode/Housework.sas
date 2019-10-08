@@ -5,7 +5,7 @@
 *********hours and imputed annual hours.  If weekly number multiplied by 52 is different from annual hours by   *********
 *********more than 26 then we treat the data as blank.                                                          *********
 *********From 1968 to 1972, miscellaneous questions were asked about home production and car repairment         *********; 
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 data temp.housework1968;
 set psiddata.fam68;

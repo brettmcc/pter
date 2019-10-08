@@ -17,7 +17,7 @@
 *********Data from 1968 - 1993 are retrieved and processed in the code below.                  *********
 *********Data after 1993 are processed in income9405.sas                                       *********                                                                                                                                                                                                                                             
 *******************************Geng Li and Michael Mulhall 2008*****************************************;                                                                                                                                    
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
  
 data temp.income1968;                                                                                                                                                                                                                             
 set psiddata.fam68;                                                                                                                                                                                                                          

@@ -1,27 +1,9 @@
-!st ../../build/output//pooled.sas7bdat ../../build/output//pooled.dta -y
+global analyisin "C:\Users\bmccully\Documents\pter-master\analysis\input"
 
 clear all
 set more off
 
-use "../../build/output//pooled.dta",clear
-label define cstr 0 "unconstrained" 1 "up constr." 2 "down constr"
-gen constr = 0
-replace constr = 1 if construp==1
-replace constr = 2 if constrdown==1
-label values constr cstr
-
-label define educ 1 "Dropped out before completing high school" 2 "High school grad" 3 "Some post-secondary education" 4 "College or higher degree"
-label values headedu educ
-gen lnwage = ln(headlabor/headhour*cpi)
-gen lnwfwage = ln(wifelabor/wifehour*cpi)
-gen lnnonlaborinc = ln((faminc-headlabor)*cpi)
-replace lnnonlaborinc = 0 if faminc==headlabor
-
-tsset pid year
-tsfill, full
-
-
-
+use "$analyisin\pooled.dta",clear
 
 *use 1% threshold for wage changes
 gen wagechg_t_tp1 = (abs((f1.mainwage-mainwage)/mainwage)>.01) if f1.tenure>1 & f1.tenure<9 & f1.mainwage!=. & mainwage!=.

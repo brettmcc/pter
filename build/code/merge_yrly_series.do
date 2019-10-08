@@ -1,8 +1,7 @@
 *merge the yearly series into one dataset
+global buildout "C:\Users\bmccully\Documents\pter-master\build\output"
 
 set more off
-
-cd /href/research3/m1bam03/homeProdHourConstraints/build/
 
 import delimited /href/research3/m1bam03/homeProdHourConstraints/build/input/bls_pter.csv,clear
 keep if year>=1967 & year<=2015

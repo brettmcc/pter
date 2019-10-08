@@ -1,5 +1,5 @@
 *headgender;
-%include 'E:\pter-master\build\code\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 %macro headgender(year, varnum,idvar);
 	%let yy = %substr(&year,3);

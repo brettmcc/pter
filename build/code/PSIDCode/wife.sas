@@ -6,7 +6,7 @@
 ***********************************************************************************************************************
 **********************************************************************************************************************;
 
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 ***Include wife AGE, RACE, EDUCATION, Whether Self-Employed and Occupation;
 
 data wifeinfor1968;

@@ -3,7 +3,7 @@
 *********data, some indices point to survey year. We make all variable indexes point to the reference year     *********;
 
 *before running this program, also run wantable, food, and housework. Also, should run empbus.sas rather than labor.sas;
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 options mprint;
 
 %macro var(year);
@@ -48,11 +48,25 @@ run;
 data tenure&year.;
 	set temp.tenure;
 	if id&year ne .;
-	%if &year.=1968 %then tenure1968=.;
+	*for questions not asked in given years, fill in values as missing;
+	%if &year.=1968 %then %do;
+		tenure1968=.;
+		relocated1968=.;
+	%end;
+	%if &year.=1973 %then union&year.=.;
 	;
-	%if &year.<1970 %then mainwage&year=.;
+	%if &year.>1981 %then union&year.=.;
 	;
-	keep id&year. tenure&year. secjob&year. mainwage&year sameemp_mths&year;
+	keep id&year. tenure&year. sameemp_mths&year. union&year. relocated&year. ;
+run;
+
+data tenure_retro&year.;
+	set temp.tenure;
+	if id&year ne .;
+	*for questions not asked in given years, fill in values as missing;
+	%if &year.<1970 %then mainwage&year.=.;
+	;
+	keep id&year. secjob&year. mainwage&year. num_addljobs&year.;
 run;
 %mend;
 %var(1968) %var(1969) 
@@ -63,7 +77,7 @@ run;
 %macro children(year);
 data children&year.;
 set temp.ChildAge;
-if Rel&year. in(3, 30, 33, 35, 37, 38);
+if Rel&year. in(3, 30, 33, 35, 37, 38); *keep biological, step-, and foster children;
 if seqno&year. le 20;
 if age&year. ge 1 and age&year. le 18;
 if age&year. = 1 or age&year. = 2 then do; agegroup1 = 1; agegroup2 = 0; agegroup3 = 0; agegroup4 = 0; end;
@@ -139,7 +153,8 @@ proc sort data = pid;
 by id1968;
 
 data homeprod1967;  ******1967 data will not be used for change-over-change analysis;
-merge head1968 marital1968 wife1968 gender1968 temp.wantable1968 dis1968 temp.housework1968 income1968 hour1968 children1968 pid;
+merge head1968 marital1968 wife1968 gender1968 temp.wantable1968 dis1968 temp.housework1968 
+	income1968 hour1968 children1968 pid tenure_retro1968;
 by id1968; run;
 
 %macro m(year1, year2, year3);
@@ -173,13 +188,16 @@ by id&year1.;
 proc sort data=housing&year1.;
 by id&year1.;
 
-proc sort data = marital&year2.;
-by id&year2.;
-
 %if &year1.>1968 %then %do;
 	proc sort data=tenure&year1.;
 	by id&year1.;
 %end;
+
+proc sort data=tenure_retro&year1.;
+by id&year1.;
+
+proc sort data = marital&year2.;
+by id&year2.;
 
 %if &year1. < 1986 %then %do;
 proc sort data = temp.housework&year2.;
@@ -206,7 +224,7 @@ by id&year1.;
 
 %if &year1. le 1973 %then %do;
     data hp&year1.;
-    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. temp.food&year1. children&year1. 
+    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1.  children&year1. 
           hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
     by id&year1.;
     if in1 and in2;
@@ -214,15 +232,17 @@ by id&year1.;
     proc sort data = hp&year1.;
     by id&year2;
 
+	*merge with retrospective variables;
     data homeprod&year1.;
-    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. temp.housework&year2.(in = in2) hour&year2. income&year2.(in = in3);
+    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. temp.housework&year2.(in = in2) 
+			hour&year2. income&year2.(in = in3) temp.food&year2. tenure_retro&year2.;
     by id&year2.;
     if in1 and in2 and in3;
 	%end;
 
 %else %if &year1. = 1974 %then %do;
     data hp&year1.;
-    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. temp.food&year1. children&year1. 
+    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1.  children&year1. 
           temp.housework&year1. hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
     by id&year1.;
     if in1 and in2;
@@ -231,14 +251,15 @@ by id&year1.;
     by id&year2;
 
     data homeprod&year1.;
-    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. hour&year2. income&year2.(in = in2);
+    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. hour&year2. income&year2.(in = in2)
+			tenure_retro&year2. temp.food&year2.;
     by id&year2.;
     if in1 and in2;
 	%end;
 
 %else %do;
     data hp&year1.;
-    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1. temp.food&year1. children&year1. 
+    merge head&year1.(in = in1) marital&year1. wife&year1. gender&year1.  children&year1. 
           temp.housework&year1. hour&year1. dis&year1. housing&year1. tenure&year1. pid(in = in2);
     by id&year1.;
     if in1 and in2;
@@ -247,7 +268,8 @@ by id&year1.;
     by id&year2;
 
     data homeprod&year1.;
-    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. hour&year2. income&year2.(in = in2);
+    merge hp&year1.(in = in1) marital&year2. temp.wantable&year2. hour&year2. income&year2.(in = in2)
+			tenure_retro&year2. temp.food&year2.;
     by id&year2.;
     if in1 and in2;
 	%end;
@@ -258,6 +280,62 @@ run;
 %m(1980, 1981); %m(1981, 1982); %m(1982, 1983); %m(1983, 1984); %m(1984, 1985); %m(1985, 1986); 
 %m(1986, 1987);
 
+/*some variables refer to the survey year (t), e.g. demographics, while others, e.g. wages, refer to 
+ the previous year. This macro aligns each observation to refer to the correct year.;
+%macro yearalignment(tminus1,t);
+data temp.homeprod&tminus1.;
+set homeprod&tminus1.;
+
+construp      = construp&tminus1.;
+wifeconstrup  = wifeconstrup&tminus1.;
+constrdown    = constrdown&tminus1.;
+marwage       = marwage&tminus1.;
+
+gender        = gender&tminus1.;
+headage       = headage&tminus1.;
+headmarital   = headmarital&tminus1.;
+headedu       = headedu&tminus1.;
+headrace      = headrace&tminus1.; 
+headstatus    = headstatus&tminus1.;
+dis           = dis&tminus1.;
+selfemploy    = selfemploy&tminus1.; 
+famsize       = famsize&tminus1.;
+children      = number&tminus1.;
+age2          = age2&tminus1.;
+age6          = age6&tminus1.;
+age12         = age12&tminus1.;
+age18         = age18&tminus1.;
+headocc       = headocc&tminus1.;
+headind       = headind&minus1t.;
+wifeage       = wifeage&tminus1.;
+wifeedu       = wifeedu&tminus1.;
+wifeocc       = wifeocc&tminus1.;
+wifeind       = wifeind&tminus1.;
+WGT           = WGT&tminus1.;
+homeown		  = homeown&tminus1.;
+tenure		  = tenure&tminus1.;
+*already moved second job variable back a year in tenure.sas;
+secjob    	  = secjob&tminus1.;
+mainwage	  = mainwage&tminus1.;
+sameemp_mths  = sameemp_mths&tminus1.;
+
+*No interview in 1967, but can impute time-invariant characteristics from 1968 data.;
+%if &tminus1.=1967 %then %do;
+gender        = gender&t.;
+headage       = headage&t.-1;
+headrace      = headrace&t.;
+%end;
+
+year = &tminus1.;
+
+%mend;
+*/
+
+
+
+
+/*Adjust timing of variables to be consistent, since some in PSID refer to survey year while others
+refer to year before survey.*/
 %macro variable(year1, year2);
 data temp.homeprod&year1.;
 set homeprod&year1.;
@@ -267,7 +345,6 @@ wifeconstrup  = wifeconstrup&year1.;
 constrdown    = constrdown&year1.;
 marwage       = marwage&year1.;
 
-%if &year1. ge 1968 %then %do;
 gender        = gender&year1.;
 headage       = headage&year1.;
 headmarital   = headmarital&year1.;
@@ -291,37 +368,15 @@ wifeind       = wifeind&year1.;
 WGT           = WGT&year1.;
 homeown		  = homeown&year1.;
 tenure		  = tenure&year1.;
-secjob    	  = secjob&year1.;
-mainwage	  = mainwage&year1.;
+secjob    	  = secjob&year2.; *changed in tenure.sas to be contemporaneous;
+mainwage	  = mainwage&year2.; *changed in tenure.sas to be contemporaneous;
 sameemp_mths  = sameemp_mths&year1.;
-%end;
-%else %do;
-gender        = gender&year2.;
-headage       = headage&year2.;
-headmarital   = headmarital&year2.;
-headedu       = headedu&year2.;
-headrace      = headrace&year2.; 
-headstatus    = headstatus&year2.;
-dis           = dis&year2.;
-selfemploy    = selfemploy&year2.; 
-famsize       = famsize&year2.;
-children      = number&year2.;
-age2          = age2&year2.;
-age6          = age6&year2.;
-age12         = age12&year2.;
-age18         = age18&year2.;
-headocc       = headocc&year2.;
-headind       = headind&year2.;
-wifeage       = wifeage&year2.;
-wifeedu       = wifeedu&year2.;
-wifeocc       = wifeocc&year2.;
-wifeind       = wifeind&year2.;
-WGT           = WGT&year2.;
-secjob    	  = secjob&year1.;
-%end;
+union		  = union&year1.;
+relocated	  = relocated&year1.;
+num_addljobs  = num_addljobs&year2.; *changed in tenure.sas to be contemporaneous;
 
-foodin        = foodin&year1.;
-foodout       = foodout&year1.;
+foodin        = Foodin&year2.;
+foodout       = Foodout&year2.;
 HWHW          = HWHW&year1.;
 HWHead        = HWHead&year1.;
 HWWife        = HWWife&year1.;
@@ -336,10 +391,9 @@ WifeTakeVacation  = WifeVacation&year1.;
 WifeVacationWeek  = WifeVacationWks&year1.;
 if WifeVacationWeek = 0 then WifeVacationWeek=.;
 
-leadmarital   = headmarital&year2.;
 faminc        = faminc&year2.;
-headlabor     = headlabor&year2.;
-wifelabor     = wifelabor&year2.;
+headlabor     = HeadLabor&year2.;
+wifelabor     = WifeLabor&year2.;
 headhour      = headhour&year2.;
 wifehour      = wifehour&year2.;
 headextra     = headextra&year2.; 
@@ -356,17 +410,7 @@ year = &year1.;
 if faminc<1 then faminc = 1;
 
 
-/*get lagged variables*
-%let year0 = %eval(&year1-1);
-%let year_1 = %eval(&year1-2);
-%let year_2 = %eval(&year1-3);
-construp_lag1 = construp&year0.;
-constrdown_lag1 = constrdown&year0.;
-wifeconstrup_lag1  = wifeconstrup&year0.;
-
-faminc_lag1 = faminc&*/
-
-
+/*
 if headage ge 22 and headage < 68;   ******Head age restriction;
 *if wifeage ge 66 then delete;
 *if headstatus in (1, 2, 3);          *****Head is working, unemployed or temporarily laid off;
@@ -391,12 +435,14 @@ if year = 1967 and headmarital ne 1 then do;
    if HWHW > 8320 then delete; 
    HWHead = HWHW;
    end;
+*/
 
-keep pid year WGT construp constrdown wifeconstrup homeprod repair marwage leadmarital wifeage wifeedu wifeocc wifeind dis 
-     gender headage headmarital headedu headrace headstatus selfemploy age2 age6 age12 age18 children famsize headocc 
-     headind foodin foodout HWHW HWHead HWWife HWHeadWeekly HWWifeWeekly HeadTakeVacation HeadVacationWeek WifeTakeVacation 
-     WifeVacationWeek faminc headlabor wifelabor headhour wifehour lagheadhour lagwifehour headextra wifeextra headsalaried wifesalaried 
-	 food laborInc estHW totHW homeown tenure secjob mainwage sameemp_mths;  
+keep pid year WGT construp constrdown wifeconstrup homeprod repair marwage headmarital wifeage wifeedu 
+	 wifeocc wifeind dis gender headage headmarital headedu headrace headstatus selfemploy age2 age6 
+	 age12 age18 children famsize headocc headind foodin foodout HWHW HWHead HWWife HWHeadWeekly 
+	 HWWifeWeekly HeadTakeVacation HeadVacationWeek WifeTakeVacation WifeVacationWeek faminc headlabor
+	 wifelabor headhour wifehour lagheadhour lagwifehour headextra wifeextra headsalaried wifesalaried 
+	 homeown tenure secjob mainwage sameemp_mths union relocated num_addljobs;  
 run;
 %mend;
 %variable(1967, 1968); %variable(1968, 1969); %variable(1969, 1970); %variable(1970, 1971);
@@ -419,7 +465,7 @@ Not Seasonally Adjusted
 Area:         U.S. city average
 Item:         All items
 Base Period:  1982-84=100;
-proc import datafile="..\..\input\cpi.csv"
+proc import datafile="C:\Users\bmccully\Documents\pter-master\build\input\cpi.csv"
 			out=cpi
 			dbms=csv
 			replace;
@@ -454,18 +500,22 @@ data out.pooled;
 	headmarried = 0;
 	if headmarital in (1,5) then headmarried = 1;
 	leadmarried = 0;
-	if leadmarital in (1,5) then leadmarried = 1;
-	*recode whether one is salaried or hourly. Coding irregularities before and after 1976;
+	if headmarital in (1,5) then leadmarried = 1;
+	*recode whether one is salaried or hourly. Coding irregularities before and after 1976.
+	 	Prior to 1975, if paid hourly then headsalary=1. 
+		1975 and later if paid hourly then headsalary=3;
+	*assume that if respondent doesn’t earn income from more-than-usual hours per week (headextra=1),
+		he is salaried.;
 	if year<1975 AND headextra^=0 then headsalary = (headsalaried=5 & headextra=5);
 	if year<1975 AND headextra^=0 then headhourly = ((headsalaried=1 & headextra=5) OR
 	   	     	 	      	   	         (headsalaried=0 & headextra=1));
-	if year>=1975 AND headsalaried^=0 then headsalary = (headsalaried=1 AND headextra^=1);
-	if year>=1975 AND headsalaried^=0 then headhourly = (headsalaried=3 OR 
-	   	      	  		       		    (headsalaried=1 & headextra=1));
+	if year>=1975 AND headsalaried^=0 then headsalary = (headsalaried=1);
+	if year>=1975 AND headsalaried^=0 then headhourly = (headsalaried=3);
 	if headmarried=1 & wifesalaried^=0 then wifesalary = (wifesalaried=1);
-	if headmarried=1 & wifesalaried^=0 then wifehourly = (wifesalaried=3 & wifeextra=1);
+	if headmarried=1 & wifesalaried^=0 then wifehourly = (wifesalaried=3);
 	*recode whether one receives extra income from working more hours than usual in a week;
-	if headsalary=1 then headext = (headextra=1);
+	if year<1975 then headext = ((headsalaried=0 & headextra=1) OR (headsalary=1 & headextra=1));
+	if year>=1975 then headext = ((headsalary=1 & headextra=1) OR (headhourly=1));
 	if headmarried=1 & wifesalary=1 then wifeext = (wifeextra=1);
 	*homeowner dummy;
 	homeowner = (homeown=1);
@@ -489,11 +539,35 @@ data out.pooled;
 	if year<1978 & mainwage in (9.99,0) then mainwage=.;
 	else if year>=1978 & mainwage in (99.99,0) then mainwage=.;
 
+	*union membership variable is different only in 1968;
+	if year=1968 & union in (1,2,3,4,5,8) then union_dummy=1;
+	if year = 1968 & (union=0 OR union=9) then union_dummy=0;
+	if union^=. & year^=1968 then union_dummy = (union=1);
+
+	*dummies for whether household is constrained, i.e. if either husband or wife is constrained;
+	if year>=1971 AND year<=1976 then hhconstrup = (construp=1 OR wifeconstrup=1);
+
 	*adjust same employer, #months;
 	if sameemp_mths=999 then sameemp_mths=.;
 
 	/*adjust income for inflation*/
-	lnheadlabor = log(headlabor*cpi);
-	lnwifelabor = log(wifelabor*cpi);
-	lnfaminc = log(faminc*cpi);
+	headlabor = headlabor/cpi*100;
+	wifelabor = wifelabor/cpi*100;
+	faminc = faminc/cpi*100;
+	mainwage = mainwage/cpi*100;
+	marwage = marwage/cpi*100;
+
+	lnheadlabor = log(headlabor);
+	lnwifelabor = log(wifelabor);
+	lnfaminc = log(faminc);
+
+	*number of additional jobs;
+	if num_addljobs=0 OR num_addljobs=9 then num_addljobs = .;
+	if year=1968 then do;
+		if secjob=1 AND num_addljobs=5 then num_addljobs=1;
+		else if secjob=1 & num_addljobs=1 then num_addljobs=2;
+		else if secjob=5 then num_addljobs=0;
+	end;
+
+	
 run;

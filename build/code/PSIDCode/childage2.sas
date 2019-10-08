@@ -1,7 +1,11 @@
 /**this program produces the Homeprod.childage dataset
 	Brett McCully, August 2014
 **/
+
+%include 'setlibraries_psid.sas';
+
 %let idvars =    V3 V442 V1102 V1802 V2402 V3002 V3402 V3802 V4302 V5202 V5702 V6302 V6902 V7502 V8202 V8802 V10002 V11102 V12502 V13702;
+*age of youngest child under 18 in family unit;
 %let chagevars = v120 v1013 v1243 v1946 v2546 v3099 v3512 v3925 V4440 v5354 v5854 v6466 v7071 v7662 v8536 v8965 v10423 v11610 v13015 v14118;
 
 
@@ -21,12 +25,12 @@
 		if age&yr in (0,99) then age&yr=.;
 		keep id&yr. age&yr;
 	run;
-	proc sort data=psiddata.person;
+	proc sort data=temp.person;
 		by id&yr.;
 	run;
 	data chage&endyr;
-		%if %eval(&yr>1968) %then merge chage&endyr. psiddata.person(keep=id&yr. rel&yr. seqno&yr.);
-		%else merge chage&endyr. psiddata.person(keep=id&yr. rel&yr.);
+		%if %eval(&yr>1968) %then merge chage&endyr. temp.person(keep=id&yr. rel&yr. seqno&yr.);
+		%else merge chage&endyr. temp.person(keep=id&yr. rel&yr.);
 		;
 		by id&yr.;
 	run;
@@ -41,6 +45,6 @@
  %mend;
  
 %allyrs;
-data HomeProd.childage;
+data temp.ChildAge;
 	merge chage68 chage69 chage70 chage70 chage71 chage72 chage73 chage74 chage75 chage76 chage77 chage78 chage79 chage80 chage81 chage82 chage83 chage84 chage85 chage86 chage87;
 run;

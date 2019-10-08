@@ -1,0 +1,42 @@
+Determinants of Hours Constraints, Working $<$55 hours/week					
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	Upward Constr.	Upward Constr.	Downward Constr.	Downward Constr.
+					
+headmarried	Head married	0.0504***	0.00296	-0.0141***	-0.00610
+		(0.00827)	(0.0129)	(0.00518)	(0.00947)
+age2	Num. children age 0-2	0.00622**	0.000189	-0.000430	0.000634
+		(0.00293)	(0.00292)	(0.00146)	(0.00161)
+children	Num. children in HH	0.0167***	7.54e-05	-0.00551***	-0.00376*
+		(0.00299)	(0.00356)	(0.00139)	(0.00208)
+nonlabor_inc	Family non-labor income	-1.17e-06***	-7.86e-07**	2.96e-09	-1.29e-07
+		(2.81e-07)	(3.16e-07)	(1.77e-07)	(1.81e-07)
+log_headwage	Ln head wage	-0.0507***	-0.0430***	0.0128***	0.0107**
+		(0.00614)	(0.00743)	(0.00298)	(0.00472)
+homeowner	Homeowner	-0.0198**	0.00751	0.00885**	0.00738
+		(0.00796)	(0.00934)	(0.00379)	(0.00484)
+dislimithswrk	Disability limits house work	-0.0205*	-0.00947	0.0119*	0.00523
+		(0.0110)	(0.0110)	(0.00619)	(0.00701)
+headhourweekly	Head hours (weekly)	-0.00682***	-0.00578***	0.00184***	0.00246***
+		(0.000354)	(0.000401)	(0.000188)	(0.000235)
+headage	Head age	0.00466**		-0.000320	
+		(0.00217)		(0.00123)	
+headage_squared	$ Head age^2$	-9.93e-05***		8.63e-06	
+		(2.51e-05)		(1.48e-05)	
+headblack	Head black	0.0447***		0.000695	
+		(0.0120)		(0.00624)	
+2.headedu		-0.0333***		0.00596	
+		(0.0105)		(0.00560)	
+3.headedu		-0.0742***		0.00812	
+		(0.00967)		(0.00520)	
+4.headedu		-0.142***		-0.00794	
+		(0.0106)		(0.00629)	
+Constant	Constant	0.590***	0.569***	-0.0413*	-0.0634***
+		(0.0415)	(0.0289)	(0.0247)	(0.0181)
+					
+Observations		53,652	53,697	53,652	53,697
+R-squared		0.075	0.394	0.010	0.291
+Year FE		Yes	Yes	Yes	Yes
+Person FE		No	Yes	No	Yes
+Dep. var. mean		0.204	0.204	0.0544	0.0544
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					

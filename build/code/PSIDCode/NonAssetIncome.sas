@@ -2,7 +2,7 @@
 *********transfer income, other members' taxable income and other members' transfer income, head and wife     *********
 *********nonasset income is the sum of head and wife labor and transfer income                                *********
 *********We then merge them with the existing psiddata.income                                                 *********;
-%include '..\setlibraries_psid.sas';
+%include 'setlibraries_psid.sas';
 
 data inc1968;
 set temp.income1968;
