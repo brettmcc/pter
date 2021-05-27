@@ -5,23 +5,9 @@
 *#*
 
 ### Data files ###
-*.csv
-*.csv
-*.dta
-*.sas7bdat
-*sas7bcat
-*.zip
-*/input/
+
 
 ### Output Files ###
-*.log
-*.lst
-*.pdf
-*.ps
-*.html
+
 
 ##Windows files##
-*.docx
-*.doc
-*.xls
-*.xlsx
