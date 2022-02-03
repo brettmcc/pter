@@ -5,7 +5,9 @@
 *#*
 
 ### Data files ###
-
+*.sas7bdat
+*.csv
+*.dta
 
 ### Output Files ###
 
