@@ -594,34 +594,7 @@ drop rowlab uc_3wvs
 
 /*Table 1.f -- Proportion of underemployed by hours bins and 
 	share underemployed by hours bin. */
-use "$analysisin\pooled_all.dta",clear
-drop if headhours_bin==""
-
-collapse (mean) construp [aweight=wgt],by(headhours_bin)
-
-graph bar construp ,over(headhours_bin) ytitle("") /*
-	*/b1title(Hours per week) title(Fraction Underemployed by Hours Bin)/*
-	*/ note("Source: PSID, weighted")
-graph export $analysisout\charts\fraction_underemployed_by_hours.png,/*
-	*/replace
-
-use "$analysisin\pooled_all.dta",clear
-drop if headhours_bin==""
-
-egen total_underemp = total(construp*wgt)
-bysort headhours_bin: egen underemp_byhours = total(construp*wgt)
-contract total_underemp underemp_byhours headhours_bin
-
-gen share_construp_by_hours = underemp_byhours/total_underemp
-label variable share_construp_by_hours /*
-	*/"Share of underemployed in each hours bin"
-
-graph bar share_construp_by_hours,over(headhours_bin) /*
-	*/title(Share of Underemployed by Hours Bin) /*
-	*/b1title(Hours per week) note("Source: PSID, weighted")/*
-	*/ ytitle(" ")
-graph export $analysisout\charts\share_of_underemployed_by_hours.png,/*
-	*/replace
+//--moved to charts.do
 
 /*   Table 2   -- Regression results for constraint transitions   */
 use "$analysisin\pooled.dta",clear

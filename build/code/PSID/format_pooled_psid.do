@@ -1,12 +1,9 @@
-global buildout "C:\Users\bmccully\Documents\pter-master\build\output"
-global analyisin "C:\Users\bmccully\Documents\pter-master\analysis\input"
-
-global sample = 4 //==1 if Brett's preferred sample, ==4 if LG's 2009 sample restrictions
+global sample = 1 //==1 if Brett's preferred sample, ==4 if LG's 2009 sample restrictions
 
 clear all
 set more off
 
-use "$buildout\pooled.dta",clear
+use "${dir}\build\output\pooled.dta",clear
 
 drop if year==1987 //for some reason have one observation in 1987
 
@@ -213,7 +210,7 @@ label values headmarital marital
 label variable wifehour "Wife work hours"
 
 
-save $analysisin\pooled_all.dta,replace
+save "${dir}\analysis\input\pooled_all.dta",replace
 
 
 /*output time series datasets*/
@@ -222,7 +219,7 @@ preserve
 collapse (sum) construp35 headstatus if headstatus==1 [iweight=wgt], by(year)
 gen prop_underemp_lt35_psid = construp35/headstatus
 label var prop_underemp_lt35_psid "PSID, all"
-save "$buildout\psid_construp35_yrly.dta",replace
+save "${dir}\build\output\psid_construp35_yrly.dta",replace
 restore
 
 *underemployed full time
@@ -231,7 +228,7 @@ collapse construp headstatus if headstatus==1 & headfulltime==1 /*
 	*/[iweight=wgt], by(year)
 gen prop_underemp_ft_psid = construp/headstatus
 label var prop_underemp_ft_psid "Underemp., FT"
-save "$buildout\psid_construp_ft_yrly.dta",replace
+save "${dir}\build\output\psid_construp_ft_yrly.dta",replace
 restore
 
 
@@ -240,7 +237,7 @@ preserve
 collapse (sum) construp35 headstatus if headstatus==1 & headage>=50 & headage<=70 [iweight=wgt], by(year)
 gen prop_underemp_50to70_psid = construp35/headstatus 
 label var prop_underemp_50to70_psid "PSID, ages 50-70"
-save "$buildout\psid_construp35_age50to70_yrly.dta",replace
+save "${dir}\build\output\psid_construp35_age50to70_yrly.dta",replace
 restore
 
 *underemployed, full and part time
@@ -248,7 +245,7 @@ preserve
 collapse (sum) construp headstatus if headstatus==1 [iweight=wgt], by(year)
 gen prop_underemp_psid = construp/headstatus
 label var prop_underemp_psid "PSID, all"
-save "$buildout\psid_construp_yrly.dta",replace
+save "${dir}\build\output\psid_construp_yrly.dta",replace
 restore
 
 /*Sample restrictions*/
@@ -290,4 +287,4 @@ if $sample==4 {
 	 }
 }
 
-save "$analyisin\pooled.dta",replace
+save "${dir}\analysis\input\pooled.dta",replace

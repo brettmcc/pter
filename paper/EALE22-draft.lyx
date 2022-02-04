@@ -1,0 +1,2346 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{amssymb, amsmath, array}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage{threeparttable}
+\usepackage{latexsym}
+
+\setlength{\textwidth}{17.1cm} \setlength{\textheight}{22.5cm}
+\setlength{\headheight}{-1cm} \setlength{\footskip}{1cm}
+\setlength{\oddsidemargin}{-0.5cm}
+\setlength{\evensidemargin}{-0.5cm}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style \use_bibtopic false
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Labor Market Hours Constraints and Home Production
+\end_layout
+
+\begin_layout Author
+Geng Li
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Federal Reserve Board, Washington, DC 20551.
+  E-mail: Geng.Li@frb.gov.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Brett A.
+ McCully
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Collegio Carlo Alberto, Turin, Italy 10122.
+  E-mail: brett.mccully@carloalberto.org.
+\begin_inset Newline newline
+\end_inset
+
+We thank Daniel Aaronson, Charlie Brown, Karen Dynan, Dmitriy Stolyarov,
+ and seminar and conference participants for helpful discussions and comments.
+ Colin Motley, Hannah Farkas, and Ilaria Malisan provided superb research
+ assistance.
+ The views presented in this paper are those of the author and are not necessari
+ly those of the Federal Reserve Board and its staff.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%EndAName
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+\paragraph_spacing other 1.1
+\noindent
+We document that labor market hours constraints are more pervasive than
+ suggested by standard measures of labor market slack.
+ We show that households adjust to such market hours constraints by increasing
+ time spent on home production.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+A great deal of attention from policy makers and researchers has focused
+ on the elevated level of workers who are part-time for economic reasons
+ (PTER) since the Great Recession.
+ While PTER is an important measure produced by the Bureau of Labor Statistics
+ to measure labor market slack in the economy, we find that it significantly
+ understates it.
+ Using two nationally representative household surveys, we find that many
+ full-time workers cannot work as many hours as they would prefer.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The survey data we use are the Panel Study of Income Dynamics (PSID) and
+ the Health and Retirement Study (HRS).
+ Each survey asked respondents, “Would you have liked to work more if you
+ could have found more work?” and, “Was there more work available on (any
+ of your jobs) so that you could have worked more if you had wanted to?”
+ We count a worker as facing work-hour constraints if he responded that
+ he wanted to, but was not able to, work more hours.
+ Separately, both surveys also collected data on how many hours an individual
+ worked in a typical week, which let us identify the part-time workers and
+ full-time workers.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We find that the share of part-time workers who were facing work-hour constraint
+s match with the CPS PTER series very closely , indicating that the survey
+ questions capture the PTER concepts well.
+ However, the share of all workers (part-time and full-time) who are work-hour
+ constrained, while sharing a similar trend, is much higher than the CPS
+ PTER rate, suggesting labor market slack is much more pervasive than the
+ PTER rate alone implies.
+ Notably, the margin widened during the Great Recession and its aftermath.
+ We then study the transition dynamics of such work-hour constraints and
+ find that their persistence is quite high.
+ Fifty percent the constrained workers remain constrained the next year
+ and, interestingly, the ratio is not sensitive to the duration of the experienc
+ed constraints.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We also explore the factors that drive workers into the constrained situations
+ and how constrained workers deal with such scenarios.
+ We find that having an additional child in the family is not predictive
+ for becoming constrained (holding earnings constant), while reductions
+ in family income or increases in wage rates are associated with a greater
+ likelihood of being work-hour constrained.
+ We also find that constrained workers increase home production, measured
+ using housework hours and food-at-home share in total food expenses, to
+ equalize the marginal utility of consumption and leisure in the constrained
+ scenario.
+\end_layout
+
+\begin_layout Section
+\paragraph_spacing onehalf
+\noindent
+Data
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+One important input for measuring aggregate labor market slack is the Bureau
+ of Labor Statistics' (BLS) Part-Time for Economic Reasons (PTER) indicator,
+ included in the BLS' U-6 measure of labor market underutilization.
+ PTER measures the number of employed part-time workers who would like to
+ work full-time but are not able to due to economic circumstances (e.g., unfavorab
+le business conditions or an inability to find full-time work).
+ A major shortcoming of PTER is that it cannot capture labor market slack
+ among 
+\shape italic
+full-time
+\shape default
+ workers.
+ We use two panel survey datasets with questions regarding workers' labor
+ market hours constraints to extend measures of labor market slack to incorporat
+e full-time workers who wish to work additional hours.
+ The rich set of variables in these panel datasets also allows us to conduct
+ supplementary analyses on the causes and consequences of such labor market
+ hours constraints.
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+The PSID and the HRS
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The main data source for our analysis is the Panel Study of Income Dynamics
+ (PSID).
+ We also use the Health and Retirement Study (HRS) data to supplement our
+ analysis to cover more recent years.
+ Both the PSID and the HRS are longitudinal household surveys nationally
+ representative for the United States.
+ In addition to rich employment, income, and demographic data, both surveys
+ collect information on labor market hours constraints and home production.
+ Combining both surveys allows us to cover over 40 years of labor hours
+ constraint dynamics with a rich set of demographic and labor market covariates.
+ 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The PSID collected information on labor market hours constraints annually
+ from 1968 to 1986.
+ The HRS, a biennial survey started in 1992, asks about respondents' hours
+ constraints each survey year.
+ One key difference between the surveys is that the HRS only questions individua
+ls age 50 and older while the PSID surveys household members from all age
+ groups.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Table 
+\begin_inset Formula $\ref{Variable}$
+\end_inset
+
+ summarizes the hours constraints questions asked on the PSID and the HRS.
+ From 1968 to 1987 the PSID asked household heads the following four questions,
+ referencing the year prior to the survey year:
+\end_layout
+
+\begin_layout Enumerate
+\paragraph_spacing onehalf
+\noindent
+\begin_inset Quotes eld
+\end_inset
+
+Would you have liked to work more if you could have found more work?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\paragraph_spacing onehalf
+\noindent
+\begin_inset Quotes eld
+\end_inset
+
+Was there more work available on (any of your jobs) so that you could have
+ worked more if you had wanted to?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\paragraph_spacing onehalf
+\noindent
+\begin_inset Quotes eld
+\end_inset
+
+Would you have preferred to work less even if you had earned less money?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\paragraph_spacing onehalf
+\noindent
+\begin_inset Quotes eld
+\end_inset
+
+Could you have worked less if you had wanted to?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We count the head as being upside (downside) constrained if the head reported
+ that he/she wanted to, but was not able to, work more (fewer) hours.
+ The HRS asks essentially the same questions in all waves.
+ However, unlike the PSID, the HRS questions refer to the time of the survey.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+HRS also collects time use information.
+ However, such information is collected in the 
+\begin_inset Quotes eld
+\end_inset
+
+off-year,
+\begin_inset Quotes erd
+\end_inset
+
+ i.e., one year after the main survey.
+ As a result, unlike the PSID, the time use information and labor market
+ hours constraints information in the HRS does not refer to the same year,
+ limiting the extent to which we can use these data.
+\end_layout
+
+\end_inset
+
+ One advantage of the HRS data is that in addition to these qualitative
+ questions, the survey also asks the constrained households what their desired
+ number of market work hours were, a question not asked in the PSID.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We use both a direct and an indirect measure of time spent on home production.
+ The direct measure is the annual hours of housework, and the indirect measure
+ is the ratio between expenditures on eating out and total food expenditures
+ (henceforth the food-out ratio).
+ Fixing the ratio of prices between eating out and at home, a lower food-out
+ ratio implies more eating and cooking at home, hence a higher level of
+ housework.
+ We leverage the PSID to for analyzing homework responses to hours constraints,
+ and both surveys for the food-out analysis.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+While both the PSID and the HRS collected housework hours information, the
+ HRS (a biennial survey) data was collected one year off from the reference
+ year of labor hour constraints.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+For example, the 1994 survey collected data on respondents' 1994 labor hours
+ constraints and their 1993 home work hours.
+\end_layout
+
+\end_inset
+
+ As a result, unlike the PSID, the HRS labor hours constraints and housework
+ hours data do not refer to the same period.
+ However, we can construct food-out ratios for both surveys.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The PSID did not ask food-out expenditure separately in 1968 and skipped
+ the entire food expenditure question in 1973.
+ See 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "li2010new"
+literal "false"
+
+\end_inset
+
+ for more details about the food expenditure variables in the PSID data.
+ The HRS did not collect food data in 1998.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We restrict the PSID sample to households whose heads are between 22 and
+ 67 years old and the HRS sample to households whose heads are between 50
+ and 67 years old.
+ We further restrict the sample to households whose heads were either working
+ or temporarily laid off, remove those with over 4,160 annual labor market
+ work hours or housework hours (over 80 hours per week), and remove those
+ with extremely low or high total family income.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Should revisit this paragraph.
+ We make a number of additional sample restrictions, but Brett would prefer
+ fewer, while adding one to restrict to those earning additional money for
+ additional work.
+ Also, potentially confusing to the reader because we only apply these sample
+ restrictions for the home production analysis, not for the aggregate time
+ series plots.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Summary Statistics
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Table 
+\begin_inset Formula $\ref{Summary}$
+\end_inset
+
+ presents summary statistics of key relevant variables in our PSID and HRS
+ samples, pooled across years.
+ All statistics are estimated using respective PSID and HRS weights and
+ all income and expenditure variables are adjusted using the 1986 dollars.
+ Our estimates indicate that a significant share of workers are bound by
+ market work hours constraints.
+ Specifically, in the PSID sample the upside constraints of labor market
+ hours are binding more frequently than the downside constraints.
+ Nearly 19 percent of our sample observations (household 
+\begin_inset Formula $\times$
+\end_inset
+
+ year) reported that the household heads were not able to increase work
+ hours when they wanted to (column 1).
+ However, fewer than 6 percent of the sample were not able to decrease hours
+ when they wanted to (column 3).
+ In contrast, the two constraints bind with more similar likelihood in the
+ HRS data (columns 2 and 4).
+ Several factors likely have contributed to the differences between the
+ PSID and the HRS estimates.
+ First, older households on average have more assets that help smooth consumptio
+n against income fluctuations, reducing their demand for working longer
+ hours.
+ Second, it is possible that older workers are more likely to prefer working
+ fewer hours because of health-related reasons.
+ Indeed, the PSID households older than 50 had a lower odds (13.3 percent)
+ of being upside constrained households and a higher odds (6.3 percent) of
+ being downside constrained.
+ Third, part of the remaining difference may be related to structural and
+ institutional changes in the labor markets over time—the PSID data cover
+ from late-1960s to mid-1980s, whereas the HRS data cover from early 1990s
+ to most recent years.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The PSID also asked whether a worker, either salaried or paid hourly, could
+ get extra pay for extra work.
+ 47 percent of household heads in our sample reported being able to receive
+ extra pay for extra work.
+ Presumably, upside constraints are more relevant and applicable for such
+ workers.
+ Indeed, 64 percent of the upside-constrained workers reported able to receive
+ extra pay for extra work.
+ Among such workers, 25.5 percent reported being upside constrained, comparing
+ with 12.8 percent among the workers not to receive extra pay for extra work.
+ In a most conservative estimates that assumes the upside constraints applying
+ to only workers eligible for extra pay, about 12 percent of workers in
+ our sample were constrained.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Because both surveys track the same households over time, we can compute
+ the share of household heads that had ever been constrained during the
+ sample period.
+ For the PSID sample, 52 percent of sample households had been upside constraine
+d, more than doubling the share of ever-downside-constrained households
+ (25 percent).
+ Only 36 percent of the households were never constrained during the sample
+ period.
+ For the HRS sample, 23 percent of household heads had been upside constrained,
+ 17 percent downside constrained, and 63 percent never reported being constraine
+d in either direction.
+ In addition, the HRS data indicate that among the upside constrained household
+ heads, the hours they worked were on average 450 hours lower than their
+ desired hours.
+ Among the downside constrained household heads, the hours they worked were
+ on average 730 hours higher than their desired hours.
+ Relative to a full-time worker who work 2000 hours in a year, these estimates
+ imply a 23 percent underwork and a 36 percent overwork margin.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Regarding demographic differences among workers under various constraint
+ status, we find that, on the one hand, the downside constrained household
+ heads were more similar to the unconstrained, and the similarity is more
+ pronounced in the PSID sample.
+ On the other hand, the upside constrained household heads were significantly
+ different from the downside constrained and unconstrained heads.
+ In particular, the upside constrained heads tended to be younger, more
+ likely to be nonwhite, having lower educational attainments.
+ The HRS sample upside constrained were also more likely to be widowed or
+ divorced.
+ In addition, the downside constrained households earned a substantially
+ lower family income, and their heads worked fewer hours comparing with
+ the unconstrained workers.
+ In contrast, the downside constrained workers had a higher average hours
+ worked, reassuring the relevance of the self-reported constraint status.
+ Furthermore, we note that the mean hours worked of the upside constrained
+ were around 2,000 hours per year, suggesting that the upside constraints
+ were not only applicable to part-time workers.
+ Indeed, in the PSID sample, 28 percent of the upside-constrained worked
+ part-time, comparing with 19 percent among the unconstrained.
+ In the HRS sample, the unconstrained had a greater share of people working
+ part-time than the constrained.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Finally, looking at the housework hour and food-out ratio variables.
+ Because married and unmarried households have different home production
+ preferences, the estimates are presented separately.
+ Indeed, in the PSID data across constraint status, married households tended
+ to have higher housework hours and lower food-out ratios.
+ Our estimates indicate that, in both the PSID and the HRS data, the upside
+ constrained households had greater housework hours and lower food-out ratios,
+ a contrast that holds among both married and unmarried households.
+ The downside constrained households had similar or slightly lower housework
+ hours and slightly higher food-out ratios.
+\end_layout
+
+\begin_layout Section
+\paragraph_spacing onehalf
+\noindent
+Characterizing Working Hours Constraints
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Occupations and Industries of the Constrained
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Working for what types of jobs and in which industries would make people
+ more likely to have hours constraints? Regarding occupations, as shown
+ in table 
+\begin_inset Formula $\ref{OCCIND}$
+\end_inset
+
+, the four occupations with highest odds of upside constraints include nonfarm
+ laborers, operatives, transportation operators, and farm laborers, each
+ with over or near 25 percent of workers being constrained.
+ The four occupations with lowest odds of upside constraints include sales,
+ professionals, managers, and farmers.
+ The odds differences across occupations were larger.
+ The average of the top four occupations was 28.6 percent, more than three
+ times higher than the average of the bottom four occupations (8.9 percent).
+ Interestingly, the odds of upside and downside constraints were not inversely
+ correlated across occupations.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The correlation coefficient is insignificant and small.
+\end_layout
+
+\end_inset
+
+ For example, operatives ranked second for both constraints.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Turning to the odds of constraints in different industries, we find that
+ the construction and entertainment industries had the highest odds of upside
+ constraints (both above 25 percent), whereas the agriculture and finance
+ industries have the lowest odds (near 10 percent).
+ Also, we note that the cross-industry dispersion of the upside-constraint
+ odds is nearly 40 percent smaller than the cross-occupation dispersion.
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Trends of Working Hours Constraints
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The PSID estimates indicate that a large share of prime-age household heads
+ were unable to work up to his/her desired number of hours in the labor
+ market during the period from late 1960s to the middle of the 1980s.
+ Among the constrained workers, over 60 percent can benefit financially
+ and earn extra income should they be able to work more hours.
+ Moreover, over 70 percent of the constrained worked full time.
+ The significant prevalence of such labor hours constraints prompts the
+ question whether the standard metrics such as share of people involuntarily
+ working part time reveal the full picture of such frictions in the labor
+ market and whether the survey-based measures of labor hours constraints
+ may shed light on the state of the labor market over business cycles.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The most widely used indicator for tracking involuntary part-time workers
+ is complied by the Bureau of Labor Statistics (BLS) using the Current Populatio
+n Survey (CPS) data, which is often referred to as the share of working
+ part-time for economic reasons (PTER).
+ To introduce the PSID and the HRS data as useful additional data sources
+ of studying labor market constraints, we show that the similarly defined
+ series these two surveys share similar trends as the BLS PTER series.
+ Specifically, we show that the shares of involuntary part-time workers
+ (those who were upside constrained and working fewer than 35 hours per
+ week) measured in the PSID and HRS resemble the PTER rates estimated using
+ the CPS data.
+ As shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparing-PTER-with-psid"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, during the overlapping sample period of 1967 to 1986, the CPS PTER series
+ and the share of involuntary part-time workers in the PSID have similar
+ levels and fluctuations, with the correlation of the two series being about
+ 0.7, and about 0.6 for the detrended series.
+ Both the PTER and the PSID series are highly countercyclical, with more
+ people involuntarily working part-time or unable to work up to the ideal
+ number of hours during recessions.
+ Interestingly, peaks in the PSID series appear to overlap with NBER recession
+ dates more closely than the PTER series.
+ Likewise, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparing-PTER-with-hrs"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ the CPS PTER estimates of people older than 55 (a subpopulation comparable
+ to the HRS sample) also share a trend similar to the share of upside constraine
+d in the HRS, with both showing a substantial increase during the Great
+ Recession.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The two series have a correlation coefficient of near 0.85 (0.74 for the detrended
+ series).
+\end_layout
+
+\end_inset
+
+ In addition, the CPS PTER estimates of the entire population (the black
+ series) shared a similar trend as the estimates of those aged 55 and above.
+ All told, the PSID and HRS appear to have measured involuntary part-time
+ work in a way consistent with the CPS PTER.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Because only a fraction of those upside constrained were part-time workers,
+ the PTER series does not reveal the full extent to which the labor force
+ was under working hours constraints.
+ Indeed, as shown in figure 3, the overall prevalence of upside hour-constraints
+ seen in both the PSID and HRS is much higher than the PTER rates, and such
+ a gap is quite stable over the past several decades.
+ Second, despite the sizable gaps in their levels, the PSID and HRS work-hour-co
+nstraint estimates are highly correlated with the CPS PTER series over the
+ respective overlapping period.
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Persistence of Working Hours Constraints
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+To the best of our knowledge, most of the existing work pertinent to the
+ transition dynamics of market work hours constraints uses the CPS data
+ and focuses on involuntary part-time workers.
+ Because the CPS is a relatively short panel, the analysis is largely limited
+ to the dynamics within a year.
+ As a result, relatively little is known regarding the reoccurrence and
+ persistence of such constraints over a longer period, in particular among
+ those who work full time.
+ which can be an important element to further understanding of the nature
+ and dynamics of these constraints.
+ We present in table 
+\begin_inset Formula $\ref{Markov}$
+\end_inset
+
+ some simple statistics of the transition dynamics between years 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+1$
+\end_inset
+
+, and how the dynamics vary by part-time status.
+ Because the upside constraints are much more prevalent and common than
+ the downside constraints and have more direct welfare and monetary implications
+, our analysis will focus on such constraints.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Panel A shows the raw transition matrix of three states--upside constrained,
+ unconstrained, and downside constrained--for all PSID household heads in
+ our sample that can be linked between two years.
+ We note that the upside constraints are rather persistent, with slightly
+ fewer than half (48.2 percent) of the constrained workers remaining under
+ such constraints one year later.
+ Downside constraints, by contrast, are less persistent, with about one
+ third of the constrained workers remaining so-constrained one year later.
+ In addition, each year, 11.1 percent and 4.7 percent the unconstrained workers
+ became upside and downside constrained, respectively.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Panel B illustrates how the transitions in and out of the upside constraints
+ vary with the part-time status and presents four 2
+\begin_inset Formula $\times$
+\end_inset
+
+2 transition matrices that correspond to working full-time in both years,
+ part-time in both years, changing from full-time to part-time, and from
+ part-time to full-time, respectively.
+ The panel reveals several patterns: first, the upside constraints were
+ fairly persistent across all four groups of workers, with the remaining
+ constrained likelihood between 42 to 56 percent.
+ Second, part-time workers appear to have a higher chance of remaining constrain
+ed, but those switch to working full-time in year 
+\begin_inset Formula $t+1$
+\end_inset
+
+ had a better chance of escaping the constraints.
+ Third, the unconstrained employees who changed from working full-time to
+ working part-time had the highest chance of becoming constrained (17.7 percent),
+ nearly twice as high as the odds of those who continued working full-time
+ (9.8 percent).
+ On balance, the statistics in panel B are consistent with the notion that
+ many of those working part-time did so involuntarily and were vulnerable
+ to such constraints.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Panel C takes a different perspective and presents the year 
+\begin_inset Formula $t+1$
+\end_inset
+
+ status of those who were constrained in year 
+\begin_inset Formula $t$
+\end_inset
+
+ by their part-time status in year 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Among the constrained full-time workers, about 85 percent stayed working
+ full-time and 15 percent changed to working part-time.
+ The full-time--part-time transition rate among the constrained appears
+ to be higher than this rate for the entire labor force (see, for example,
+ 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "borowczyk2019employment"
+literal "false"
+
+\end_inset
+
+).
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Another factor accounting for difference between our statistics and those
+ reported in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "borowczyk2019employment"
+literal "false"
+
+\end_inset
+
+ is that the latter includes transitions into unemployment, other employment,
+ and out of labor force, whereas our sample includes only those working
+ positive hours in both year 
+\begin_inset Formula $t$
+\end_inset
+
+ and year 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Regardless whether changing to working part-time, roughly half of the workers
+ remained constrained the next year.
+ For part-time workers, about 55 percent of those constrained in year-
+\begin_inset Formula $t$
+\end_inset
+
+ worked full-time the next year.
+ Interestingly, 56 percent of those working full-time continued to report
+ having working hours constraints, comparing with 42 percent of those remaining
+ working part-time.
+ The difference suggests that changing to working full-time was due to hours
+ constraints.
+ However, working full-time alone, for many workers, did not completely
+ relax the constraints.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Finally, we note that the results presented in table 
+\begin_inset Formula $\ref{Markov}$
+\end_inset
+
+ are little changed when we restrict the sample to those who would receive
+ additional pay if they worked extra hours.
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Factors Accounting for Transitions in and out of the Constraint
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We now estimate a econometric model to quantify the extent to which various
+ demographic, labor market, and family income factors are associated with
+ transition into and out of upside hours constraints.
+ We underscore that this is not a structural model that intends to uncover
+ causal relationship.
+ Rather, we are interested in the degree to which such transitions can be
+ accounted for by worker characteristics observed by econometricians.
+ Specifically, we estimate the following logistic model for becoming upside
+ constrained:
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+\begin_inset Formula 
+\begin{eqnarray}
+Enter_{t,t+1}^{i} & = & \beta_{0}+\beta_{1}Age^{i}+\beta_{2}Black^{i}+\beta_{3}Edu^{i}+\beta_{4}Lifecycle^{i}+\beta_{5}\Delta Income_{t,t+1}^{i}\\
+ &  & +\beta_{6}PT\sim FT_{t,t+1}^{i}+\beta_{7}Year_{t}.\label{logitbc}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $Enter_{t,t+1}^{i}$
+\end_inset
+
+ is a indicator that is equal to one if worker 
+\begin_inset Formula $i$
+\end_inset
+
+ became upside constrained in 
+\begin_inset Formula $t+1$
+\end_inset
+
+, 
+\begin_inset Formula $Age$
+\end_inset
+
+ is a third-order polynomial of worker's age, 
+\begin_inset Formula $Black$
+\end_inset
+
+ a race dummy, and 
+\begin_inset Formula $Edu$
+\end_inset
+
+ a vector of dummies indicating worker's educational attainment.
+ In addition 
+\begin_inset Formula $Lifecycle$
+\end_inset
+
+ is a vector of lifecycle events including homeowner status, marital status,
+ and number of children changes.
+ 
+\begin_inset Formula $\Delta Income$
+\end_inset
+
+ includes log differences of family income and wage rate between 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+1$
+\end_inset
+
+, and 
+\begin_inset Formula $PT-FT$
+\end_inset
+
+ is a vector of full-time, part-time work status changes, with working full-time
+ in both years being the omitted group.
+ Finally, we control for year fixed effects, 
+\begin_inset Formula $Year_{t}$
+\end_inset
+
+.
+ The model is estimated using the sample of workers unconstrained in year
+ 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ The estimated odds ratios are reported in column 1 of table 
+\begin_inset Formula $\ref{TransitionReg}$
+\end_inset
+
+.
+ Odds ratios of continuous variables are evaluated for a one-standard deviation
+ change.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Our results reveal that black workers on average are 72 percent more likely
+ to become constrained than otherwise comparable white workers in a given
+ year, and that the likelihood of becoming constrained substantially diminishes
+ with education levels.
+ Regarding lifecycle events, workers remained married had a higher odds
+ of becoming constrained relative to the workers remained single (the omitted
+ group).
+ Moreover, having an additional child implies a 17 percent higher chance
+ of becoming constrained, likely reflecting increased need of family spending.
+ Indeed, a one-standard deviation increase in log of family income led to
+ a nearly 45 percent reduction of the likelihood of being constrained, consisten
+t with a positive income effect on labor supply.
+ Moreover, higher wage rates were associated with higher odds of becoming
+ constrained, consistent with a positive substitution effect.
+ Regarding part-time status changes, relatively to those who worked full-time
+ in both years (the omitted group), other workers had a higher chance of
+ becoming constrained, suggesting that such hours constraints were more
+ likely to be binding for part-time workers.
+ Specifically, people who worked part-time in year 
+\begin_inset Formula $t+1$
+\end_inset
+
+ had a 60 to 70 percent higher odds than the omitted group, and the year-
+\begin_inset Formula $t$
+\end_inset
+
+ part-time workers who became full-time in year 
+\begin_inset Formula $t+1$
+\end_inset
+
+ has a 20 percent higher odds.
+ Moreover, we estimate the model using such unconstrained workers who would
+ get extra pay for working extra hours (column 2).
+ Most of the results are qualitatively the same as those in column (1),
+ with the race estimates and the gradient of educational attainment estimates
+ being somewhat smaller.
+ One notable feature of the results presented is the low levels of the R-squared
+, 0.066 for the entire sample of year-
+\begin_inset Formula $t$
+\end_inset
+
+ unconstrained and 0.038 for the subsample of extra-pay eligible workers,
+ which highlight that transitions into such constraints are only accounted
+ for to a limited extent by observable factors.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We next study the transitions out of upside hours constraints, using a model
+ similar to eq.
+ (
+\begin_inset Formula $\ref{logitbc}$
+\end_inset
+
+).
+ We add two additional variables, changed jobs and got additional jobs,
+ to test if these were effective means of escaping such constraints.
+ We find that, among all workers reported being constrained in year 
+\begin_inset Formula $t$
+\end_inset
+
+, black workers and workers with lower levels of education were less likely
+ to escape the constraint (column 3).
+ Workers who remained married in both years also had a lower likelihood
+ of escaping relative to those who stayed single.
+ However, changes of number of children were not associated with the odds
+ of becoming unconstrained.
+ Consistent with a positive income effect and negative substitution effect
+ on labor supply, higher family income and lower wages were associated with
+ greater likelihood of no longer being constrained.
+ In addition, workers working part-time in both years were less likely to
+ become unconstrained than those working full-time in both years, though
+ workers with full-time to part-time or part-time to full-time transitions
+ appear to have similar odds as the omitted group.
+ Finally, our estimates suggest that constrained workers who changed job
+ between year 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t+1$
+\end_inset
+
+ had a greater odds of becoming unconstrained, but getting additional jobs
+ did not change the likelihood.
+ The results estimated with the extra pay-eligible subsample (column 4)
+ are largely the same, with the exception that race no longer predicts constrain
+t status changes.
+ Similar to columns 1 and 2, the estimated values of R-squared were quite
+ low.
+ 
+\end_layout
+
+\begin_layout Section
+\paragraph_spacing onehalf
+\noindent
+Households Responses to Labor Hours Constraints
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Conceptual Framework
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+How do workers and their families deal with such labor hours constraints?
+ When worker want to work more hours than they are able to, the standard
+ labor supply model implies that their marginal utility of leisure is not
+ as large as the marginal utility associated with the additional income
+ earned from working the marginal hour.
+ To equalize these margins and achieve a second-best optimal, workers may
+ increase home production or increase labor supply of other household members
+ should it be available.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In addition to these two aspects, constrained workers may also reduce consumptio
+n, but saving, or increase borrowing.
+ We do not study these responses in this paper.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Model for Individual
+\end_layout
+
+\begin_layout Standard
+Consider a stylistic, simple model of one individual optimizing market and
+ housework labor supplies.
+ She chooses working 
+\begin_inset Formula $L$
+\end_inset
+
+ hours in the labor market, earning a unit of goods per hour, and 
+\begin_inset Formula $H$
+\end_inset
+
+ hours on housework.
+ Assuming her consumption is produced by combining housework and goods purchased
+ with wages earned in the labor market with a Cobb-Douglas technology 
+\begin_inset Formula $C=L^{\alpha}H^{(1-\alpha)}$
+\end_inset
+
+.
+ Her utility function is defined as 
+\begin_inset Formula $U=log(C)+log(1-L-H)$
+\end_inset
+
+, where 
+\begin_inset Formula $1-L-H$
+\end_inset
+
+ indicates her leisure time net of market and housework.
+ The optimality condition 
+\begin_inset Formula ${\displaystyle \frac{dU}{dL}=\frac{dU}{dL}=0}$
+\end_inset
+
+ implies the well known result 
+\begin_inset Formula ${\displaystyle \frac{L^{*}}{N^{*}}=\frac{\alpha}{1-\alpha}}$
+\end_inset
+
+.
+ Solving for optimal market and housework hours, we have 
+\begin_inset Formula ${\displaystyle L^{*}=\frac{\alpha}{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\displaystyle H^{*}=\frac{1-\alpha}{2}}$
+\end_inset
+
+.
+ The optimization has an interior solution if 
+\begin_inset Formula $\underline{L}\leq L^{*}\leq\overline{L}$
+\end_inset
+
+, where 
+\begin_inset Formula $\underline{L}$
+\end_inset
+
+ and 
+\begin_inset Formula $\overline{L}$
+\end_inset
+
+ are the lower and upper bounds of labor market hours, respectively.
+ If the individual has a binding market hour constraint, 
+\begin_inset Formula $\overline{L}<L^{*}$
+\end_inset
+
+.
+ At 
+\begin_inset Formula $\overline{L}$
+\end_inset
+
+, 
+\begin_inset Formula ${\displaystyle \frac{dU}{dL}>0}$
+\end_inset
+
+, i.e., the marginal value of leisure is too high relative to the marginal
+ value of consumption.
+ Accordingly, she will increase 
+\begin_inset Formula $H$
+\end_inset
+
+ above 
+\begin_inset Formula $H^{*}$
+\end_inset
+
+.
+ Specifically, 
+\begin_inset Formula ${\displaystyle \widehat{H}^{*}=\frac{(1-\alpha)(1-\overline{L})}{2-\alpha}}$
+\end_inset
+
+, where the optimal housework hours under binding market hour constraints
+ decreases with 
+\begin_inset Formula $\overline{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Model for Couple
+\end_layout
+
+\begin_layout Standard
+Now consider a model for a couple with spouse 
+\begin_inset Formula $A$
+\end_inset
+
+ and spouse 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ The optimization program becomes 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\max_{L_{A},L_{B},H_{A},H_{B}}log(C)+log(1-L_{A}-H_{A})+log(1-L_{B}-H_{B}),
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\text{where}\;\;\;C=(L_{A}+mL_{B})^{\alpha}(H_{A}^{\beta}H_{B}^{1-\beta})^{1-\alpha}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The couple consumes 
+\begin_inset Formula $C$
+\end_inset
+
+, which is a bundle of purchased goods and housework input.
+ Note that 
+\begin_inset Formula $m$
+\end_inset
+
+ denotes the relative market labor productivity (wages) between spouses.
+ The technology of producing 
+\begin_inset Formula $C$
+\end_inset
+
+ reflects the assumption that the spouses' market labor income is perfect
+ substitutes but their housework input is not.
+ In addition, the couple values about each individual's leisure equally.
+ The first order conditions are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\alpha}{L_{1}+mL_{2}}=\frac{1}{1-L_{1}-H_{1}}=\frac{(1-\alpha)\beta}{H_{1}},\;\;\;\text{and}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\alpha m}{L_{1}+mL_{2}}=\frac{1}{1-L_{2}-H_{2}}=\frac{(1-\alpha)(1-\beta)}{H_{2}},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which imply 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{m}=\frac{1-L_{2}-H_{2}}{1-L_{1}-H_{1}}=\frac{\beta H_{2}}{(1-\beta)H_{1}}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming spouse 
+\begin_inset Formula $B$
+\end_inset
+
+ has a lower market wage (
+\begin_inset Formula $m<1$
+\end_inset
+
+) and a higher equilibrium share of housework (
+\begin_inset Formula $\beta<\frac{1}{2}$
+\end_inset
+
+), we have 
+\begin_inset Formula $L_{1}>L_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $H_{1}<H_{2}$
+\end_inset
+
+.
+ Note that, for sufficiently small 
+\begin_inset Formula $m$
+\end_inset
+
+, equation (1) implies 
+\begin_inset Formula $L_{2}=0$
+\end_inset
+
+ because of nonnegative market labor hours.
+ The time allocation is consistent with the patterns observed for the majority
+ couples in our sample, where the household heads earned a higher wage and
+ worked more hours than the spouses in the labor market.
+ Some spouses worked zero hours in the labor market.
+ In addition, most heads worked positive but fewer hours than spouses on
+ housework.
+ 
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Empirical Results
+\end_layout
+
+\begin_layout Subsubsection
+\paragraph_spacing onehalf
+\noindent
+Single Households
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We first study how single workers respond to labor hours constraints.
+ Specifically, we estimate the following model to test if single workers
+ increase housework hours, 
+\begin_inset Formula $HWHead$
+\end_inset
+
+, in response to upside labor hours constraints, 
+\begin_inset Formula $UC$
+\end_inset
+
+, and reduce housework hours in response to downside constraints, 
+\begin_inset Formula $UC$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+\begin_inset Formula 
+\begin{equation}
+HWHead=\alpha+\beta_{u}UC+\beta_{d}DC+\gamma Z+\theta Income+\phi Part-time+\tau Year,\label{housework}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+where demographic vector 
+\begin_inset Formula $Z$
+\end_inset
+
+ includes an age polynomial and race and education dummies; 
+\begin_inset Formula $Income$
+\end_inset
+
+ represents a vector of family income decile dummies, 
+\begin_inset Formula $Part-time$
+\end_inset
+
+ indicates whether the head worked part-time in a given year; and the model
+ also controls for year fixed effects.
+ We first estimate a similar linear regression, the results of which are
+ reported in column 1 of table 
+\begin_inset Formula $\ref{Single}$
+\end_inset
+
+.
+ Our estimates indicate that single workers put, on average, about 47 more
+ hours in housework during the year the worker was upside constrained—8.5%
+ higher than the unconstrained.
+ However, housework hours did not appear to change when workers were under
+ downside constraints.
+ In addition, the estimated control variable coefficients suggest that household
+s whose heads were black, had lower educational attainments, were single
+ female, or were working part-time tend to have more housework hours.
+ Moreover, more children in the household tend to call for more housework.
+ Note that the distribution of housework hours is non-normal and censored
+ at zero.
+ Accordingly, we estimate a more robust specification, the tobit model.
+ The results, shown in column 2, are largely the same as in the linear model.
+ The higher housework hours of constrained workers may reflect unobserved,
+ persistent factors, such as household-specific preferences, instead of
+ the labor hours constraints.
+ To quantify this potential effect, we estimate a longitudinal model, controllin
+g for individual fixed effects.
+ The estimated increase of housework hours, 26 hours, is appreciably smaller
+ than in the linear and tobit model, but remain sizeable and statistically
+ significant.
+ In addition to unobservable factors, the smaller estimated coefficient
+ of 
+\begin_inset Formula $UC$
+\end_inset
+
+ may also be attributable to the upside hours constraints being rather persisten
+t.
+ Finally, In all specification, downside hours constraints did not appear
+ to have a significant bearing on housework hours.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We then reestimated these models using the subsample of workers who could
+ earn extra money if working extra hours.
+ Arguably, these were the workers with most tangible financial interests
+ of working longer hours, therefore representing the most relevant hours
+ constraints.
+ The results, presented in columns 4–6, are qualitatively the same as the
+ results estimated using the entire sample, with somewhat larger point estimates.
+ For example, the linear and tobit models show upside constrained workers
+ had over 55 more housework hours.
+\end_layout
+
+\begin_layout Subsubsection
+\paragraph_spacing onehalf
+\noindent
+Married Households
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Turning to married households, these households had three ways to respond
+ to heads' labor hours constraints as indicated by the model outlined above.
+ Consider the upside constraints, first, the head could increase his own
+ housework hours; second, the spouse could increase her housework hours;
+ and third, the spouse could increase her market labor supply as she was
+ not under such hours constraints.
+ We test these channels in the framework of equation (
+\begin_inset Formula $\ref{housework}$
+\end_inset
+
+), replacing 
+\begin_inset Formula $HWHead$
+\end_inset
+
+ with the three margins married households could adjust.
+ In addition, we add spouse educational attainment as an additional control.
+ The results are presented in table 
+\begin_inset Formula $\ref{Married}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The PSID define the male of a couple as the head of a married household.
+ First, we note that married household heads' response to upside labor hours
+ constraints (columns 1–2) were more muted than single male workers, and
+ this pattern held in both the tobit (31 versus 47 hours) and longitudinal
+ regressions (10 versus 26 hours).
+ In addition, like single workers, housework hours of married households
+ did not appear to change for downside constraints (
+\begin_inset Formula $DC$
+\end_inset
+
+).
+ Turning to wife's housework, as shown in columns 3–4, heads' being unable
+ to work more hours appeared to be associated with lower wife's time input
+ for home production, as the coefficient of 
+\begin_inset Formula $UC$
+\end_inset
+
+ is negative in both specifications.
+ In contrast, wives of heads with downside hours constraints had more hours
+ of housework than otherwise comparable spouses.
+ There could be two factors accounting for why heads' labor hours constraints
+ did not lead to the same change to wives' housework hours as they did on
+ their own housework hours.
+ First, wives had a large number of housework hours, around 1,400 hours
+ per year, regardless heads' labor hours constraint status, comparing with
+ about heads' 300 housework hours.
+ Therefore, the marginal cost of wives' housework could be so high that
+ increasing it even when heads were constrained was not desirable.
+ Second, if wives chose to increase market labor supply in response to heads'
+ labor hours constraints, that will reduce their available time for housework.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Columns 5–9 explore wives' market labor supply changes, on both the extensive
+ and intensive margins.
+ We first replace the dependent variable of equation (
+\begin_inset Formula $\ref{housework}$
+\end_inset
+
+) with a dummy of whether wife worked in a given year and estimate a logistic
+ model.
+ The estimated odds ratios indicate that wives of upside constrained heads
+ were over 20% more likely to work in that year.
+ However, as in many of the previous results, downside constraints did not
+ have a significant bearing on wife work status.
+ In addition, our estimates reveal that wives' propensity of working declined
+ with heads' education and rose with own education.
+ The former likely reflects an income effect of wife labor supply, whereas
+ the latter reveals a substitution effect as more educated women earn higher
+ wages.
+ Also, we note that female labor force participation rate in the earlier
+ part of our PSID sample period remained low.
+ We next study if wives who were not working before would start working
+ when heads were constrained, by estimating the previous model using a subsample
+ of wives not working in year 
+\begin_inset Formula $t-1$
+\end_inset
+
+.
+ As shown in column 6, relative to other comparable spouses, wives are more
+ 16 percent likely to enter the labor market during the year when their
+ husbands were not able to work more hours as desired.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+On the intensive margin, we find that working wives whose spouses were upside
+ constrained tended to work more hours.
+ First, as shown in column 7, upside constrained heads' working wives were
+ 8 percent less likely to work part-time, whereas the downside constrained
+ heads' spouses were 20 percent more likely to do so.
+ Finally, the cross-sectional and longitudinal analysis indicate that wives'
+ working hours are estimated to be 53 and 36 hours longer, respectively,
+ in the year their husbands are upside constrained.
+ The downside constraints were not strongly associated with wives working
+ hours.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+To summarize, we find that single workers appeared to increase housework
+ hours significantly when they were not able to work as many hours as desired
+ in the labor market.
+ For married households, the adjustments on housework were more muted.
+ In contrast, wives tended to increase their market labor supply under such
+ constraints, either by entering the labor force or by working longer hours.
+ Results presented in table 
+\begin_inset Formula $\ref{Married}$
+\end_inset
+
+ are estimated using the entire sample of married households.
+ Reestimating the models using the subsample of extra-pay eligible workers
+ yields qualitatively the same results.
+\end_layout
+
+\begin_layout Subsection
+\paragraph_spacing onehalf
+\noindent
+Food-out Ratios
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+The PSID analysis, while comprehensive, draws on a sample the last observation
+ of which was collected almost 35 years ago.
+ We supplement the study with an analysis of the HRS data, which cover the
+ recent year.
+ First, we note that unlike in the PSID sample, we did not find labor supply
+ variations of HRS wives associated with their husbands' hours constraints.
+ The difference likely reflects the sample age differentials.
+ The youngest household heads in the HRS were 50 years old, and wives' labor
+ supply flexibility is more limited at that age.
+ Indeed, when we repeat the analysis using the PSID subsample of households
+ aged 50 years and older, we no longer see spouse labor supply changes.
+ We therefore focus on the potential effect of labor hours constraints on
+ housework and home production.
+ As discussed earlier, the HRS data collect housework hours data but in
+ a year different from labor hours constraints data.
+ As a result, we use food-out ratio, defined as the share of eating expenditures
+ in total food expenditures as a proxy of housework, with lower food-out
+ ratio indicating greater home production.
+ This ratio can be constructed in both the PSID and HRS data, contemporaneous
+ to the labor hours constraints data.
+ Another difference between the two surveys is that the food-out ratios
+ differed by a large margin between single and married households in the
+ PSID data but were close in the HRS data, which is also mainly due to age
+ differences of the two survey.
+ Food-out ratios were similar in the PSID subsample of households older
+ than 50.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+We first confirm if the housework hour variations we find in the PSID manifest
+ in food-out ratios.
+ Doing so will further validate using the food-out ratio as a proxy of housework.
+ As shown in column 1–4 of table 
+\begin_inset Formula $\ref{HRS}$
+\end_inset
+
+, estimating a tobit specification of equation (
+\begin_inset Formula $\ref{housework}$
+\end_inset
+
+) reveals that, for single and married households, upside hours constraints
+ were associated with food-out ratios 1.5 and 0.9 percentage point (about
+ 6 percent of mean ratio) lower, respectively.
+ The estimated reduction are greater for extra-pay eligible workers at around
+ 2 percentage points.
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+Turning to the HRS sample, which we estimate the model pooling single and
+ married households together, constrained households were estimated to have
+ a 2 percentage points lower food-out ratio, or 8 percent of the mean ratio
+ of unconstrained households.
+ Interestingly, the estimate is appreciably smaller among extra-pay eligible
+ households but remains statistically significant.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The difference relative to the PSID in part reflects variations in how extra-pay
+ eligibility information was collected in both surveys as the labor market
+ evolved over the past several decades.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\paragraph_spacing onehalf
+\noindent
+Conclusion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "hoursconstBIB"
+options "chicago"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Comparing-PTER-with-psid"
+
+\end_inset
+
+Comparing PTER with PSID
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figure1.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\shape italic
+\size footnotesize
+Note
+\shape default
+s: The figure shows time series plots for the official BLS Part-Time for
+ Economic Reasons (PTER) measure (black line) and our PSID-based measure
+ of hours constraints among part-time workers (blue line).
+ Gray regions shade in recessions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Comparing-PTER-with-hrs"
+
+\end_inset
+
+Comparing PTER with HRS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figure2.eps
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\shape italic
+\size footnotesize
+Note
+\shape default
+s: The figure shows time series plots for the official BLS Part-Time for
+ Economic Reasons (PTER) measures (for the entire population in blue and
+ among only those age 55 and older in black) and our HRS-based measure of
+ hours constraints among part-time workers (blue line).
+ Gray regions shade in recessions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pter-cps-psid"
+
+\end_inset
+
+Part Time for Economic Reasons by Data Source
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Brett's Workstation/Dropbox/Hours constraints and home prod/analysis/output/charts/psid_pter.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\shape italic
+\size footnotesize
+Note
+\shape default
+s: The figure shows time series of the fraction of workers involuntarily
+ working part-time hours.
+ The solid blue line plots the official BLS measure, and the dashed red
+ line showed our comparable measure based on the Panel Study of Income Dynamics.
+ The sample is restricted to those working between 1 and 34 hours per week.
+ Both series are calculated using survey weights.
+ The Pearson correlation coefficient between the series is 
+\begin_inset Formula $0.7677$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Comparing-PTER-with-hrs-1-1"
+
+\end_inset
+
+Underemployment by Part-time Status: PSID
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Brett's Workstation/Dropbox/Hours constraints and home prod/analysis/output/charts/psid_pt_vs_ft.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\shape italic
+\size footnotesize
+Note
+\shape default
+s: The figure shows time series plots for the fraction of workers who are
+ willing and able to work more hours but are constrained from doing so.
+ The bright blue dashed line shows workers with labor market hours between
+ 1 and 34 hours per week (the restriction used to construct the BLS' PTER
+ measure), while the dark navy dash-dot line shows the fraction of full-time
+ workers (those working greater than or equal to 35 hours per week) facing
+ upside hours constraints.
+ Series calculated using PSID survey weights.
+ The Pearson correlation coefficient between the series is 
+\begin_inset Formula $0.7316$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:frac-constrain-hour-bin"
+
+\end_inset
+
+Fraction Upside Constrained by Hours Bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Brett's Workstation/Dropbox/Hours constraints and home prod/analysis/output/charts/fraction_underemployed_by_hours.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\shape italic
+\size footnotesize
+Note
+\shape default
+s: The figure depicts the binned hours distribution of upside constrained
+ workers in the PSID.
+ The first bin contains all part time workers (those working 35 hours or
+ less), and bins thereafter increment by 5 hours.
+ The sample is pooled across all included PSID years (1968 to 1986).
+ Calculated using PSID survey weights.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:shr-constr-hr-bin"
+
+\end_inset
+
+Share of Underemployed by Hours Bin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Brett's Workstation/Dropbox/Hours constraints and home prod/analysis/output/charts/share_of_underemployed_by_hours.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\shape italic
+\size footnotesize
+Note
+\shape default
+s: The figure depicts the fraction of all upside constrained workers in
+ the PSID across hour bins.
+ The first bin contains all part time workers (those working 35 hours or
+ less), and bins thereafter increment by 5 hours.
+ The sample is pooled across all included PSID years (1968 to 1986).
+ Calculated using PSID survey weights.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Comparing-PTER-with-hrs-1-3-1"
+
+\end_inset
+
+Upside Constraints by Industry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Users/Brett's Workstation/Dropbox/Hours constraints and home prod/analysis/output/charts/construp_ind.png
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\shape italic
+\size footnotesize
+Note
+\shape default
+s: The figure depicts the fraction of workers by industry reporting upside
+ hours constraints, computed using the PSID pooled across years.
+ Calculated using PSID survey weights.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "tables.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

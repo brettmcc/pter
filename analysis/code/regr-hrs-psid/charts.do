@@ -7,32 +7,60 @@ set more off
 clear all
 
 *compare PSID to CPS PTER measure
-use "$buildout/psid_construp35_yrly.dta",clear
-merge 1:1 year using $buildout\bls_pter_yearly
+use "${dir}\build\output/psid_construp35_yrly.dta",clear
+merge 1:1 year using "${dir}\build\output\bls_pter_yearly.dta"
 keep if _merge==3
 drop _merge
 label var propPter_cps "BLS PTER"
 label var prop_underemp_lt35_psid "PSID"
-twoway line (propPter_cps prop_underemp_lt35_psid year), /*
-	*/title("Part Time for Economic Reasons by Data Source") /*
-	*/ note("Source: PSID and BLS. PSID using sample weights restricted to those working 1 to 34 hours/week."/*
-		*/ "Correlation coeffiction equals 0.77.")
-graph export $charts\psid_pter.png,replace
+corr propPter_cps prop_underemp_lt35_psid
+twoway (connected propPter_cps prop_underemp_lt35_psid year,lpattern(solid dash) lcolor(blue red) msymbol(oh dh)), title("Part Time for Economic Reasons by Data Source") graphregion(color(white)) bgcolor(white) xtitle(" ") 
+graph export "${dir}\analysis\output\charts\psid_pter.png",replace
 	
 *compare part-time vs full-time measure from PSID
-use "$buildout/psid_construp35_yrly.dta",clear
-merge 1:1 year using $buildout\psid_construp_ft_yrly
+use "${dir}\build\output/psid_construp35_yrly.dta",clear
+merge 1:1 year using "${dir}\build\output\psid_construp_ft_yrly.dta"
 drop _merge
 label var prop_underemp_lt35_psid "Part time"
 label var prop_underemp_ft_psid "Full time"
 corr prop_underemp_lt35_psid prop_underemp_ft_psid
-twoway line (prop_underemp_lt35_psid prop_underemp_ft_psid year), /*
-	*/title("Underemployment by Part-time Status, PSID") /*
-	*/ note("Source: PSID, weighted. Correlation coefficient equals 0.73.") 
-graph export $charts\psid_pt_vs_ft.png,replace
+twoway (connected prop_underemp_lt35_psid prop_underemp_ft_psid year,lpattern(dash dash_dot) lcolor(blue dknavy) msymbol(dh Dh)), graphregion(color(white)) bgcolor(white)
+graph export "${dir}\analysis\output\charts\psid_pt_vs_ft.png",replace
 
 *compare PSID to CPS, using expansive underemployment measure
 
+*Proportion of underemployed by hours bins and share underemployed by hours bin.
+use "${dir}\analysis\input\pooled_all.dta",clear
+drop if headhours_bin==""
+
+collapse (mean) construp [aweight=wgt],by(headhours_bin)
+graph bar construp ,over(headhours_bin) ytitle("") /*
+	*/b1title(Hours per week) graphregion(color(white)) bgcolor(white)
+graph export "${dir}\analysis\output\charts\fraction_underemployed_by_hours.png",/*
+	*/replace
+
+use "${dir}\analysis\input\pooled_all.dta",clear
+drop if headhours_bin==""
+
+egen total_underemp = total(construp*wgt)
+bysort headhours_bin: egen underemp_byhours = total(construp*wgt)
+contract total_underemp underemp_byhours headhours_bin
+
+gen share_construp_by_hours = underemp_byhours/total_underemp
+label variable share_construp_by_hours /*
+	*/"Share of underemployed in each hours bin"
+
+graph bar share_construp_by_hours,over(headhours_bin) /*
+	*/b1title(Hours per week) graphregion(color(white)) bgcolor(white) /*
+	*/ ytitle(" ")
+graph export "${dir}\analysis\output\charts\share_of_underemployed_by_hours.png",/*
+	*/replace
+	
+/* Industry and Occupation Effects on Hours Constraints */
+use "${dir}\analysis\input\pooled.dta",clear
+graph bar (mean) construp if headind!=0, over(headind, /*
+	*/label(angle(70)) sort((mean) construp)) name(construp_ind,replace) graphregion(color(white)) bgcolor(white) ytitle("Fraction Upside Constrained")
+graph export "${dir}\analysis\output\charts\construp_ind.png",replace 
 
 
 
