@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{9}{c}}
+\toprule
+                    &\multicolumn{3}{c}{Overall}                                      &\multicolumn{3}{c}{Men}                                          &\multicolumn{3}{c}{Women}                                        \\\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}&\multicolumn{1}{c}{(9)}\\
+                    &\multicolumn{1}{c}{\shortstack{Spouse\\working}}&\multicolumn{1}{c}{\shortstack{Spouse \\working}}&\multicolumn{1}{c}{\shortstack{Spouse\\working}}&\multicolumn{1}{c}{\shortstack{Spouse\\working}}&\multicolumn{1}{c}{\shortstack{Spouse \\working}}&\multicolumn{1}{c}{\shortstack{Spouse\\working}}&\multicolumn{1}{c}{\shortstack{Spouse\\working}}&\multicolumn{1}{c}{\shortstack{Spouse \\working}}&\multicolumn{1}{c}{\shortstack{Spouse\\working}}\\
+\midrule
+PTER                &      -0.111\sym{***}&     -0.0133\sym{***}&    -0.00728\sym{***}&    -0.00810\sym{**} &    -0.00451         &    -0.00182\sym{*}  &     -0.0786\sym{***}&     -0.0167\sym{***}&    -0.00994\sym{***}\\
+                    &   (0.00233)         &   (0.00389)         &  (0.000566)         &   (0.00403)         &   (0.00776)         &   (0.00107)         &   (0.00274)         &   (0.00448)         &  (0.000662)         \\
+\midrule
+Observations        &      313183         &      108246         &     3172717         &       97232         &       21076         &      871922         &      215951         &       87036         &     2298428         \\
+\(R^{2}\)           &       0.046         &       0.877         &       0.881         &       0.039         &       0.881         &       0.882         &       0.057         &       0.864         &       0.867         \\
+Dep. var. mean      &       0.734         &       0.734         &       0.734         &       0.648         &       0.648         &       0.648         &       0.846         &       0.846         &       0.846         \\
+Person FE           &           N         &           Y         &           Y         &           N         &           Y         &           Y         &           N         &           Y         &           Y         \\
+Year FE             &           Y         &           Y         &           N         &           Y         &           Y         &           N         &           Y         &           Y         &           N         \\
+Year-month FE       &           N         &           N         &           Y         &           N         &           N         &           Y         &           N         &           N         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Income              &           Y         &           Y         &           N         &           Y         &           Y         &           N         &           Y         &           Y         &           N         \\
+\bottomrule
+\multicolumn{10}{p{17cm}}{\footnotesize \textit{Notes}: The table presents coefficient estimates from equation \ref{eq:XXX} using data from the Current Population Survey. Columns 1--3 consider all married households, while columns 4--6 and 7--9 subset to married men and women, respectively. Control variables are the number of children in the household, number of adults, whether the individual works part-time. Columns 1--2, 4--5, 7--8 also control for family income (net of own and spouse's labor income) decile. Standard errors are clustered at the household level. \sym{*}, \sym{**}, and \sym{***} denote statistical significance at the 10\%, 5\%, and 1\% levels, respectively.}\\
+\end{tabular}
+}

@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{7}{c}}
+\toprule
+                    &\multicolumn{2}{c}{Single}                 &\multicolumn{5}{c}{Married}                                                                                  \\\cmidrule(lr){2-3}\cmidrule(lr){4-8}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}\\
+                    &\multicolumn{1}{c}{\shortstack{Head work\\hours}}&\multicolumn{1}{c}{\shortstack{Head HW\\hours}}&\multicolumn{1}{c}{\shortstack{Head work\\hours}}&\multicolumn{1}{c}{\shortstack{Head HW\\hours}}&\multicolumn{1}{c}{\shortstack{Wife work\\hours}}&\multicolumn{1}{c}{\shortstack{Wife HW\\hours}}&\multicolumn{1}{c}{\shortstack{Wife\\working}}\\
+\midrule
+Upside constrained  &      -76.63\sym{***}&       36.20\sym{**} &      -129.8\sym{***}&       6.596         &       20.01         &      -13.99         &      0.0179\sym{*}  \\
+                    &     (17.13)         &     (16.33)         &     (8.670)         &     (7.704)         &     (15.23)         &     (17.90)         &   (0.00920)         \\
+\addlinespace
+Downside constrained&       68.40\sym{***}&      -12.85         &       79.99\sym{***}&      -4.043         &      -26.98         &       87.73\sym{***}&     -0.0212         \\
+                    &     (21.54)         &     (28.03)         &     (14.04)         &     (12.99)         &     (25.75)         &     (28.46)         &    (0.0170)         \\
+\midrule
+Observations        &        6497         &        6497         &       21409         &       21409         &       21409         &       21409         &       21409         \\
+\(R^{2}\)           &       0.738         &       0.595         &       0.644         &       0.475         &       0.662         &       0.585         &       0.605         \\
+Dep. var. mean      &      1920.9         &       586.9         &      2125.7         &       293.9         &       831.8         &      1481.4         &       0.605         \\
+Person FE           &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Year FE             &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+\bottomrule
+\end{tabular}
+}

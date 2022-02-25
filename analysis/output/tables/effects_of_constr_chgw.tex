@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{7}{c}}
+\toprule
+                    &\multicolumn{2}{c}{Single}                 &\multicolumn{5}{c}{Married}                                                                                  \\\cmidrule(lr){2-3}\cmidrule(lr){4-8}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}\\
+                    &\multicolumn{1}{c}{\shortstack{Chg.\\head work\\hours}}&\multicolumn{1}{c}{\shortstack{Chg.\\head HW\\hours}}&\multicolumn{1}{c}{\shortstack{Chg.\\head work\\hours}}&\multicolumn{1}{c}{\shortstack{Chg.\\head HW\\hours}}&\multicolumn{1}{c}{\shortstack{Chg.\\wife work\\hours}}&\multicolumn{1}{c}{\shortstack{Chg.\\wife HW\\hours}}&\multicolumn{1}{c}{\shortstack{=1 if\\wife starts\\working}}\\
+\midrule
+Became upside constrained&      -145.4\sym{***}&       3.171         &      -154.1\sym{***}&      -7.998         &       14.50         &      -8.580         &    -0.00120         \\
+                    &     (12.62)         &     (12.40)         &     (13.11)         &     (13.41)         &     (30.58)         &     (15.74)         &   (0.00663)         \\
+\addlinespace
+Became downside constrained&       64.19\sym{***}&      -24.48         &       71.80\sym{***}&      -4.786         &      -21.60         &      -2.089         &     0.00123         \\
+                    &     (17.63)         &     (21.09)         &     (20.83)         &     (23.15)         &     (47.25)         &     (25.24)         &    (0.0104)         \\
+\midrule
+Observations        &       31903         &       22691         &       24269         &       17312         &       17312         &       24269         &       25730         \\
+\(R^{2}\)           &       0.219         &       0.102         &       0.215         &       0.088         &       0.094         &       0.098         &       0.147         \\
+Person FE           &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Year FE             &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+\bottomrule
+\multicolumn{8}{p{16cm}}{\footnotesize \textit{Notes:} The table presents coefficient estimates from equation \ref{eq:housework} using data from the Panel Study of Income Dynamics. Columns 1 and 2 subset to single-headed households, while columns 3--7 subset to married households. Estimates are weighted, with standard errors clustered at the household-head level. \sym{*}, \sym{**}, and \sym{***} denote statistical significance at the 10\%, 5\%, and 1\% levels, respectively.}\\
+\end{tabular}
+}

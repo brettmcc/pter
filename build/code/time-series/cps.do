@@ -7,8 +7,13 @@ import delimited "${dir}\build\input\CPS-ATUS\cps_00008",clear
 
 append using "${dir}\build\temp\cps_asec62-77.dta"
 
-//keep only those in the labor force
+//keep only those working
 keep if labforce==2
+// drop if uhrsworkt==999
+// //keep those between age 22 and 65
+// keep if age>=22 & age<=65
+// //drop self-employed
+// drop if classwkr>=10 & classwkr<=14
 
 //defintion comes from pages 7-8 of 
 //https://www.richmondfed.org/-/media/richmondfedorg/publications/research/economic_quarterly/2014/q2/kudlyak.pdf

@@ -1,0 +1,66 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{2}{c}{Become Upside Constrained}&\multicolumn{2}{c}{Escaped Upside Constraint}\\\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Became UC}&\multicolumn{1}{c}{Became UC}&\multicolumn{1}{c}{Escaped UC}&\multicolumn{1}{c}{Escaped UC}\\
+\midrule
+Became married      &    -0.00909         &    -0.00962         &     -0.0487         &     -0.0491         \\
+                    &    (0.0139)         &    (0.0151)         &    (0.0362)         &    (0.0517)         \\
+\addlinespace
+Stay married        &     0.00296         &    -0.00858         &     -0.0439\sym{***}&     -0.0463         \\
+                    &   (0.00491)         &    (0.0105)         &    (0.0140)         &    (0.0327)         \\
+\addlinespace
+Got divorced        &      0.0165         &     -0.0137         &    -0.00309         &      0.0272         \\
+                    &    (0.0154)         &    (0.0154)         &    (0.0398)         &    (0.0531)         \\
+\addlinespace
+Chg. num. of children&     0.00544         &    0.000780         &   0.0000286         &      0.0127         \\
+                    &   (0.00402)         &   (0.00397)         &   (0.00956)         &    (0.0106)         \\
+\addlinespace
+Chg. nonlabor income&-0.000000171\sym{*}  &-0.000000112         &  0.00000112         &  0.00000120         \\
+                    &  (9.38e-08)         &  (8.13e-08)         &(0.00000105)         &(0.00000145)         \\
+\addlinespace
+Chg. log head wage  &    0.000954         &    0.000945         &    -0.00633         &    -0.00134         \\
+                    &   (0.00229)         &   (0.00220)         &   (0.00651)         &   (0.00662)         \\
+\addlinespace
+Became homeowner    &      0.0158\sym{*}  &     0.00488         &   0.0000829         &     0.00216         \\
+                    &   (0.00873)         &   (0.00847)         &    (0.0223)         &    (0.0256)         \\
+\addlinespace
+Disability limits housework&   -0.000645         &                     &      0.0152         &                     \\
+                    &   (0.00655)         &                     &    (0.0199)         &                     \\
+\addlinespace
+Chg. log head hours &    -0.00318         &    -0.00292         &    -0.00269         &     -0.0141\sym{**} \\
+                    &   (0.00222)         &   (0.00263)         &   (0.00510)         &   (0.00712)         \\
+\addlinespace
+Changed job         &      0.0269\sym{***}&      0.0113\sym{**} &      0.0803\sym{***}&      0.0104         \\
+                    &   (0.00520)         &   (0.00541)         &    (0.0125)         &    (0.0163)         \\
+\addlinespace
+Head age            &    -0.00293\sym{***}&                     &     -0.0173\sym{***}&                     \\
+                    &  (0.000979)         &                     &   (0.00322)         &                     \\
+\addlinespace
+Head age squared    &  0.00000310         &                     &    0.000245\sym{***}&                     \\
+                    & (0.0000105)         &                     & (0.0000382)         &                     \\
+\addlinespace
+Head black          &      0.0569\sym{***}&                     &     -0.0227         &                     \\
+                    &   (0.00821)         &                     &    (0.0155)         &                     \\
+\addlinespace
+High school grad    &     -0.0332\sym{***}&                     &     0.00201         &                     \\
+                    &   (0.00666)         &                     &    (0.0162)         &                     \\
+\addlinespace
+Some post-secondary education&     -0.0570\sym{***}&                     &      0.0608\sym{***}&                     \\
+                    &   (0.00578)         &                     &    (0.0160)         &                     \\
+\addlinespace
+College or higher degree&      -0.107\sym{***}&                     &       0.106\sym{***}&                     \\
+                    &   (0.00587)         &                     &    (0.0279)         &                     \\
+\midrule
+Observations        &       48886         &       47669         &       17718         &       15879         \\
+\(R^{2}\)           &       0.031         &       0.281         &       0.025         &       0.310         \\
+Dep. var. mean      &       0.103         &       0.103         &       0.527         &       0.527         \\
+Controls            &           Y         &           Y         &           Y         &           Y         \\
+Year FE             &           Y         &           Y         &           Y         &           Y         \\
+Person FE           &           N         &           Y         &           N         &           Y         \\
+\bottomrule
+\multicolumn{5}{p{17cm}}{\footnotesize \textit{Notes}: The table presents coefficient estimates from equation \ref{eq:det_constraints} using data from the Panel Study of Income Dynamics. Estimates are weighted, with standard errors clustered at the household-head level. \sym{*}, \sym{**}, and \sym{***} denote statistical significance at the 10\%, 5\%, and 1\% levels, respectively.}\\
+\end{tabular}
+}

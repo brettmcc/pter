@@ -1,0 +1,55 @@
+	(1)
+VARIABLES	Double ASEC
+	
+age_2	-0.000222***
+	(4.49e-05)
+1.black	0.0239***
+	(0.00269)
+1.female	0.0176***
+	(0.00119)
+1.highschool_2	-0.0124***
+	(0.00181)
+1.somecollege_2	-0.0313***
+	(0.00177)
+1.collegeup_2	-0.0373***
+	(0.00202)
+1.married_2	-0.0147***
+	(0.00161)
+chglog_faminc	-0.000320
+	(0.000401)
+2.industry_2	0.0138***
+	(0.00442)
+3.industry_2	-0.0351***
+	(0.00358)
+4.industry_2	-0.0199***
+	(0.00390)
+5.industry_2	-0.0255***
+	(0.00389)
+6.industry_2	-0.0121***
+	(0.00366)
+7.industry_2	-0.0386***
+	(0.00375)
+8.industry_2	-0.0170***
+	(0.00364)
+9.industry_2	-0.0404***
+	(0.00363)
+1980.year_2	0.00540***
+	(0.00182)
+1981.year_2	0.00968***
+	(0.00177)
+1982.year_2	0.0224***
+	(0.00201)
+1983.year_2	0.0237***
+	(0.00203)
+1984.year_2	0.0174***
+	(0.00194)
+1985.year_2	0.0160***
+	(0.00192)
+Constant	0.0712***
+	(0.00423)
+	
+Observations	121,125
+R-squared	0.018
+One obs per individual	controlling for log change in income
+Robust standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

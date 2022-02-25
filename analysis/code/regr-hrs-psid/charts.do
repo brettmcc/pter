@@ -7,61 +7,93 @@ set more off
 clear all
 
 *compare PSID to CPS PTER measure
-use "${dir}\build\output/psid_construp35_yrly.dta",clear
-merge 1:1 year using "${dir}\build\output\bls_pter_yearly.dta"
+use "build\output/psid_construp35_yrly.dta",clear
+merge 1:1 year using "build\output\bls_pter_yearly.dta"
 keep if _merge==3
 drop _merge
 label var propPter_cps "BLS PTER"
 label var prop_underemp_lt35_psid "PSID"
 corr propPter_cps prop_underemp_lt35_psid
 twoway (connected propPter_cps prop_underemp_lt35_psid year,lpattern(solid dash) lcolor(blue red) msymbol(oh dh)), title("Part Time for Economic Reasons by Data Source") graphregion(color(white)) bgcolor(white) xtitle(" ") 
-graph export "${dir}\analysis\output\charts\psid_pter.png",replace
+graph export "analysis\output\charts\psid_pter.png",replace
 	
 *compare part-time vs full-time measure from PSID
-use "${dir}\build\output/psid_construp35_yrly.dta",clear
-merge 1:1 year using "${dir}\build\output\psid_construp_ft_yrly.dta"
+use "build\output/psid_construp35_yrly.dta",clear
+merge 1:1 year using "build\output\psid_construp_ft_yrly.dta"
 drop _merge
 label var prop_underemp_lt35_psid "Part time"
 label var prop_underemp_ft_psid "Full time"
 corr prop_underemp_lt35_psid prop_underemp_ft_psid
 twoway (connected prop_underemp_lt35_psid prop_underemp_ft_psid year,lpattern(dash dash_dot) lcolor(blue dknavy) msymbol(dh Dh)), graphregion(color(white)) bgcolor(white)
-graph export "${dir}\analysis\output\charts\psid_pt_vs_ft.png",replace
+graph export "analysis\output\charts\psid_pt_vs_ft.png",replace
 
-*compare PSID to CPS, using expansive underemployment measure
+*compare PSID & HRS to CPS, using expansive underemployment measure
+use "build\output\combined_yrly_series.dta",clear
+twoway (connected prop_pter_cps year,msymbol(oh) color(forest_green)) ///
+	(connected prop_pter_hrs year,lpattern(dash) msymbol(Dh) color(blue)) ///
+	(connected prop_underemp_psid year,lpattern(shortdash) msymbol(Th) color(cranberry)), ///
+	graphregion(color(white)) bgcolor(white) legend(order(1 "CPS PTER" 2 "HRS" 3 "PSID") region(lwidth(none) color(white)))
+graph export "analysis\output\charts\pter_vs_expansive_measure.png",replace
+
+*compare CPS PTER with HRS & PSID PTER
+twoway (connected prop_pter_cps year,msymbol(oh) color(forest_green)) ///
+	(connected prop_pterlt35_hrs year,lpattern(dash_dot) msymbol(dh) color(navy)) ///
+	(connected prop_underemp_lt35_psid year,lpattern(shortdash_dot) msymbol(th) color(red)), ///
+	graphregion(color(white)) bgcolor(white) legend(order(1 "CPS PTER" 2 "HRS" 3 "PSID") region(lwidth(none) color(white)))
+graph export "analysis\output\charts\pter_validation.png",replace
+
+
+*plot difference between desired and actual hours worked from HRS
+use "build\output\hrsdata.dta",clear
+collapse (sum) sum_moregap=moregap (mean) mean_moregap=moregap (semean) se_moregap=moregap (sd) sd_moregap=moregap [fweight=wgt], by(wave)
+replace sum_moregap=sum_moregap/1000000
+label variable sum_moregap "Additional hours desired (millions)"
+format sum_moregap %15.0gc
+twoway connected sum_moregap wave, xtitle(" ") graphregion(color(white)) bgcolor(white)
+graph export "analysis\output\charts\addl_hours_desired_hrs.png",replace
+
 
 *Proportion of underemployed by hours bins and share underemployed by hours bin.
-use "${dir}\analysis\input\pooled_all.dta",clear
+//HRS
+use "analysis\input\hrsdata.dta",clear
 drop if headhours_bin==""
-
-collapse (mean) construp [aweight=wgt],by(headhours_bin)
-graph bar construp ,over(headhours_bin) ytitle("") /*
-	*/b1title(Hours per week) graphregion(color(white)) bgcolor(white)
-graph export "${dir}\analysis\output\charts\fraction_underemployed_by_hours.png",/*
-	*/replace
-
-use "${dir}\analysis\input\pooled_all.dta",clear
-drop if headhours_bin==""
-
-egen total_underemp = total(construp*wgt)
-bysort headhours_bin: egen underemp_byhours = total(construp*wgt)
-contract total_underemp underemp_byhours headhours_bin
-
-gen share_construp_by_hours = underemp_byhours/total_underemp
+collapse (mean) construp (sum) num_construp=construp [aweight=wgt],by(headhours_bin)
+egen total_underemp = total(num_construp)
+gen share_construp_by_hours = num_construp/total_underemp
 label variable share_construp_by_hours /*
 	*/"Share of underemployed in each hours bin"
-
 graph bar share_construp_by_hours,over(headhours_bin) /*
 	*/b1title(Hours per week) graphregion(color(white)) bgcolor(white) /*
 	*/ ytitle(" ")
-graph export "${dir}\analysis\output\charts\share_of_underemployed_by_hours.png",/*
+graph export "analysis\output\charts\share_of_underemployed_by_hours_hrs.png",/*
 	*/replace
 	
+//PSID
+use "analysis\input\pooled_all.dta",clear
+drop if headhours_bin==""
+collapse (mean) construp (sum) num_construp=construp [aweight=wgt],by(headhours_bin)
+egen total_underemp = total(num_construp)
+gen share_construp_by_hours = num_construp/total_underemp
+label variable share_construp_by_hours /*
+	*/"Share of underemployed in each hours bin"
+graph bar share_construp_by_hours,over(headhours_bin) /*
+	*/b1title(Hours per week) graphregion(color(white)) bgcolor(white) /*
+	*/ ytitle(" ")
+graph export "analysis\output\charts\share_of_underemployed_by_hours_psid.png",/*
+	*/replace
+	
+	
 /* Industry and Occupation Effects on Hours Constraints */
-use "${dir}\analysis\input\pooled.dta",clear
+//ind
+use "analysis\input\pooled_all.dta",clear
 graph bar (mean) construp if headind!=0, over(headind, /*
 	*/label(angle(70)) sort((mean) construp)) name(construp_ind,replace) graphregion(color(white)) bgcolor(white) ytitle("Fraction Upside Constrained")
-graph export "${dir}\analysis\output\charts\construp_ind.png",replace 
-
+graph export "analysis\output\charts\construp_ind.png",replace 
+//occ
+use "analysis\input\pooled_all.dta",clear
+graph bar (mean) construp if headocc!=0, over(headocc, /*
+	*/label(angle(70)) sort((mean) construp)) graphregion(color(white)) bgcolor(white) ytitle("Fraction Upside Constrained")
+graph export "analysis\output\charts\construp_occ.png",replace 
 
 
 *plot underemployed proportion for all ages & ages 50-70 those working <=35 hours/week, in the PSID. Calculate the correlation.

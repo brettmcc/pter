@@ -11,7 +11,7 @@ clear all
 
 /*Numbers*/
 *moregap, no zeros
-use "${dir}\build\output\hrsdata.dta",clear
+use "build\output\hrsdata.dta",clear
 keep if headhourweekly<35 
 collapse (mean) mean_moregap=moregap (semean) se_moregap=moregap (sd) sd_moregap=moregap [fweight=wgt] if moregap!=0, by(wave)
 gen lw = mean_moregap - se_moregap
@@ -19,7 +19,7 @@ gen hi = mean_moregap + se_moregap
 twoway connected mean_moregap wave, title("Hours Gap, Ideal and Actual") note("Conditional on gap being nonzero.") ytitle("hours/year") name(moregap_nozero,replace) 
 
 *moregap, with zeros
-use "${dir}\build\output\hrsdata.dta",clear
+use "build\output\hrsdata.dta",clear
 keep if headhourweekly<35 
 collapse (mean) mean_moregap=moregap (semean) se_moregap=moregap [fweight=wgt], by(wave)
 gen lw = mean_moregap - se_moregap
@@ -28,13 +28,13 @@ twoway connected mean_moregap wave, title("Hours Gap, Ideal and Actual") note("U
 	name(moregap_withzeros,replace) 
 
 *Number underemployed
-use "${dir}\build\output\hrsdata.dta",clear
+use "build\output\hrsdata.dta",clear
 collapse (sum) construp35 [iweight=wgt], by(wave)
 replace construp35 = construp35 / 1000000
 twoway line (construp35 wave), title("Number underemployed") ytitle("Millions of persons") name(num_construp,replace)
 
 /*Proportion*/
-use "${dir}\build\output\hrsdata.dta",clear
+use "build\output\hrsdata.dta",clear
 
 collapse (sum) construp35 (count) headstatus [iweight=wgt], by(wave)
 gen prop_pter = construp35/headstatus

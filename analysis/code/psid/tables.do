@@ -26,6 +26,7 @@ global analysisin /*
 	*/"C:\Users\bmccully\Documents\pter-master\analysis\input"
 
 
+capture program drop calcstat
 program calcstat 
 args vari nn
 	sum `vari' if construp==1 [aweight=wgt]
@@ -36,9 +37,19 @@ args vari nn
 	replace NC = r(mean) if _n==`nn'
 end
 
+use "build\output\hrsdata.dta",clear
+tabstat construp constrdown headage white headedu_* children faminc headlabor headhourweekly headsecjob headsalary union_dummy foodoutratio hwheadweekly hwwifeweekly [aw=wgt], by(constr) long 
 
-use "$analysisin\pooled.dta",clear
+use "analysis\input\pooled.dta",clear
+tabstat construp constrdown headage headwhite headedu_* children faminc headlabor headhourweekly headsecjob headsalary union_dummy foodoutratio hwheadweekly hwwifeweekly [aw=wgt], by(constr) long 
 
+//share ever constrained
+use "build\output\hrsdata.dta",clear
+collapse (max) construp constrdown,by(hhidpn)
+sum construp constrdown
+use "analysis\input\pooled.dta",clear
+collapse (max) construp constrdown,by(pid)
+sum construp constrdown
 /* Table 1 -- Summary Statistics */
 gen varname = ""
 label variable varname "SUMMARY STATISTICS"
@@ -47,62 +58,52 @@ gen DC = .
 gen NC = .
 
 replace varname = "Extensive Margin" if _n==1
-replace varname = "Share of HH heads" if _n==2
+replace varname = "$\;\$Share of HH heads" if _n==2
 sum construp [aweight=wgt]
 replace UC = r(mean) if _n==2
 sum constrdown [aweight=wgt]
 replace DC = r(mean) if _n==2
 replace NC = 1 - UC - DC if _n==2
 
-//define a household as constrained if either husband or wife is constrained
-//defined only for years in which observe wife's constraint status
-replace varname = "Share of households" if _n==3
-sum hhconstrup [aweight=wgt]
-replace UC = r(mean) if _n==3
-
 replace varname = "Demographics" if _n==5
-replace varname = "Head age" if _n==6
+replace varname = "$\;\$Head age" if _n==6
 calcstat headage 6
-replace varname = "White (%)" if _n==7
+replace varname = "$\;\$White (%)" if _n==7
 calcstat headwhite 7
-replace varname = "High school dropout (%)" if _n==8
+replace varname = "$\;\$High school dropout (%)" if _n==8
 calcstat headedu_ltHs 8
-replace varname = "High school grad (%)" if _n==9
+replace varname = "$\;\$High school grad (%)" if _n==9
 calcstat headedu_hsgrad 9
-replace varname = "Some college (%)" if _n==10
+replace varname = "$\;\$Some college (%)" if _n==10
 calcstat headedu_someCol 10
-replace varname = "College Grad.+ (%)" if _n==11
+replace varname = "$\;\$College Grad.+ (%)" if _n==11
 calcstat headedu_colPl 11
-replace varname = "Married (%)" if _n==12
+replace varname = "$\;\$Married (%)" if _n==12
 calcstat headmarried 12
-replace varname = "Num. children in HH" if _n==13
+replace varname = "$\;\$Num. children in HH" if _n==13
 calcstat children 13
 
 replace varname = "Income and Employment" if _n==15
-replace varname = "Total family income" if _n==16
+replace varname = "$\;\$Total family income" if _n==16
 calcstat faminc 16
-replace varname = "Total head labor income" if _n==17
+replace varname = "$\;\$Total head labor income" if _n==17
 calcstat headlabor 17
-replace varname = "Head avg. weekly hours" if _n==18
+replace varname = "$\;\$Head avg. weekly hours" if _n==18
 calcstat headhourweekly 18
-replace varname = "Share can work extra for add'l pay" if _n==19
-calcstat headext 19
-replace varname = "Having additional jobs" if _n==20
+replace varname = "$\;\$Have more than 1 job" if _n==20
 calcstat headsecjob 20
-replace varname = "Salaried" if _n==21
+replace varname = "$\;\$Salaried" if _n==21
 calcstat headsalary 21
-replace varname = "Unionized" if _n==22
+replace varname = "$\;\$Unionized" if _n==22
 calcstat union_dummy 22
 
 replace varname = "Housework and Leisure" if _n==24
-replace varname = "Food-out ratio" if _n==25
+replace varname = "$\;\$Food-out ratio" if _n==25
 calcstat foodoutratio 25
-replace varname = "Head housework hours (weekly)" if _n==26
+replace varname = "$\;\$Head housework hours (weekly)" if _n==26
 calcstat hwheadweekly 26
-replace varname = "Wife housework hours (weekly)" if _n==27
+replace varname = "$\;\$Wife housework hours (weekly)" if _n==27
 calcstat hwwifeweekly 27
-replace varname = "Vacation weeks taken" if _n==28
-calcstat headvacationweek 28
 
 replace varname = "N (person-years)" if _n==30
 count if construp==1 
@@ -116,11 +117,14 @@ replace UC = round(UC,0.01)
 replace DC = round(DC,0.01)
 replace NC = round(NC,0.01)
 
-replace varname = "Source: PSID; weighted." if _n==32
-
-export excel varname UC DC NC using /*
-	*/"C:\Users\bmccully\Documents\pter-master\analysis\output\tables_sep17.xlsx"/*
-	*/in 1/32, sheet("Summary Stats") sheetreplace firstrow(varlabels)
+keep varname UC DC NC
+format UC DC NC %12.3gc
+tostring UC DC NC, replace force usedisplayformat
+foreach var of varlist UC DC NC {
+	replace `var'="" if `var'=="."
+}
+keep if _n<=30
+dataout,replace save("analysis\output\tables\summ_stats") tex
 
 
 /*   Table 1.a -- Industry and Occupation Effects on Hours Constraints */

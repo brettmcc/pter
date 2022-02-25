@@ -1,0 +1,22 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\toprule
+                    &\multicolumn{2}{c}{Overall}                &\multicolumn{2}{c}{Men}                    &\multicolumn{2}{c}{Women}                  \\\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                    &\multicolumn{1}{c}{\shortstack{Spouse HW\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse HW\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse HW\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse HW\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse HW\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse HW\\hours}}\\
+\midrule
+PTER                &       0.622\sym{***}&       0.456\sym{***}&       0.197         &       0.117         &     -0.0867         &      -0.164\sym{**} \\
+                    &     (0.129)         &    (0.0545)         &     (0.185)         &    (0.0733)         &     (0.160)         &    (0.0724)         \\
+\midrule
+Observations        &        7778         &       98506         &        2578         &       34205         &        5200         &       64301         \\
+\(R^{2}\)           &       0.018         &       0.012         &       0.053         &       0.043         &       0.013         &       0.007         \\
+Dep. var. mean      &       4.814         &       4.814         &       5.675         &       5.675         &       3.628         &       3.628         \\
+Person FE           &           N         &           N         &           N         &           N         &           N         &           N         \\
+Year FE             &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Income              &           Y         &           N         &           Y         &           N         &           Y         &           N         \\
+\bottomrule
+\multicolumn{7}{p{17cm}}{\footnotesize \textit{Notes}: The table presents coefficient estimates from equation \ref{eq:housework} using data from the American Time Use Survey and the Current Population Survey. Columns 1 and 2 consider all married households, while columns 3--4 and 5--6 subset to married men and women, respectively. Control variables are the number of children in the household, number of adults, whether the individual works part-time. Odd columns also control for family income (net of own and spouse's labor income) decile. Standard errors are clustered at the household level. \sym{*}, \sym{**}, and \sym{***} denote statistical significance at the 10\%, 5\%, and 1\% levels, respectively.}\\
+\end{tabular}
+}

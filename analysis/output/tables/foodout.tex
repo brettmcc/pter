@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\toprule
+                    &\multicolumn{2}{c}{PSID}                   &\multicolumn{2}{c}{HRS}                    \\\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Single}&\multicolumn{1}{c}{Married}&\multicolumn{1}{c}{Single}&\multicolumn{1}{c}{Married}\\
+\midrule
+Upside constrained  &       1.217         &      -1.033\sym{***}&      -2.619\sym{***}&     -0.0124         \\
+                    &     (0.882)         &     (0.279)         &     (0.785)         &     (0.652)         \\
+\addlinespace
+Downside constrained&       4.537\sym{***}&       1.130\sym{**} &      -1.658         &       0.544         \\
+                    &     (1.412)         &     (0.487)         &     (1.093)         &     (0.665)         \\
+\midrule
+Observations        &        6128         &       19981         &        5228         &        8584         \\
+\(R^{2}\)           &       0.610         &       0.555         &       0.724         &       0.731         \\
+Dep. var. mean      &       25.19         &       15.22         &       27.19         &       27.62         \\
+Person FE           &           Y         &           Y         &           Y         &           Y         \\
+Year FE             &           Y         &           Y         &           Y         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         \\
+\bottomrule
+\end{tabular}
+}

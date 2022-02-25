@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{7}{c}}
+\toprule
+                    &\multicolumn{2}{c}{Single}                 &\multicolumn{5}{c}{Married}                                                                                  \\\cmidrule(lr){2-3}\cmidrule(lr){4-8}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}\\
+                    &\multicolumn{1}{c}{\shortstack{Own work\\hours}}&\multicolumn{1}{c}{\shortstack{Own HW\\hours}}&\multicolumn{1}{c}{\shortstack{Own work\\hours}}&\multicolumn{1}{c}{\shortstack{Own HW\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse work\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse HW\\hours}}&\multicolumn{1}{c}{\shortstack{Spouse\\LMP}}\\
+\midrule
+PTER                &      -10.75\sym{***}&                     &      -11.64\sym{***}&                     &      -0.909         &       0.147         &     -0.0140         \\
+                    &     (0.546)         &                     &     (0.526)         &                     &     (0.606)         &     (0.259)         &    (0.0121)         \\
+\addlinespace
+PTER                &                     &      -0.564         &                     &      -0.523         &                     &                     &                     \\
+                    &                     &     (0.510)         &                     &     (0.409)         &                     &                     &                     \\
+\midrule
+Observations        &       25248         &        2745         &       86038         &       10396         &       60082         &       14384         &       92162         \\
+\(R^{2}\)           &       0.782         &       0.316         &       0.763         &       0.158         &       0.807         &       0.173         &       0.876         \\
+Dep. var. mean      &       42.82         &       2.971         &       45.16         &       3.919         &       39.00         &       5.101         &       0.759         \\
+Person FE           &           Y         &           N         &           Y         &           N         &           Y         &           N         &           Y         \\
+Year FE             &           N         &           N         &           N         &           N         &           N         &           N         &           N         \\
+Year-state FE       &           Y         &           Y         &           Y         &                     &                     &           Y         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Income              &           N         &           Y         &           N         &           Y         &           N         &           N         &           N         \\
+\bottomrule
+\multicolumn{8}{p{17cm}}{\footnotesize \textit{Notes}: The table presents coefficient estimates from equation \ref{eq:housework} using data from the American Time Use Survey and the Current Population Survey. Columns 1 and 2 consider single households, while columns 3--7 consider married households. Control variables are the number of children in the household, number of adults. When individual fixed effects are not present controls for age, gender, race and education are included. Columns 2 and 4 also control for family income (net of own and spouse's labor income if married) decile. Standard errors are clustered at the household level. \sym{*}, \sym{**}, and \sym{***} denote statistical significance at the 10\%, 5\%, and 1\% levels, respectively.}\\
+\end{tabular}
+}
