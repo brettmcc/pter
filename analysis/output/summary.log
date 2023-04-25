@@ -1,0 +1,273 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /href/research2/m1gxl01/BoardResearch/HP/Code/Revision/summary.log
+  log type:  text
+ opened on:   2 Mar 2023, 14:54:20
+
+. 
+. use cps_current, clear
+
+. 
+. sort cpsidp monthly_date
+
+. xtset cpsidp monthly_date
+       panel variable:  cpsidp (unbalanced)
+        time variable:  monthly_date, 1977m1 to 2021m12, but with gaps
+                delta:  1 month
+
+. 
+. gen into_employed_sp_alt = employed_sp == 1 & (l.employed_sp == 0 | l.employed_sp == .) 
+
+. sum into_employed_sp_alt if married == 1 & female == 0 & (l1.employed_sp==0 | l1.employed_sp == .) 
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+into_emplo~t |  7,796,771    .3599166    .4799757          0          1
+
+. 
+. ******IV Bartik
+. ******first-stage, normalize the predicted value with standard deviation
+. 
+. reghdfe into_pter into_pter_isyear_hat_leaveout ${controls} if married == 1 & female == 0 & l1.pter==0 & employed == 1 & l1.employed==1 & (l1.employed_sp==0 | l1.employed_sp == .), absorb(age monthly_date statefip) cluster(statefip) nocons
+(MWFE estimator converged in 5 iterations)
+
+HDFE Linear regression                            Number of obs   =  2,484,560
+Absorbing 3 HDFE groups                           F(  10,     50) =     179.81
+Statistics robust to heteroskedasticity           Prob > F        =     0.0000
+                                                  R-squared       =     0.0175
+                                                  Adj R-squared   =     0.0172
+                                                  Within R-sq.    =     0.0143
+Number of clusters (statefip) =         51        Root MSE        =     0.1256
+
+                                               (Std. Err. adjusted for 51 clusters in statefip)
+-----------------------------------------------------------------------------------------------
+                              |               Robust
+                    into_pter |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+------------------------------+----------------------------------------------------------------
+into_pter_isyear_hat_leaveout |   .9093525   .0375502    24.22   0.000     .8339306    .9847743
+                        black |   .0063488   .0011095     5.72   0.000     .0041203    .0085773
+                   highschool |  -.0134491   .0011438   -11.76   0.000    -.0157465   -.0111517
+                  somecollege |  -.0174672   .0012535   -13.94   0.000    -.0199848   -.0149496
+                    collegeup |  -.0206751   .0014972   -13.81   0.000    -.0236823   -.0176679
+                  shr_married |   .0204611   .0049234     4.16   0.000     .0105722      .03035
+                     unemp_rt |   .1880397   .0295947     6.35   0.000     .1285971    .2474823
+                    unemp_rt2 |  -.3126355   .2404481    -1.30   0.199    -.7955898    .1703187
+                       nchild |  -9.90e-06   .0001056    -0.09   0.926    -.0002219    .0002021
+                      nadults |   .0010402    .000229     4.54   0.000     .0005802    .0015002
+-----------------------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+------------------------------------------------------+
+  Absorbed FE | Categories  - Redundant  = Num. Coefs |
+--------------+---------------------------------------|
+          age |        46           0          46     |
+ monthly_date |       525           1         524     |
+     statefip |        51          51           0    *|
+------------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. predict into_pter_hat_1 if e(sample)
+(option xb assumed; fitted values)
+(39,922,177 missing values generated)
+
+. 
+. reg     into_pter into_pter_isyear_hat_leaveout ${controls} if married == 1 & female == 0 & l1.pter==0 & employed == 1 & l1.employed==1 & (l1.employed_sp==0 | l1.employed_sp == .), cluster(statefip) nocons
+
+Linear regression                               Number of obs     =  2,484,560
+                                                F(10, 50)         =     445.22
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.0315
+                                                Root MSE          =     .12567
+
+                                               (Std. Err. adjusted for 51 clusters in statefip)
+-----------------------------------------------------------------------------------------------
+                              |               Robust
+                    into_pter |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+------------------------------+----------------------------------------------------------------
+into_pter_isyear_hat_leaveout |   .9433059   .0367612    25.66   0.000     .8694689    1.017143
+                        black |   .0059751   .0013325     4.48   0.000     .0032986    .0086516
+                   highschool |  -.0120299   .0012883    -9.34   0.000    -.0146174   -.0094424
+                  somecollege |  -.0157409   .0013561   -11.61   0.000    -.0184647    -.013017
+                    collegeup |  -.0174553   .0015334   -11.38   0.000    -.0205353   -.0143754
+                  shr_married |  -.0001248   .0024495    -0.05   0.960    -.0050447    .0047952
+                     unemp_rt |   .2159191   .0599244     3.60   0.001     .0955573    .3362809
+                    unemp_rt2 |  -.8486789   .3472497    -2.44   0.018     -1.54615   -.1512074
+                       nchild |   .0001835   .0001528     1.20   0.235    -.0001233    .0004903
+                      nadults |    .002457   .0002513     9.78   0.000     .0019522    .0029618
+-----------------------------------------------------------------------------------------------
+
+. predict into_pter_hat_2 if e(sample)
+(option xb assumed; fitted values)
+(39,922,177 missing values generated)
+
+. 
+. sum into_pter into_pter_hat_1 into_pter_hat_2 if e(sample)
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+   into_pter |  2,484,560    .0163063    .1266508          0          1
+into_pter_~1 |  2,484,560    .0246253    .0163378  -.0073998   .2297974
+into_pter_~2 |  2,484,560    .0161221    .0159223  -.0165621   .2209167
+
+. 
+. ******2sls
+. keep if married == 1 & female == 0 & l1.pter==0 & employed == 1 & l1.employed==1 & (l1.employed_sp==0 | l1.employed_sp == .)
+(39,896,592 observations deleted)
+
+. ivreghdfe into_employed_sp_alt ${controls} (into_pter=into_pter_isyear_hat_leaveout), a(age statefip year#month) cluster(statefip) nocons first
+(MWFE estimator converged in 5 iterations)
+
+First-stage regressions
+-----------------------
+
+
+First-stage regression of into_pter:
+
+Statistics robust to heteroskedasticity and clustering on statefip
+Number of obs =                2484560
+Number of clusters (statefip) =     51
+-----------------------------------------------------------------------------------------------
+                              |               Robust
+                    into_pter |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+------------------------------+----------------------------------------------------------------
+into_pter_isyear_hat_leaveout |   .9093525   .0375502    24.22   0.000     .8357553    .9829496
+                        black |   .0063488   .0011095     5.72   0.000     .0041742    .0085234
+                   highschool |  -.0134491   .0011438   -11.76   0.000    -.0156909   -.0112072
+                  somecollege |  -.0174672   .0012535   -13.94   0.000    -.0199239   -.0150105
+                    collegeup |  -.0206751   .0014972   -13.81   0.000    -.0236095   -.0177406
+                  shr_married |   .0204611   .0049234     4.16   0.000     .0108115    .0301108
+                     unemp_rt |   .1880397   .0295947     6.35   0.000     .1300352    .2460442
+                    unemp_rt2 |  -.3126355   .2404481    -1.30   0.194    -.7839054    .1586343
+                       nchild |  -9.90e-06   .0001056    -0.09   0.925    -.0002168     .000197
+                      nadults |   .0010402    .000229     4.54   0.000     .0005914    .0014891
+-----------------------------------------------------------------------------------------------
+F test of excluded instruments:
+  F(  1,    50) =   586.46
+  Prob > F      =   0.0000
+Sanderson-Windmeijer multivariate F test of excluded instruments:
+  F(  1,    50) =   586.46
+  Prob > F      =   0.0000
+
+
+
+Summary results for first-stage regressions
+-------------------------------------------
+
+                                           (Underid)            (Weak id)
+Variable     | F(  1,    50)  P-val | SW Chi-sq(  1) P-val | SW F(  1,    50)
+into_pter    |     586.46    0.0000 |      598.33   0.0000 |      586.46
+
+NB: first-stage test statistics cluster-robust
+
+Stock-Yogo weak ID F test critical values for single endogenous regressor:
+                                   10% maximal IV size             16.38
+                                   15% maximal IV size              8.96
+                                   20% maximal IV size              6.66
+                                   25% maximal IV size              5.53
+Source: Stock-Yogo (2005).  Reproduced by permission.
+NB: Critical values are for i.i.d. errors only.
+
+Underidentification test
+Ho: matrix of reduced form coefficients has rank=K1-1 (underidentified)
+Ha: matrix has rank=K1 (identified)
+Kleibergen-Paap rk LM statistic          Chi-sq(1)=29.09    P-val=0.0000
+
+Weak identification test
+Ho: equation is weakly identified
+Cragg-Donald Wald F statistic                                   19971.53
+Kleibergen-Paap Wald rk F statistic                               586.46
+
+Stock-Yogo weak ID test critical values for K1=1 and L1=1:
+                                   10% maximal IV size             16.38
+                                   15% maximal IV size              8.96
+                                   20% maximal IV size              6.66
+                                   25% maximal IV size              5.53
+Source: Stock-Yogo (2005).  Reproduced by permission.
+NB: Critical values are for Cragg-Donald F statistic and i.i.d. errors.
+
+Weak-instrument-robust inference
+Tests of joint significance of endogenous regressors B1 in main equation
+Ho: B1=0 and orthogonality conditions are valid
+Anderson-Rubin Wald test           F(1,50)=       97.27     P-val=0.0000
+Anderson-Rubin Wald test           Chi-sq(1)=     99.24     P-val=0.0000
+Stock-Wright LM S statistic        Chi-sq(1)=     40.76     P-val=0.0000
+
+NB: Underidentification, weak identification and weak-identification-robust
+    test statistics cluster-robust
+
+Number of clusters             N_clust  =         51
+Number of observations               N  =    2484560
+Number of regressors                 K  =         10
+Number of endogenous regressors      K1 =          1
+Number of instruments                L  =         10
+Number of excluded instruments       L1 =          1
+
+IV (2SLS) estimation
+--------------------
+
+Estimates efficient for homoskedasticity only
+Statistics robust to heteroskedasticity and clustering on statefip
+
+Number of clusters (statefip) =     51                Number of obs =  2484560
+                                                      F( 10,    50) =   106.95
+                                                      Prob > F      =   0.0000
+Total (centered) SS     =  171465.1606                Centered R2   =  -0.0600
+Total (uncentered) SS   =  171465.1606                Uncentered R2 =  -0.0600
+Residual SS             =  181746.9723                Root MSE      =    .2705
+
+------------------------------------------------------------------------------
+             |               Robust
+into_emplo~t |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   into_pter |   .5234878   .0642631     8.15   0.000     .3944117     .652564
+       black |    .011947   .0019897     6.00   0.000     .0079505    .0159434
+  highschool |   .0194455   .0013992    13.90   0.000     .0166352    .0222558
+ somecollege |   .0297555   .0016326    18.23   0.000     .0264762    .0330348
+   collegeup |    .027982   .0016945    16.51   0.000     .0245784    .0313855
+ shr_married |  -.0245049    .015078    -1.63   0.110      -.05479    .0057802
+    unemp_rt |  -.4209519   .0635812    -6.62   0.000    -.5486585   -.2932454
+   unemp_rt2 |    1.38574   .3539878     3.91   0.000     .6747351    2.096746
+      nchild |  -.0026975   .0002128   -12.68   0.000     -.003125   -.0022701
+     nadults |   .0037465   .0004326     8.66   0.000     .0028776    .0046154
+------------------------------------------------------------------------------
+Underidentification test (Kleibergen-Paap rk LM statistic):             29.091
+                                                   Chi-sq(1) P-val =    0.0000
+------------------------------------------------------------------------------
+Weak identification test (Cragg-Donald Wald F statistic):              2.0e+04
+                         (Kleibergen-Paap rk Wald F statistic):        586.461
+Stock-Yogo weak ID test critical values: 10% maximal IV size             16.38
+                                         15% maximal IV size              8.96
+                                         20% maximal IV size              6.66
+                                         25% maximal IV size              5.53
+Source: Stock-Yogo (2005).  Reproduced by permission.
+NB: Critical values are for Cragg-Donald F statistic and i.i.d. errors.
+------------------------------------------------------------------------------
+Hansen J statistic (overidentification test of all instruments):         0.000
+                                                 (equation exactly identified)
+------------------------------------------------------------------------------
+Instrumented:         into_pter
+Included instruments: black highschool somecollege collegeup shr_married
+                      unemp_rt unemp_rt2 nchild nadults
+Excluded instruments: into_pter_isyear_hat_leaveout
+Partialled-out:       _cons
+                      nb: total SS, model F and R2s are after partialling-out;
+                          any small-sample adjustments include partialled-out
+                          variables in regressor count K
+------------------------------------------------------------------------------
+
+Absorbed degrees of freedom:
+------------------------------------------------------+
+  Absorbed FE | Categories  - Redundant  = Num. Coefs |
+--------------+---------------------------------------|
+          age |        46           0          46     |
+     statefip |        51          51           0    *|
+   year#month |       525           1         524     |
+------------------------------------------------------+
+* = FE nested within cluster; treated as redundant for DoF computation
+
+. log close
+      name:  <unnamed>
+       log:  /href/research2/m1gxl01/BoardResearch/HP/Code/Revision/summary.log
+  log type:  text
+ closed on:   2 Mar 2023, 14:57:38
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

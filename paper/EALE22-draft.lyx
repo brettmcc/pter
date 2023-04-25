@@ -131,8 +131,8 @@ We thank Daniel Aaronson, Charlie Brown, Karen Dynan, Dmitriy Stolyarov,
  and seminar and conference participants for helpful discussions and comments.
  Colin Motley, Hannah Farkas, and Ilaria Malisan provided superb research
  assistance.
- The views presented in this paper are those of the author and are not necessari
-ly those of the Federal Reserve Board and its staff.
+ The views presented in this paper are those of the authors and are not
+ necessarily those of the Federal Reserve Board and its staff.
 \end_layout
 
 \end_inset
@@ -163,18 +163,37 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Abstract
-We document that labor market hours constraints are more up to 5 times more
- pervasive than suggested by commonly-used official measures of labor market
- slack.
- If each worker could work his desired number of hours, the aggregate number
- of hours of labor supplied would rise by 3 percent.
- Guided by a simple model of household labor supply and home proeduction,
- we then consider how single and married adjust to hours constraints.
+We document that U.S.
+ labor market hours constraints are up to 5 times more pervasive than suggested
+ by 
+\change_deleted 1865117061 1646044253
+commonly-used 
+\change_unchanged
+official measures
+\change_deleted 1865117061 1646044257
+ of labor market slack (such as working part-time for economic reasons,
+ or PTER)
+\change_unchanged
+.
+ If each worker could work his desired number of hours, 
+\change_deleted 1865117061 1646044290
+the aggregate number of working hours
+\change_inserted 1865117061 1646044292
+aggregate hours supplied
+\change_unchanged
+ would rise by 3 percent.
+ Guided by a simple model of household labor supply and home production,
+ we then consider how single and married households adjust to hours constraints.
  We find that single individuals raise their home production when subject
  to an upside labor market hours constraint.
- By contrast, in married households, the spouse of the constrained worker
- is more likely to enter to enter the labor market and increase her home
- production.
+ 
+\change_deleted 1865117061 1646044323
+By contrast, i
+\change_inserted 1865117061 1646044323
+I
+\change_unchanged
+n married households, the spouse of the constrained worker is more likely
+ to enter the labor market and decrease her home production.
 \end_layout
 
 \begin_layout Standard
@@ -206,11 +225,30 @@ literal "false"
 \end_inset
 
 .
- Policy makers and researchers have increasingly focused on workers who
- desire to work more hours but cannot due to economic reasons, such as slack
- demand for jobs.
- This focus intensified following record levels of workers involuntarily
- working part-time during the Great Recession of 2008-2009 
+ 
+\change_inserted 1865117061 1646045322
+Variation in hours per worker across the business cycle is driven in part
+ by hours constraints imposed upon workers.
+ These hours constraints have drawn the attention of policymakers and researcher
+s
+\change_deleted 1865117061 1646045328
+Policy makers and researchers have increasingly focused on workers who desire
+ to work more hours but cannot due to economic reasons, such as slack demand
+ for jobs.
+ This focus intensified
+\change_unchanged
+ following record levels of workers involuntarily working part-time during
+ the Great Recession of 200
+\change_deleted 1865117061 1646045544
+8
+\change_inserted 1865117061 1646045544
+7
+\change_unchanged
+-
+\change_deleted 1865117061 1646045546
+20
+\change_unchanged
+09 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "yellen2014labor"
@@ -223,9 +261,24 @@ literal "false"
 
 \begin_layout Standard
 To assess the prevalence of workers facing hours constraints, policymakers
- rely exclusively on Bureau of Labor Statistics' monthly surveys which ask
- only workers with fewer than 35 hours per week whether they desire more
- hours.
+ rely almost exclusively on the monthly surveys conducted by the Bureau
+ of Labor Statistics
+\change_deleted 1865117061 1646045499
+ (BLS)
+\change_unchanged
+, which ask only workers 
+\change_deleted 1865117061 1646045521
+working
+\change_inserted 1865117061 1646045522
+with
+\change_unchanged
+ fewer than 35 hours per week whether they desire 
+\change_deleted 1865117061 1646045508
+working
+\change_inserted 1865117061 1646045509
+to work
+\change_unchanged
+ more hours.
  Therefore the measure fails to capture labor market slack in workers facing
  hours constraints but working more than 35 hours per week.
 \end_layout
@@ -233,9 +286,16 @@ To assess the prevalence of workers facing hours constraints, policymakers
 \begin_layout Standard
 While poor measurement may understate the extent of labor market slack in
  the U.S.
- economy, a well-measured figure may overstate the welfare impact of welfare
- constraints if workers adjust along other margins to such constraints.
- In particular, married households can leverage the labor market insurance
+ economy, a well-measured figure itself may overstate the welfare impact
+ of work hours constraints if workers adjust along other margins to 
+\change_deleted 1865117061 1646045650
+such
+\change_inserted 1865117061 1646045650
+hours
+\change_unchanged
+ constraints.
+ For example, workers may adjust housework hours.
+ In addition, married households can leverage the labor market insurance
  offered by their spouse to smooth their own labor market shocks 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -245,57 +305,111 @@ literal "false"
 \end_inset
 
 .
+
+\change_inserted 1865117061 1646045561
+ 
+\change_unchanged
+In particular, if work hours of one spouse of a married couple are constrained,
+ the labor supply of the other spouse may change in 
+\change_deleted 1865117061 1646045691
+reaction
+\change_inserted 1865117061 1646045692
+response
+\change_unchanged
+.
+ 
 \end_layout
 
 \begin_layout Standard
-In this paper, we estimate the extent of labor market slack for both part-time
- and full-time workers, and how they adjust to hours constraints in both
- single and married household.
- We conduct our analysis in two parts: first, we introduce new survey measures
- of aggregate labor market slack and demonstrate that the conventional measure
+In this paper, we estimate the extent of
+\change_inserted 1865117061 1646045708
+ aggregate
+\change_unchanged
+ labor market 
+\change_deleted 1865117061 1646045703
+slack
+\change_inserted 1865117061 1646045704
+hours constraints
+\change_unchanged
+ for both part-time and full-time workers, and how they adjust to hours
+ constraints in both single and married households.
+ We conduct our analysis in two parts: first, we introduce new
+\change_deleted 1865117061 1646045715
+ survey
+\change_unchanged
+ measures of labor market slack and demonstrate that the conventional measure
  produced by the Bureau of Labo Statistics (BLS) significantly understates
  labor market slack.
  Second, we show two novel margins of adjustment for workers facing employer-imp
-osed hours constraints: first, they adjust by increasing their home production,
- and second, the spouse is more likely to enter the workforce.
+osed hours constraints: 
+\change_deleted 1865117061 1646045741
+first, 
+\change_unchanged
+they adjust by increasing their home production, and 
+\change_deleted 1865117061 1646045747
+second
+\change_inserted 1865117061 1646045749
+for married household
+\change_unchanged
+, the spouse is more likely to enter the workforce and work longer hours.
 \end_layout
 
 \begin_layout Standard
 A key distinction between our data and the BLS measure is that respondents
  in our data are asked about labor market hours constraints regardless of
  how many hours they work.
- Thus we can observe a broader measure of labor market slack which incorporates
- full-time workers who desire to work more hours over a large number of
- years.
+ Thus we can observe a broader measure of labor market slack that incorporates
+ full-time workers who desire to work more hours.
  In particular, we derive our aggregate hours constraints measure from two
  surveys: the Panel Study of Income Dynamics and the Health and Retirement
  Study.
  To validate these two surveys, we first show that the evolution of our
- measures correlate very closely in levels and changes to the BLS' part-time
- for economic reasons measure.
+ measures correlate very closely in levels and changes to the BLS' PTER
+ measure.
 \end_layout
 
 \begin_layout Standard
 When we expand our measure of aggregate hours constraints to include full-time
  workers, we find substantially higher levels of labor market slack than
- the BLS reports.
+ what the BLS measure indicates.
  The more restrictive BLS measure understates the fraction of workers facing
  hours constraints by a factor of three.
  That is, while on average the BLS counts about 4 percent of workers to
- be working fewer hours than they would like, our preferred measures show
- that hours constraints are 3 to 4 times more prevalent than this official
- measure.
- The difference in magnitudes have major consequences for the calibration
- of macroeconomic models of optimal monetary policy.
+ be working fewer hours than they would like, our measures show that 
+\change_deleted 1865117061 1646046204
+hours constraints are 3 to 4 times more prevalent than this official measure
+\change_inserted 1865117061 1646046243
+on average between 10 and 20 percent of workers face upward binding limitations
+ on their working hours
+\change_unchanged
+.
+ The difference in magnitudes have
+\change_deleted 1865117061 1646046254
+ potentially
+\change_unchanged
+ important implications for the calibration of macroeconomic models of optimal
+ monetary policy.
 \end_layout
 
 \begin_layout Standard
 Next, we leverage the panel dimension of our surveys to study the transition
  dynamics of work hour constraints and find that their persistence is quite
  high.
- Nearly fifty percent of constrained workers remain constrained in year-over-yea
-r and, interestingly, theis transition rate is not sensitive to the duration
- of the constraints.
+ Nearly fifty percent of constrained workers remain constrained
+\change_deleted 1865117061 1646046267
+ in
+\change_unchanged
+ year-over-year and
+\change_deleted 1865117061 1646046275
+, interestingly,
+\change_unchanged
+ the likelihood of transitioning out of the constraints is not 
+\change_deleted 1865117061 1646046432
+sensitive to
+\change_inserted 1865117061 1646046434
+affected by
+\change_unchanged
+ the duration of the constraints.
 \end_layout
 
 \begin_layout Standard
@@ -309,24 +423,33 @@ We explore the factors that drive workers into the constrained situations.
 \end_layout
 
 \begin_layout Standard
-Finally, we study several margins of adjustment to workers facing hours
+Finally, we study several margins of adjustment by workers facing hours
  constraints.
  We first develop a simple model to understand how individual workers and
  married households might respond to the imposition of hours constraints.
- Consistent with this simple mode, we find that individuals increase their
+ Consistent with this simple model, we find that individuals increase their
  home production in response to hours constraints.
  For married couples, we find that women are more likely to enter the workforce
  in response to their husband facing a binding hours constraint.
+
+\change_deleted 1865117061 1646142300
  
 \end_layout
 
 \begin_layout Paragraph
+
+\change_deleted 1865117061 1646142298
 Related literature and contribution.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-This paper contribute to our understanding of the extent and consequences
- of labor market slack.
+This paper contribute
+\change_inserted 1865117061 1646041729
+s
+\change_unchanged
+ to our understanding of the extent and consequences of labor market slack.
  Recent papers on hours constraints experienced by part-time workers 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -337,13 +460,19 @@ literal "false"
 
  have largely left out constrained full-time workers.
  An exception is analysis by 
+\change_inserted 1865117061 1646046559
+Bell and Blanchflower 
+\change_unchanged
+
 \begin_inset CommandInset citation
-LatexCommand citet
-key "bell2021underemployment"
+LatexCommand citeyearpar
+key "bell2018underemployment,bell2021underemployment"
 literal "false"
 
 \end_inset
 
+
+\change_deleted 1865117061 1646046572
  and 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -352,20 +481,120 @@ literal "false"
 
 \end_inset
 
+
+\change_unchanged
 , who explore hours constraints among both part- and full-time workers in
  Europe.
- Our study goes beyond their analysis in that we explore both the drivers
- and adjustment margins of hours constraints, look at the U.S.
+ Our study goes beyond their analysis
+\change_inserted 1865117061 1646046591
+ in several dimensions.
+ 
+\change_deleted 1865117061 1646046594
+ in that we 
+\change_inserted 1865117061 1646046595
+First, we 
+\change_unchanged
+explore both the drivers and adjustment margins of hours constraints
+\change_inserted 1865117061 1646046601
+.
+ Additioanlly, we
+\change_deleted 1865117061 1646046598
+, 
+\change_unchanged
+look at the U.S.
  context in which hours constraints have become a more urgent policy priority
- following the Great Recession of 2007-9, and that we look at hours constraints
- of a longer time horizon, and therefore can observe dynamics across several
+ following the Great Recession of 2007-9
+\change_deleted 1865117061 1646046607
+, and that 
+\change_inserted 1865117061 1646046608
+.
+ Finally, 
+\change_unchanged
+we
+\change_inserted 1865117061 1646046614
+ are able to
+\change_unchanged
+ 
+\change_deleted 1865117061 1646046617
+look
+\change_inserted 1865117061 1646046618
+examine
+\change_deleted 1865117061 1646046619
+ at
+\change_unchanged
+ hours constraints 
+\change_deleted 1865117061 1646046625
+o
+\change_inserted 1865117061 1646046623
+at
+\change_deleted 1865117061 1646046622
+f
+\change_unchanged
+ a longer time horizon, and therefore can observe dynamics across several
  business cycles.
+\change_inserted 1865117061 1646141757
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1865117061 1646142066
+Our work contribute to the literature estimating labor supply elasticities.
+ Like 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "rogerson2019household"
+literal "false"
+
+\end_inset
+
+, we look at household labor supply when one member reduces their labor
+ supply.
+ However, we focus on firm-imposed hours constraints whereas 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "rogerson2019household"
+literal "false"
+
+\end_inset
+
+ look at retirement choices.
+ We also expand upon the adjustment mechanisms to hours constraints highlighted
+ by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "chetty2011adjustment"
+literal "false"
+
+\end_inset
+
+ to explain the gap between micro and macro estimates of the labor supply
+ elasticity.
+ In particular, we show that married households respond differently in terms
+ of labor supply to hours constraints.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Most of the existing literature on market work hours constraints has focused
- squarely on the impact of the constraints on labor market activities and
- has left home production largely out of the picture.
+ 
+\change_deleted 1865117061 1646046642
+squarely
+\change_inserted 1865117061 1646046645
+primarily
+\change_unchanged
+ on the impact of the constraints on labor market activities and has 
+\change_deleted 1865117061 1646046659
+left
+\change_inserted 1865117061 1646046661
+largely ignored
+\change_unchanged
+ home production
+\change_deleted 1865117061 1646046665
+ largely out of the picture
+\change_unchanged
+.
  For example, 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -397,10 +626,14 @@ literal "false"
 \end_inset
 
  find that hours constraints affect job mobility and dual job holding.
- They report that, broadly consistent with the theory, workers subject to
- upside hours constraints are more likely to take a second job at a lower
- wage, while workers facing downside constraints are less likely to do so
- but are more likely to switch to a main job with lower required hours.
+ They report that
+\change_deleted 1865117061 1646046702
+, broadly consistent with the theory,
+\change_unchanged
+ workers subject to upside hours constraints are more likely to take a second
+ job at a lower wage, while workers facing downside constraints are less
+ likely to do so but are more likely to switch to a main job with lower
+ required hours.
  Furthermore, 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -412,6 +645,13 @@ literal "false"
  focus on the extensive margin of market labor supply.
  They find that downside constrained workers are more likely to retire by
  some future date compared with their unconstrained counterparts.
+
+\change_inserted 1865117061 1646049003
+ We expand upon this literature by considering the home production margin
+ of adjustment to hours constarints and considering how married households
+ respond.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -1741,11 +1981,21 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-We have shown that the measurement of labor market slack is deficient on
- a key dimension: that of aggregate labor market hours constraints.
- Our results suggest that a more expansive measure of hours constraints
- which looks beyond just part-time workers is necessary for obtaining a
- clear picture of labor market dynamics.
+We have shown that the standard measurements (e.g., BLS' PTER) tend to underestima
+te 
+\change_deleted 1865117061 1646046758
+the underlying labor market slacks
+\change_inserted 1865117061 1646046763
+aggregate labor market hours constraints
+\change_unchanged
+.
+ Our results suggest that a more comprehensive measure of hours constraints
+ that looks beyond just part-time workers is necessary for obtaining a complete
+ picture of labor market slack
+\change_deleted 1865117061 1646046771
+s
+\change_unchanged
+.
  
 \end_layout
 
@@ -1755,8 +2005,15 @@ We also show that household respond to hours constraints in a few ways.
  to an upside hours constraint.
  Second, for married couples, the spouse is more likely to join the labor
  force in response to the hours constraint imposed on her husband.
- Taken together, these results have major implications for calibration of
- macroeconomic models and, especially, for crafting optimal monetary policy.
+ Taken together, these results have important implications for calibration
+ of macroeconomic models and, especially, for crafting optimal monetary
+ and economic policy aimed at 
+\change_deleted 1865117061 1646046778
+maximum
+\change_inserted 1865117061 1646046778
+full
+\change_unchanged
+ employment.
 \end_layout
 
 \begin_layout Standard
@@ -2616,9 +2873,9 @@ status open
 
 \shape italic
 \size footnotesize
-Note
+Notes
 \shape default
-s: Summary statistics for PSID computed using sample weights.
+: Summary statistics for PSID computed using sample weights.
 \end_layout
 
 \end_inset

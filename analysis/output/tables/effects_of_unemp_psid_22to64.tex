@@ -1,0 +1,20 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{7}{c}}
+\toprule
+                    &\multicolumn{2}{c}{Single}                 &\multicolumn{5}{c}{Married}                                                                                  \\\cmidrule(lr){2-3}\cmidrule(lr){4-8}
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}\\
+                    &\multicolumn{1}{c}{\shortstack{Head work\\hours}}&\multicolumn{1}{c}{\shortstack{Head HW\\hours}}&\multicolumn{1}{c}{\shortstack{Head work\\hours}}&\multicolumn{1}{c}{\shortstack{Head HW\\hours}}&\multicolumn{1}{c}{\shortstack{Wife work\\hours}}&\multicolumn{1}{c}{\shortstack{Wife HW\\hours}}&\multicolumn{1}{c}{\shortstack{Wife\\working}}\\
+\midrule
+unemployed          &      -544.3\sym{***}&       71.68\sym{***}&      -698.9\sym{***}&       150.6\sym{***}&       49.70\sym{*}  &      -81.57\sym{**} &      0.0209         \\
+                    &     (38.43)         &     (24.10)         &     (31.37)         &     (20.53)         &     (28.02)         &     (32.71)         &    (0.0164)         \\
+\midrule
+Observations        &       18932         &       18932         &       45278         &       45278         &       45278         &       45278         &       45278         \\
+\(R^{2}\)           &       0.763         &       0.598         &       0.670         &       0.503         &       0.628         &       0.571         &       0.581         \\
+Dep. var. mean      &      1523.1         &       677.4         &      1969.3         &       322.9         &       797.1         &      1410.5         &       0.584         \\
+Person FE           &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Year FE             &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         &           Y         \\
+\bottomrule
+\end{tabular}
+}

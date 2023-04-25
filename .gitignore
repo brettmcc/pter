@@ -8,6 +8,7 @@
 *.sas7bdat
 *.csv
 *.dta
+*.zip
 
 ### Output Files ###
 

@@ -791,4 +791,6 @@ outreg2 using /*
 	*/cttop(House work hours) addtext(Year FE, Yes) /*
 	*/addstat(Dep. var. mean, r(mean)) ///
 	title(Determinants of Food-out Ratio)
+	
+	
 

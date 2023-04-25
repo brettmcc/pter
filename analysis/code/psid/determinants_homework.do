@@ -1,7 +1,7 @@
 /*Brett McCully, June 2018
   
 */
-
+cd "~\Dropbox\Hours constraints and home prod"
 clear all
 set more off, permanently
 
@@ -227,7 +227,46 @@ esttab lvlw1 lvlw2 lvlw3 lvlw4 lvlw5 lvlw6 lvlw7 using ///
 	keep(construp constrdown) booktabs ///
 	mgroups("Single" "Married",pattern(1 0 1 0 0 0 0) span prefix(\multicolumn{@span}{c}{) suffix(}) end(\cmidrule(lr){2-3}\cmidrule(lr){4-8})) mtitle("\shortstack{Head work\\hours}" "\shortstack{Head HW\\hours}" "\shortstack{Head work\\hours}" "\shortstack{Head HW\\hours}" "\shortstack{Wife work\\hours}" "\shortstack{Wife HW\\hours}" "\shortstack{Wife\\working}") ///
 	substitute("\_" "_" ) 
-	
+
+**effect of unemployment on wife FLFP
+global wgt [aw=wgt]
+global ifcond & headhwweekly!=. & headage>=22 & headage<68
+use if headage>=22 & headage<70 & selfemployed!=1 using "analysis\input\pooled_all.dta",clear
+gen unemployed = headstatus==2
+reghdfe headhour unemployed ${indep_vars_personfe} if headmarried==0 ${ifcond} ${wgt},absorb(pid year) vce(cluster pid) nocons
+sum headhour if headmarried==0 ${ifcond} ${wgt}
+local mean = r(mean)
+estadd scalar mean = `mean'
+estadd local pfe "Y"
+estadd local yfe "Y"
+estadd local controls "Y"
+eststo unemp1, refresh 
+reghdfe hwhead unemployed ${indep_vars_personfe} if headmarried==0 ${ifcond} ${wgt},absorb(pid year) vce(cluster pid) nocons
+sum hwhead if headmarried==0 ${ifcond} ${wgt}
+local mean = r(mean)
+estadd scalar mean = `mean'
+estadd local pfe "Y"
+estadd local yfe "Y"
+estadd local controls "Y"
+eststo unemp2, refresh 
+local i = 3
+foreach var of varlist headhour hwhead wifehour hwwife wifelfp {
+	reghdfe `var' unemployed ${indep_vars_personfe} if headmarried==1 ${ifcond} ${wgt},absorb(pid year) vce(cluster pid) nocons
+	sum `var' if headmarried==1 ${ifcond} ${wgt}
+	local mean = r(mean)
+	estadd scalar mean = `mean'
+	estadd local pfe "Y"
+	estadd local yfe "Y"
+	estadd local controls "Y"
+	eststo unemp`i', refresh 
+	local i = `i'+1
+}
+esttab unemp1 unemp2 unemp3 unemp4 unemp5 unemp6 unemp7 using ///
+	"analysis/output/tables/effects_of_unemp_psid_22to67.tex", replace se r2 label scalars("mean Dep. var. mean" "pfe Person FE" "yfe Year FE" "controls Controls") nonotes star(* 0.10 ** 0.05 *** 0.01) ///
+	keep(unemployed) booktabs ///
+	mgroups("Single" "Married",pattern(1 0 1 0 0 0 0) span prefix(\multicolumn{@span}{c}{) suffix(}) end(\cmidrule(lr){2-3}\cmidrule(lr){4-8})) mtitle("\shortstack{Head work\\hours}" "\shortstack{Head HW\\hours}" "\shortstack{Head work\\hours}" "\shortstack{Head HW\\hours}" "\shortstack{Wife work\\hours}" "\shortstack{Wife HW\\hours}" "\shortstack{Wife\\working}") ///
+	substitute("\_" "_" ) 
+
 //foodout ratio
 *psid
 use "analysis\input\pooled.dta",clear

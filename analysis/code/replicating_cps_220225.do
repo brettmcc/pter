@@ -1,15 +1,14 @@
 * Estimating equation 1 and 2 using CPS
 
-global build "C:\Users\39328\Dropbox\Hours constraints and home prod\build"
+//global pre "C:\Users\Brett\Dropbox\"
+global pre "C:\Users\Brett's Workstation\Dropbox\"
+global build "$pre\Hours constraints and home prod\build"
 
-global analysis "C:\Users\39328\Dropbox\Hours constraints and home prod\analysis"
+global analysis "$pre\Hours constraints and home prod\analysis"
 
 cd "$build\output"
 
 clear all
-
-use cps_atus_merged_76_21, clear
-
 
 *EQUATION 1
 
